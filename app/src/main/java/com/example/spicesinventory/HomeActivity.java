@@ -19,7 +19,6 @@ public class HomeActivity extends AppCompatActivity{
     EditText Barcode, SpiceName, Stock, updateStock;
     TextView BarcodeShow, NameShow, StockShow;
     myDbController database;
-    public View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,15 +88,6 @@ public class HomeActivity extends AppCompatActivity{
         }
     }
 
-    public void viewSpiceData(View view) {
-        String barcode = database.getBarcode();
-        String name = database.getName();
-        String stock = database.getStock();
-        BarcodeShow.setText(barcode);
-        NameShow.setText(name);
-        StockShow.setText(stock);
-    }
-
     public void updateSpice(View view) {
         String toUpdate = Barcode.getText().toString();
         int newStock = Integer.parseInt(updateStock.getText().toString());
@@ -116,7 +106,7 @@ public class HomeActivity extends AppCompatActivity{
             {
                 Toast.makeText(this, toUpdate+" was Updated", Toast.LENGTH_LONG).show();
                 SpiceName.setText("");
-                
+
             }
         }
     }
