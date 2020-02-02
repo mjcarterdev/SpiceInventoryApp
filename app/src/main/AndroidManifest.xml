@@ -10,13 +10,14 @@ package="com.example.spice_sqlite_test">
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme"
-    tools:ignore="GoogleAppIndexingWarning">
+    tools:ignore="GoogleAppIndexingWarning"
+    android:fullBackupContent="">
 
     <activity
         android:name="com.journeyapps.barcodescanner.CaptureActivity"
         android:screenOrientation="fullSensor"
         tools:replace="screenOrientation" />
-    <activity android:name="com.example.spicesinventory.activites.MainActivity">
+    <activity android:name="com.example.spicesinventory.login.MainActivity">
     <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 

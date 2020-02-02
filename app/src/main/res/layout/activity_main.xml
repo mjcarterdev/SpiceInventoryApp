@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.spicesinventory.activites.MainActivity">
+    tools:context="com.example.spicesinventory.login.MainActivity">
 
     <Button
         android:id="@+id/shoppingList"
@@ -12,8 +12,8 @@
         android:layout_height="63dp"
         android:layout_marginTop="308dp"
         android:onClick="ShoppingPage"
-        android:text="Shopping"
-        android:textSize="14dp"
+        android:text="@string/shopping"
+        android:textSize="14sp"
         android:textStyle="normal|bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,8 +25,8 @@
         android:layout_height="62dp"
         android:layout_marginBottom="11dp"
         android:onClick="HomePage"
-        android:text="Home"
-        android:textSize="14dp"
+        android:text="@string/home"
+        android:textSize="14sp"
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toTopOf="@+id/shoppingList"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,8 +38,8 @@
         android:layout_width="173dp"
         android:layout_height="63dp"
         android:onClick="InventoryPage"
-        android:text="Inventory"
-        android:textSize="14dp"
+        android:text="@string/inventory"
+        android:textSize="14sp"
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

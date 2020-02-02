@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Spice Inventory</string>
+    <string name="shopping_list">Shopping List</string>
+    <string name="barcode_number">Barcode Number:</string>
+    <string name="spice_name">Spice Name:</string>
+    <string name="current_stock">Current Stock:</string>
+    <string name="update_spice">update Spice</string>
+    <string name="add_spice">Add Spice</string>
+    <string name="scan_barcode">Scan Barcode</string>
+    <string name="barcode_here">barcode here</string>
+    <string name="view_inventory">View Inventory</string>
+    <string name="spice_name_here">spice name here</string>
+    <string name="stock_here">stock here</string>
+    <string name="update_stock">Update Stock</string>
+    <string name="delete_spice">delete Spice</string>
+    <string name="shopping">Shopping</string>
+    <string name="home">Home</string>
+    <string name="inventory">Inventory</string>
+    <string name="barcode">Barcode</string>
+    <string name="stock">Stock</string>
+    <string name="name">Name</string>
 </resources>

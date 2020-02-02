@@ -1,4 +1,4 @@
-package com.example.spicesinventory.activites;
+package com.example.spicesinventory.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.spice_sqlite_test.R;
+import com.example.spicesinventory.activites.HomeActivity;
+import com.example.spicesinventory.activites.InventoryActivity;
+import com.example.spicesinventory.activites.ShoppingListActivity;
 
 public class MainActivity extends AppCompatActivity {
 
