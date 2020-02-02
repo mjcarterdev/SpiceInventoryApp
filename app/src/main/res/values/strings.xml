@@ -21,4 +21,6 @@
     <string name="name">Name</string>
     <string name="sign_up">Sign Up</string>
     <string name="log_in">LOG IN</string>
+    <string name="emblem">Emblem</string>
+    <string name="spice_rack">Spice Rack</string>
 </resources>

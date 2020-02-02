@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/background_05_alpha_background"
-
+    android:orientation="vertical"
     tools:context="com.example.spicesinventory.login.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="281dp"
         android:layout_height="279dp"
-        android:contentDescription="Emblem"
+        android:contentDescription="@string/emblem"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +31,7 @@
         android:shadowDx="4"
         android:shadowDy="4"
         android:shadowRadius="4"
-        android:text="Spice Rack"
+        android:text="@string/spice_rack"
         android:textAlignment="center"
         android:textColor="@color/textColour"
         android:textSize="50sp"

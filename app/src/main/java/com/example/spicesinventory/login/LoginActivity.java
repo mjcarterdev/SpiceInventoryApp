@@ -15,11 +15,10 @@ public class LoginActivity extends AppCompatActivity {
     private View.OnClickListener myClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            switch(v.getId()){
-                case R.id.btnLogIn:logIn();
-                break;
-                default:signUp();
-                break;
+            if (v.getId() == R.id.btnLogIn) {
+                logIn();
+            } else {
+                signUp();
             }
         }
     };
