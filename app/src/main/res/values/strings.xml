@@ -19,4 +19,6 @@
     <string name="barcode">Barcode</string>
     <string name="stock">Stock</string>
     <string name="name">Name</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="log_in">LOG IN</string>
 </resources>
