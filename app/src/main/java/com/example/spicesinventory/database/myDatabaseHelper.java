@@ -1,4 +1,4 @@
-package com.example.spicesinventory;
+package com.example.spicesinventory.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

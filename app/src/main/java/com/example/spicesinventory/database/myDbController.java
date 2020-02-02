@@ -1,12 +1,10 @@
-package com.example.spicesinventory;
+package com.example.spicesinventory.database;
 
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
-import com.example.spicesinventory.myDatabaseHelper;
 
 
 public class myDbController extends myDatabaseHelper {

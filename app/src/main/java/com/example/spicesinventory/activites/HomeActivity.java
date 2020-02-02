@@ -1,4 +1,4 @@
-package com.example.spicesinventory;
+package com.example.spicesinventory.activites;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 
 import com.example.spice_sqlite_test.R;
+import com.example.spicesinventory.database.myDbController;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 

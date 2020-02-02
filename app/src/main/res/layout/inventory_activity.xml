@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.spicesinventory.InventoryActivity">
+    tools:context="com.example.spicesinventory.activites.InventoryActivity">
 
     <TextView
         android:id="@+id/NameShow"

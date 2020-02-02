@@ -1,4 +1,4 @@
-package com.example.spicesinventory;
+package com.example.spicesinventory.activites;
 
 import android.os.Bundle;
 

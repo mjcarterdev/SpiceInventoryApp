@@ -16,17 +16,17 @@ package="com.example.spice_sqlite_test">
         android:name="com.journeyapps.barcodescanner.CaptureActivity"
         android:screenOrientation="fullSensor"
         tools:replace="screenOrientation" />
-    <activity android:name="com.example.spicesinventory.MainActivity">
+    <activity android:name="com.example.spicesinventory.activites.MainActivity">
     <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
     </intent-filter>
     </activity>
-    <activity android:name="com.example.spicesinventory.HomeActivity" />
+    <activity android:name="com.example.spicesinventory.activites.HomeActivity" />
 
-    <activity android:name="com.example.spicesinventory.InventoryActivity" />
-    <activity android:name="com.example.spicesinventory.ShoppingListActivity" />
+    <activity android:name="com.example.spicesinventory.activites.InventoryActivity" />
+    <activity android:name="com.example.spicesinventory.activites.ShoppingListActivity" />
 
 </application>
 

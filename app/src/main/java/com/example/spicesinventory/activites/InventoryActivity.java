@@ -1,4 +1,4 @@
-package com.example.spicesinventory;
+package com.example.spicesinventory.activites;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.spice_sqlite_test.R;
+import com.example.spicesinventory.database.myDbController;
 
 public class InventoryActivity extends AppCompatActivity {
     myDbController database;
