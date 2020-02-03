@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/background_05_alpha_background"
+    android:background="@drawable/background_05_alpha"
     android:orientation="vertical"
     tools:context="com.example.spicesinventory.login.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="281dp"
-        android:layout_height="279dp"
+        android:layout_width="338dp"
+        android:layout_height="306dp"
         android:contentDescription="@string/emblem"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3"
-        app:srcCompat="@mipmap/spicerack_emblem_round" />
+        app:srcCompat="@drawable/emblem_round" />
 
     <TextView
         android:id="@+id/AppName"
