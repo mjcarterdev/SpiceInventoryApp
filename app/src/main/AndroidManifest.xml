@@ -5,7 +5,7 @@ package="com.example.spice_sqlite_test">
 
 <application
 
-    android:icon="@mipmap/ic_launcher"
+    android:icon="@mipmap/spicerack_emblem_round"
     android:label="@string/app_name"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
@@ -22,13 +22,15 @@ package="com.example.spice_sqlite_test">
 
     <activity android:name="com.example.spicesinventory.activites.InventoryActivity" />
     <activity android:name="com.example.spicesinventory.activites.ShoppingListActivity" />
-    <activity android:name="com.example.spicesinventory.login.LoginActivity">
+    <activity android:name="com.example.spicesinventory.login.StartupActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
+    <activity android:name="com.example.spicesinventory.activites.ScanActivity" />
+    <activity android:name="com.example.spicesinventory.activites.ProfileActivity" />
 
 </application>
 

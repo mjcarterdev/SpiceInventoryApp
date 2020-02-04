@@ -8,4 +8,5 @@
     <color name="textBackground">#417505</color>
     <color name="textBackgroundTransparent">#D9417505</color>
     <color name="yellowText">#f7bf23</color>
+    <color name="logOutText">#c60058</color>
 </resources>
