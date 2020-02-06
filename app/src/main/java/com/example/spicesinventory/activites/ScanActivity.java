@@ -78,6 +78,7 @@ public class ScanActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     public void deleteSpice(View view) {
+
         String toDelete = Barcode.getText().toString();
         if(toDelete.isEmpty())
         {
