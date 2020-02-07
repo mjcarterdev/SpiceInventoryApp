@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/greenoverlay_background"
+    android:background="@drawable/green_white_background"
     tools:context="com.example.spicesinventory.activites.ScanActivity">
 
     <Button

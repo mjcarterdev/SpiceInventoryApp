@@ -1,93 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/greenoverlay_background"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnShoppingList"
-        android:layout_width="146dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/yellowText"
-        android:fontFamily="@font/bowlbyonesc_regular"
-        android:shadowColor="@color/textColour"
-        android:shadowDx="4"
-        android:shadowDy="4"
-        android:shadowRadius="4"
-        android:text="@string/shopping_list"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="20sp"
+    <LinearLayout
+        android:layout_width="327dp"
+        android:layout_height="171dp"
+        android:layout_marginTop="55dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/btnLogout"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
-    <Button
-        android:id="@+id/btnScan"
-        android:layout_width="146dp"
-        android:layout_height="105dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/yellowText"
-        android:fontFamily="@font/bowlbyonesc_regular"
-        android:shadowColor="@color/textColour"
-        android:shadowDx="4"
-        android:shadowDy="4"
-        android:shadowRadius="4"
-        android:text="@string/scan"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnShoppingList"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnProfile"
-        android:layout_width="146dp"
-        android:layout_height="105dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/yellowText"
-        android:fontFamily="@font/bowlbyonesc_regular"
-        android:shadowColor="@color/textColour"
-        android:shadowDx="4"
-        android:shadowDy="4"
-        android:shadowRadius="4"
-        android:text="@string/profile"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnInventory"
-        app:layout_constraintEnd_toStartOf="@+id/guideline" />
+            <Button
+                android:id="@+id/btnShoppingList"
+                android:layout_width="146dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:background="@color/yellowText"
+                android:fontFamily="@font/bowlbyonesc_regular"
+                android:shadowColor="@color/textColour"
+                android:shadowDx="4"
+                android:shadowDy="4"
+                android:shadowRadius="4"
+                android:text="@string/shopping_list"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/btnInventory"
-        android:layout_width="146dp"
-        android:layout_height="105dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/yellowText"
-        android:fontFamily="@font/bowlbyonesc_regular"
-        android:shadowColor="@color/textColour"
-        android:shadowDx="4"
-        android:shadowDy="4"
-        android:shadowRadius="4"
-        android:text="@string/inventory"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
-        app:layout_constraintEnd_toStartOf="@+id/guideline" />
+            <Button
+                android:id="@+id/btnScan"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@color/yellowText"
+                android:fontFamily="@font/bowlbyonesc_regular"
+                android:shadowColor="@color/textColour"
+                android:shadowDx="4"
+                android:shadowDy="4"
+                android:shadowRadius="4"
+                android:text="@string/scan"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnInventory"
+                android:layout_width="146dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:background="@color/yellowText"
+                android:fontFamily="@font/bowlbyonesc_regular"
+                android:shadowColor="@color/textColour"
+                android:shadowDx="4"
+                android:shadowDy="4"
+                android:shadowRadius="4"
+                android:text="@string/inventory"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnProfile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@color/yellowText"
+                android:fontFamily="@font/bowlbyonesc_regular"
+                android:shadowColor="@color/textColour"
+                android:shadowDx="4"
+                android:shadowDy="4"
+                android:shadowRadius="4"
+                android:text="@string/profile"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="322dp"
         android:layout_height="76dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="68dp"
         android:background="@color/logOutText"
         android:fontFamily="@font/bowlbyonesc_regular"
         android:shadowColor="#000000"
@@ -102,27 +115,19 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="251dp"
         android:layout_height="258dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="68dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnScan"
+        android:contentDescription="@string/profilepicture"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/emblem_round"
-        android:contentDescription="@string/profilepicture" />
+        app:srcCompat="@drawable/emblem_round" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
