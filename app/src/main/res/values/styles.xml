@@ -7,6 +7,48 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="EditTextDefault">
+         <item name="editTextStyle">@font/sriracha_regular</item>
+        <item name="android:textSize">16sp </item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle"> bold|italic</item>
+        <item name="android:textColor">@color/yellowText</item>
+        <item name="android:shadowColor">@color/textColour</item>
+        <item name="android:shadowRadius">4</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowDx">4</item>
+    </style>
 
+    <style name="ButtonStyleBackOnYellow">
+        <item name="editTextStyle">@font/sriracha_regular</item>
+        <item name="android:textSize">16sp </item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle"> bold|italic</item>
+        <item name="android:textColor">#010203</item>
+        <item name="android:shadowColor">@color/textColour</item>
+        <item name="android:shadowRadius">4</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowDx">4</item>
+        <item name="android:background">@color/yellowText</item>
+    </style>
+
+    <style name="ButtonStyleYellowOnGreen">
+        <item name="editTextStyle">@font/sriracha_regular</item>
+        <item name="android:textSize">16sp </item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle"> bold|italic</item>
+        <item name="android:textColor">@color/yellowText</item>
+        <item name="android:shadowColor">@color/textColour</item>
+        <item name="android:shadowRadius">4</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowDx">4</item>
+        <item name="android:background">@color/textBackgroundTransparent</item>
+    </style>
 
 </resources>
+
+
+
+
+
+

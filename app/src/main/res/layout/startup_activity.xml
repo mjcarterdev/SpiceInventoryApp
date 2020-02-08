@@ -33,7 +33,7 @@
         android:shadowRadius="4"
         android:text="@string/spice_rack"
         android:textAlignment="center"
-        android:textColor="@color/yellowText"
+        android:textColor="@color/textBackground"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,14 +52,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnSignUp"
         app:layout_constraintTop_toBottomOf="@+id/AppName"
-        android:background="@color/textBackgroundTransparent"
-        android:fontFamily="@font/bowlbyonesc_regular"
-        android:textAlignment="center"
-        android:textColor="@color/yellowText"
-        android:shadowColor="#000000"
-        android:shadowDx="4"
-        android:shadowDy="4"
-        android:shadowRadius="4"/>
+        style="@style/ButtonStyleYellowOnGreen"/>
 
     <Button
         android:id="@+id/btnSignUp"
@@ -72,14 +65,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AppName"
-        android:background="@color/textBackgroundTransparent"
-        android:fontFamily="@font/bowlbyonesc_regular"
-        android:textAlignment="center"
-        android:textColor="@color/yellowText"
-        android:shadowColor="#000000"
-        android:shadowDx="4"
-        android:shadowDy="4"
-        android:shadowRadius="4"/>
+        style="@style/ButtonStyleYellowOnGreen"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
