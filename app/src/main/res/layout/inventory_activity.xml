@@ -4,101 +4,191 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/creamandgreen_background"
-    tools:context="com.example.spicesinventory.activites.InventoryActivity">
+    android:background="@drawable/green_white_background"
+    tools:context="com.example.spicesinventory.activites.InventoryActivity"
+    android:windowSoftInputMode="adjustResize"
+    >
 
     <LinearLayout
-        android:layout_width="340dp"
-        android:layout_height="682dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="320dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        app:layout_constraintBottom_toTopOf="@+id/rvSpiceList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editText"
+
+        <TextView
+            android:id="@+id/tvBarcode"
+            style="@style/EditTextDefault"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart= "0dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:singleLine="false"
-            android:text="Inventory"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_weight="30"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:text="@string/barcode" />
 
-        <LinearLayout
+
+        <TextView
+            android:id="@+id/editSpNamInventory"
+            style="@style/EditTextDefault"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_weight="30"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:text="@string/spice_name_inv" />
 
-            <EditText
-                android:id="@+id/editText3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Barcode" />
+        <TextView
+            android:id="@+id/editStock"
+            style="@style/EditTextDefault"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="40"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:text="@string/stock" />
 
-            <EditText
-                android:id="@+id/editText4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+    </LinearLayout>
 
-            <EditText
-                android:id="@+id/editText5"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Stock" />
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginEnd="36dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        </LinearLayout>
-
-        <LinearLayout
+        <Button
+            android:id="@+id/deleteSpices"
+            style="@style/ButtonStyleBackOnYellow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:text="@string/delete_spice"
+            android:textStyle="normal|bold"
+            tools:ignore="RelativeOverlap" />
 
-            <TextView
-                android:id="@+id/BarcodeShow"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="" />
+        <Button
+            android:id="@+id/addSpice"
+            style="@style/ButtonStyleBackOnYellow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="@string/add_spice"
+            android:textStyle="normal|bold" />
 
-            <TextView
-                android:id="@+id/NameShow"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-
-                android:layout_marginStart="12dp"
-                android:layout_weight="1"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/StockShow"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="" />
-        </LinearLayout>
     </LinearLayout>
+
+    <TableLayout
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/Barcode_Number"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="@string/barcode_number" />
+
+            <EditText
+                android:id="@+id/editBarcode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:textColor="@color/textColour"
+                android:gravity="center_vertical|center"
+                android:hint="@string/barcode_here"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="343dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/Spice_Name"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="@string/spice_name" />
+
+            <EditText
+                android:id="@+id/editSpiceName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center_vertical|center"
+                android:hint="@string/spice_name_here"
+                android:importantForAutofill="no"
+                android:textColor="@color/textColour"
+                android:inputType="textPersonName" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/StockNumber"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="@string/current_stock" />
+
+            <EditText
+                android:id="@+id/tvStock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="center_vertical|center"
+                android:textColor="@color/textColour"
+                android:hint="@string/stock_here"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal" />
+        </TableRow>
+
+    </TableLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSpiceList"
+        android:layout_width="347dp"
+        android:layout_height="360dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.918" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

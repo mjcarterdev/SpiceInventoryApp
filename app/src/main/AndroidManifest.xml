@@ -20,7 +20,6 @@ package="com.example.spice_sqlite_test">
 
     <activity android:name="com.example.spicesinventory.activites.HomeActivity" />
 
-    <activity android:name="com.example.spicesinventory.activites.InventoryActivity" />
     <activity android:name="com.example.spicesinventory.activites.ShoppingListActivity" />
     <activity android:name="com.example.spicesinventory.login.StartupActivity">
         <intent-filter>
@@ -31,6 +30,8 @@ package="com.example.spice_sqlite_test">
     </activity>
     <activity android:name="com.example.spicesinventory.activites.ScanActivity" />
     <activity android:name="com.example.spicesinventory.activites.ProfileActivity" />
+    <activity android:name="com.example.spicesinventory.activites.InventoryActivity"
+        android:windowSoftInputMode="adjustNothing"/>
 
 </application>
 

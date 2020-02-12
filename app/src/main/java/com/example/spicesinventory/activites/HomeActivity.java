@@ -2,37 +2,45 @@ package com.example.spicesinventory.activites;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-
-
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.spice_sqlite_test.R;
-import com.example.spicesinventory.login.StartupActivity;
+import com.example.spicesinventory.utilities.Navigation;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements GestureDetector.OnGestureListener{
+
+    Navigation nav;
+    GestureDetector myGestureDetector;
+    public static final int SWIPE_THRESHOLD = 100;
+    public static final int SWIPE_VELOCITY_THRESHOLD = 100;
+
 
     private OnClickListener myClick = new OnClickListener() {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.btnScan:
-                    scanPage();
+                    scanner(v);
                     break;
                 case R.id.btnInventory:
-                    inventoryPage();
+                    nav.inventoryPage();
                     break;
                 case R.id.btnShoppingList:
-                    shoppingPage();
+                    nav.shoppingPage();
                     break;
                 case R.id.btnProfile:
-                    profilePage();
+                    nav.profilePage();
                     break;
                 default:
-                    logOut();
+                    nav.logOut();
             }
         }
 
@@ -54,32 +62,113 @@ public class HomeActivity extends AppCompatActivity {
         btnProfile.setOnClickListener(myClick);
         btnLogOut.setOnClickListener(myClick);
 
+        nav = new Navigation(this);
+        myGestureDetector = new GestureDetector(this, this);
+    }
+
+       /*
+    Gesture recognition to change activity
+     */
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        myGestureDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+
+
+    @Override
+    public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
+    boolean result = false;
+    float diffY = moveEvent.getY() - downEvent.getY();
+    float diffX = moveEvent.getX() - downEvent.getX();
+
+        if(Math.abs(diffX)> Math.abs(diffY)){
+        //right or left swipe
+        if(Math.abs(diffX)> SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD){
+            if(diffX > 0){
+                nav.inventoryPage();
+            }else{
+
+                nav.shoppingPage();
+            }
+            result = true;
+        }
+    }else{
+        //up or down swipe
+        if (Math.abs(diffY)> SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD){
+            if(diffY > 0){
+                onSwipeBottom();
+            }else{
+                onSwipeTop();
+            }
+            result = true;
+        }
+    }
+
+        return result;
+}
+    private void onSwipeBottom() {
+        Toast.makeText(this,"Swipe Bottom", Toast.LENGTH_LONG).show();
+    }
+
+    private void onSwipeTop(){
+        Toast.makeText(this,"Swipe Top", Toast.LENGTH_LONG).show();
+    }
+
+    /*
+Barcode Scanner
+ */
+    public void scanner(View v) {
+        new IntentIntegrator(this).initiateScan();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if(result.getContents() == null) {
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+                String scannedBarcode = result.getContents();
+                Intent intent = new Intent(HomeActivity.this, ScanActivity.class);
+                intent.putExtra("ScannedBarcode", scannedBarcode);
+                startActivity(intent);
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+
+
+    /*
+    Methods implemented but not required
+     */
+
+    @Override
+    public boolean onDown(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
 
     }
 
-    void shoppingPage() {
-        Intent openActivity = new Intent(this, ShoppingListActivity.class);
-        startActivity(openActivity);
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        return false;
     }
 
-    void inventoryPage() {
-        Intent openActivity = new Intent(this, InventoryActivity.class);
-        startActivity(openActivity);
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
     }
 
-    void scanPage() {
-        Intent openActivity = new Intent(this, ScanActivity.class);
-        startActivity(openActivity);
-    }
+    @Override
+    public void onLongPress(MotionEvent e) {
 
-    void profilePage() {
-        Intent openActivity = new Intent(this, ProfileActivity.class);
-        startActivity(openActivity);
-    }
-
-    public void logOut() {
-        Intent openActivity = new Intent(this, StartupActivity.class);
-        startActivity(openActivity);
     }
 }
 

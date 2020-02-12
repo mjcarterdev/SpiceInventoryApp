@@ -5,6 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="spicerack_emblem_background">#E4D7D0</color>
     <color name="textColour">#E4D7D0</color>
+    <color name="textColourTransparent">#57E7F3D8</color>
     <color name="textBackground">#417505</color>
     <color name="textBackgroundTransparent">#D9417505</color>
     <color name="yellowText">#f7bf23</color>

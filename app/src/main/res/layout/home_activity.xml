@@ -7,9 +7,11 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="327dp"
         android:layout_height="171dp"
         android:layout_marginTop="55dp"
+        android:layout_marginBottom="32dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/btnLogout"
         app:layout_constraintEnd_toEndOf="parent"
