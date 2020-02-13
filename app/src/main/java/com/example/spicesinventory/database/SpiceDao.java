@@ -24,12 +24,12 @@ public interface SpiceDao {
     @Query("SELECT * from spice_inventory")
     List<Spice> getAllSpices();
 
-    @Query("SELECT * FROM spice_inventory WHERE spice_name = :name LIMIT 1")
-    Spice getSpice(String name);
+    @Query("SELECT * FROM spice_inventory WHERE spice_name = :name")
+    List<Spice> getSpiceByName(String name);
 
     @Query("SELECT * FROM spice_inventory WHERE barcode = :barcode LIMIT 1")
-    Spice getBarcode(String barcode);
+    Spice getSpiceByBarcode(String barcode);
 
-    @Query("SELECT * FROM spice_inventory WHERE stock = :stock LIMIT 1")
-    Spice getStock(String stock);
+    @Query("SELECT * FROM spice_inventory WHERE stock = :stock")
+    List<Spice> getSpiceByStock(String stock);
 }

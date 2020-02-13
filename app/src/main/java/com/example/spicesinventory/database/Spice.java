@@ -38,15 +38,19 @@ public class Spice {
         this.stock = stock;
     }
     @NonNull
-    String getBarcodeID(){
+    public String getBarcodeID(){
         return this.barcodeID;
     }
 
-    String getStock() {
+    public String getStock() {
         return this.stock;
     }
 
-    String getSpice_name() {
+     public String getSpice_name() {
         return spice_name;
+    }
+
+    public String getInfo(){
+        return "you have " + this.stock + " units of " + this.spice_name + " in your inventory.";
     }
 }

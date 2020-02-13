@@ -23,15 +23,16 @@ public class InventoryActivity extends AppCompatActivity {
     Button deleteSpice, insertSpice;
     RecyclerView listSpice;
     RecyclerView.Adapter adapter;
-    SpiceDao mySpiceDao;
     String barcode, name, stock;
+    Spice_Database mySpiceRackDb;
+    SpiceDao mySpiceDao;
 
     private View.OnClickListener myClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if(v.getId() == R.id.deleteSpices){
                 barcode = editBarcode.getText().toString();
-                Spice temp = mySpiceDao.getBarcode(barcode);
+                Spice temp = mySpiceDao.getSpiceByBarcode(barcode);
                 if(temp == null){
                     return;
                 }else {
@@ -59,7 +60,7 @@ public class InventoryActivity extends AppCompatActivity {
         insertSpice = findViewById(R.id.addSpice);
         listSpice = findViewById(R.id.rvSpiceList);
 
-        Spice_Database mySpiceRackDb = Spice_Database.getINSTANCE(this);
+        mySpiceRackDb = Spice_Database.getINSTANCE(this);
         mySpiceDao = mySpiceRackDb.getSpiceDao();
         updateUI();
         deleteSpice.setOnClickListener(myClick);
@@ -77,7 +78,7 @@ public class InventoryActivity extends AppCompatActivity {
     }
 
     public void delete(String barcode){
-        Spice toDelete = mySpiceDao.getBarcode(barcode);
+        Spice toDelete = mySpiceDao.getSpiceByBarcode(barcode);
         mySpiceDao.deleteSpice(toDelete);
     }
 
