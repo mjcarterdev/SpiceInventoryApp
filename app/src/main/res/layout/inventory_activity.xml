@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/green_white_background"
-    tools:context="com.example.spicesinventory.activites.InventoryActivity"
     android:windowSoftInputMode="adjustResize"
-    >
+    tools:context="com.example.spicesinventory.activites.InventoryActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="320dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="15dp"
@@ -31,8 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="30"
             android:gravity="center"
-            android:textSize="22sp"
-            android:text="@string/barcode" />
+            android:text="@string/barcode"
+            android:textSize="22sp" />
 
 
         <TextView
@@ -42,8 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="30"
             android:gravity="center"
-            android:textSize="22sp"
-            android:text="@string/spice_name_inv" />
+            android:text="@string/spice_name_inv"
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/editStock"
@@ -51,9 +51,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="40"
-            android:textSize="22sp"
             android:gravity="center"
-            android:text="@string/stock" />
+            android:text="@string/stock"
+            android:textSize="22sp" />
 
     </LinearLayout>
 
@@ -80,7 +80,7 @@
             tools:ignore="RelativeOverlap" />
 
         <Button
-            android:id="@+id/addSpice"
+            android:id="@+id/btnaddSpiceInventory"
             style="@style/ButtonStyleBackOnYellow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -95,7 +95,7 @@
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="55dp"
         android:layout_marginEnd="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -119,11 +119,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
-                android:textColor="@color/textColour"
                 android:gravity="center_vertical|center"
                 android:hint="@string/barcode_here"
                 android:importantForAutofill="no"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:textColor="@color/textColour" />
         </TableRow>
 
         <TableRow
@@ -146,8 +146,8 @@
                 android:gravity="center_vertical|center"
                 android:hint="@string/spice_name_here"
                 android:importantForAutofill="no"
-                android:textColor="@color/textColour"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="@color/textColour" />
         </TableRow>
 
         <TableRow
@@ -168,27 +168,40 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="center_vertical|center"
-                android:textColor="@color/textColour"
                 android:hint="@string/stock_here"
                 android:importantForAutofill="no"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:textColor="@color/textColour" />
         </TableRow>
 
     </TableLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSpiceList"
-        android:layout_width="347dp"
-        android:layout_height="360dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.918" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabScanBarcode"
+        android:layout_width="65dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/colorPrimaryDark"
+        android:backgroundTint="#F8BE19"
+        android:backgroundTintMode="add"
+        android:clickable="true"
+        android:foregroundGravity="center"
+        android:src="@android:drawable/ic_menu_camera"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

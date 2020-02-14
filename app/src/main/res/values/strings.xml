@@ -30,4 +30,6 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="spice_name_inv">Spice Name</string>
     <string name="you_have_2_chilli_spices_in_your_cupboard">You have 2 Chilli spices in your cupboard</string>
+    <string name="add_one">Add One</string>
+    <string name="take_one">Take One</string>
 </resources>
