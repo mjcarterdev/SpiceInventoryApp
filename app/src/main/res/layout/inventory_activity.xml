@@ -13,9 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="310dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="24dp"
         android:orientation="horizontal"
         android:weightSum="100"
         app:layout_constraintBottom_toTopOf="@+id/rvSpiceList"
@@ -28,7 +28,7 @@
             android:id="@+id/tvBarcode"
             style="@style/EditTextDefault"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="30"
             android:gravity="center"
             android:text="@string/barcode"
@@ -39,7 +39,7 @@
             android:id="@+id/editSpNamInventory"
             style="@style/EditTextDefault"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="30"
             android:gravity="center"
             android:text="@string/spice_name_inv"
@@ -49,7 +49,7 @@
             android:id="@+id/editStock"
             style="@style/EditTextDefault"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="40"
             android:gravity="center"
             android:text="@string/stock"
@@ -202,6 +202,7 @@
         android:foregroundGravity="center"
         android:src="@android:drawable/ic_menu_camera"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:focusable="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

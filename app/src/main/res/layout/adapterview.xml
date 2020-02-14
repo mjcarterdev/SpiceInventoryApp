@@ -8,33 +8,30 @@
 
     <TextView
         android:id="@+id/tvBarcode"
+        style="@style/EditTextDefault"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_weight="30"
         android:gravity="center"
-        style="@style/EditTextDefault"
-        android:background="@color/textColourTransparent"
         android:text="@string/barcode" />
 
 
     <TextView
         android:id="@+id/editSpiceName"
+        style="@style/EditTextDefault"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:gravity="center"
         android:layout_weight="30"
-        android:background="@color/textColourTransparent"
-        style="@style/EditTextDefault"
+        android:gravity="center"
         android:text="@string/spice_name" />
 
     <TextView
         android:id="@+id/tvStock"
+        style="@style/EditTextDefault"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_weight="40"
         android:gravity="center"
-        style="@style/EditTextDefault"
-        android:background="@color/textColourTransparent"
         android:text="@string/stock" />
 
 </LinearLayout>

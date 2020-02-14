@@ -1,6 +1,5 @@
 package com.example.spicesinventory.activites;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +27,7 @@ public class InventoryActivity extends AppCompatActivity {
     Button deleteSpice, insertSpice;
     RecyclerView listSpice;
     RecyclerView.Adapter adapter;
-    String barcode,barcodeID, name, stock, scannedBarcode, spiceName, spiceStock;
+    String barcode,barcodeID, name, stock, scannedBarcode;
     Spice_Database mySpiceRackDb;
     SpiceDao mySpiceDao;
     Spice temp;
@@ -43,11 +42,7 @@ public class InventoryActivity extends AppCompatActivity {
                     deleteSpice();
                     break;
                 case R.id.btnaddSpiceInventory:
-                    barcode = editBarcode.getText().toString();
-                    name = editName.getText().toString();
-                    stock = editStock.getText().toString();
-                    insert(barcode, name, stock);
-                    //addSpice();
+                    addSpice();
                     break;
                 default:
                     scanner(v);
@@ -98,10 +93,9 @@ public class InventoryActivity extends AppCompatActivity {
         listSpice.setAdapter(adapter);
     }
 
-
     /*
-Barcode Scanner
-*/
+    Barcode Scanner
+    */
     public void scanner(View v) {
         new IntentIntegrator(this).initiateScan();
     }
@@ -126,18 +120,21 @@ Barcode Scanner
         name = editName.getText().toString();
         stock = editStock.getText().toString();
         temp = mySpiceDao.getSpiceByBarcode(barcode);
-        barcodeID = temp.getBarcodeID();
+        if(temp != null)
+            barcodeID = temp.getBarcodeID();
+
 
         if (barcode.isEmpty() || name.isEmpty() || stock.isEmpty()) {
             Toast.makeText(this, "Error - one of the boxes is empty. Please fill all details.", Toast.LENGTH_LONG).show();
 
         } else if (barcode.equals(barcodeID)) {
-                Toast.makeText(this, barcode + " Already exists "+ barcodeID, Toast.LENGTH_LONG).show();
-
-            }else
-            insert(barcode, name, stock);
+            Toast.makeText(this, barcode + " Already exists " + barcodeID, Toast.LENGTH_LONG).show();
         }
-
+        else if (temp == null) {
+            insert(barcode, name, stock);
+            setDefaultInfo();
+        }
+    }
 
     public void deleteSpice(){
         barcode = editBarcode.getText().toString();

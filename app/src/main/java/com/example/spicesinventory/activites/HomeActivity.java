@@ -2,6 +2,7 @@ package com.example.spicesinventory.activites;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -64,6 +65,8 @@ public class HomeActivity extends AppCompatActivity implements GestureDetector.O
 
         nav = new Navigation(this);
         myGestureDetector = new GestureDetector(this, this);
+
+        Log.d("TAG", "LOg is working");
     }
 
        /*

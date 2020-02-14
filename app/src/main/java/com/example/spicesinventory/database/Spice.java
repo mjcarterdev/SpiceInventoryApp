@@ -1,5 +1,7 @@
 package com.example.spicesinventory.database;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -40,6 +42,7 @@ public class Spice {
     @NonNull
     public String getBarcodeID(){
         return this.barcodeID;
+
     }
 
     public String getStock() {
