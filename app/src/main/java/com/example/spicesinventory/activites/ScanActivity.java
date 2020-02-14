@@ -33,17 +33,28 @@ public class ScanActivity extends AppCompatActivity {
         Barcode.setText(incomingBarcode);
 
         mySpiceRackDb = Spice_Database.getINSTANCE(this);
+        searchByBarcode();
+
+    }
+
+    public void searchByBarcode(){
         mySpiceDao = mySpiceRackDb.getSpiceDao();
         receivedSpice = mySpiceDao.getSpiceByBarcode(Barcode.getText().toString());
 
-        spiceName = receivedSpice.getSpice_name();
-        spiceStock = receivedSpice.getStock();
-        spiceMessage = receivedSpice.getInfo();
+        if(receivedSpice == null){
+            String barcodeNotFound = "Barcode not found!";
+            tvYouHave.setText(barcodeNotFound);
+            SpiceName.setText("");
+            Stock.setText("");
+        }else {
+            spiceName = receivedSpice.getSpice_name();
+            spiceStock = receivedSpice.getStock();
+            spiceMessage = receivedSpice.getInfo();
 
-        SpiceName.setText(spiceName);
-        Stock.setText(spiceStock);
-        tvYouHave.setText(spiceMessage);
-
+            SpiceName.setText(spiceName);
+            Stock.setText(spiceStock);
+            tvYouHave.setText(spiceMessage);
+        }
     }
 
 
