@@ -1,4 +1,4 @@
-package com.example.spicesinventory.activites;
+package com.example.spicesinventory.profile;
 
 import android.content.Intent;
 import android.os.Bundle;

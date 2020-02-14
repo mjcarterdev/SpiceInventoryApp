@@ -173,5 +173,7 @@ Barcode Scanner
     public void onLongPress(MotionEvent e) {
 
     }
+    public void test(){}
+
 }
 

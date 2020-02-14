@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.example.spicesinventory.activites.InventoryActivity;
-import com.example.spicesinventory.activites.ProfileActivity;
+import com.example.spicesinventory.profile.ProfileActivity;
 import com.example.spicesinventory.activites.ScanActivity;
 import com.example.spicesinventory.activites.ShoppingListActivity;
 import com.example.spicesinventory.login.StartupActivity;

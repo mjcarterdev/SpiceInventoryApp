@@ -29,7 +29,7 @@ package="com.example.spice_sqlite_test">
         </intent-filter>
     </activity>
     <activity android:name="com.example.spicesinventory.activites.ScanActivity" />
-    <activity android:name="com.example.spicesinventory.activites.ProfileActivity" />
+    <activity android:name="com.example.spicesinventory.profile.ProfileActivity" />
     <activity android:name="com.example.spicesinventory.activites.InventoryActivity"
         android:windowSoftInputMode="adjustNothing"/>
 
