@@ -9,17 +9,65 @@
 
     <TextView
         android:id="@+id/tvShoppingList"
+        style="@style/EditTextDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
-        android:text="@string/shopping_list"
-        style="@style/EditTextDefault"
         android:layout_weight="30"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/shopping_list"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="55dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvShoppingList">
+
+        <Button
+            android:id="@+id/btnAddSpice"
+            style="@style/ButtonStyleBackOnYellow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/add_spice"
+            android:textStyle="normal|bold"
+            tools:ignore="RelativeOverlap" />
+
+        <Button
+            android:id="@+id/btnClearList"
+            style="@style/ButtonStyleBackOnYellow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="@string/clear_list"
+            android:textStyle="normal|bold" />
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvShoppingList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvShoppingList" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

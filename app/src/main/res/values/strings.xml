@@ -32,4 +32,6 @@
     <string name="you_have_2_chilli_spices_in_your_cupboard">You have 2 Chilli spices in your cupboard</string>
     <string name="add_one">Add One</string>
     <string name="take_one">Take One</string>
+    <string name="add_item">Add Item</string>
+    <string name="clear_list">Clear List</string>
 </resources>
