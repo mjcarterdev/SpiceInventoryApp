@@ -33,6 +33,8 @@ public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.View
         holder.barcode.setText(spices.get(position).getBarcodeID());
         holder.spiceName.setText(spices.get(position).getSpice_name());
         holder.stock.setText(spices.get(position).getStock());
+        holder.containerType.setText(spices.get(position).getContainerType());
+        holder.brand.setText(spices.get(position).getBrand());
 
     }
 
@@ -41,14 +43,17 @@ public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.View
         return spices.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView barcode, spiceName, stock;
+    class ViewHolder extends RecyclerView.ViewHolder{
+        TextView barcode, spiceName, stock, containerType, brand;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            barcode = itemView.findViewById(R.id.tvBarcode);
-            spiceName = itemView.findViewById(R.id.editSpiceName);
-            stock = itemView.findViewById(R.id.tvStock);
+            barcode = itemView.findViewById(R.id.RVBarcode);
+            spiceName = itemView.findViewById(R.id.RVSpiceName);
+            stock = itemView.findViewById(R.id.RVStock);
+            containerType = itemView.findViewById(R.id.RVContainerType);
+            brand = itemView.findViewById(R.id.RVBrand);
+
         }
     }
 }
