@@ -10,18 +10,16 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="345dp"
+        android:layout_height="38dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="310dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="24dp"
         android:orientation="horizontal"
         android:weightSum="100"
-        app:layout_constraintBottom_toTopOf="@+id/rvSpiceList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
 
         <TextView
@@ -33,7 +31,6 @@
             android:gravity="center"
             android:text="@string/barcode"
             android:textSize="22sp" />
-
 
         <TextView
             android:id="@+id/editSpNamInventory"
@@ -62,12 +59,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="36dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2">
 
         <Button
             android:id="@+id/deleteSpices"
@@ -92,8 +89,9 @@
     </LinearLayout>
 
     <TableLayout
-        android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:id="@+id/tableLayout2"
+        android:layout_width="338dp"
+        android:layout_height="227dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="55dp"
         android:layout_marginEnd="36dp"
@@ -172,8 +170,56 @@
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
                 android:textColor="@color/textColour" />
+
         </TableRow>
 
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvContainerType"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="Container Type" />
+
+            <EditText
+                android:id="@+id/editContainerType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="center_vertical|center"
+                android:hint="container type here"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:textColor="@color/textColour" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvBrand"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="Brand" />
+
+            <EditText
+                android:id="@+id/editBrand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="center_vertical|center"
+                android:hint="brand"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:textColor="@color/textColour" />
+        </TableRow>
     </TableLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -182,10 +228,10 @@
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
@@ -193,8 +239,6 @@
         android:id="@+id/fabScanBarcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="16dp"
         android:background="@color/colorPrimaryDark"
         android:backgroundTint="#F8BE19"
         android:backgroundTintMode="add"
