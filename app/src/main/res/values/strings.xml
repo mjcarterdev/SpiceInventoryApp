@@ -32,6 +32,13 @@
     <string name="you_have_2_chilli_spices_in_your_cupboard">You have 2 Chilli spices in your cupboard</string>
     <string name="add_one">Add One</string>
     <string name="take_one">Take One</string>
-    <string name="add_item">Add Item</string>
-    <string name="clear_list">Clear List</string>
+    <string name="RVcontainertype">ContainerType</string>
+    <string name="RVbrand">Brand</string>
+    <string name="brand">Brand</string>
+    <string name="container_type_here">container type here</string>
+    <string name="container_type">Container Type</string>
+    <string name="barcodeAdaptor">Barcode:</string>
+    <string name="stockAdaptor">Stock:</string>
+    <string name="container_type_adaptor">Container Type:</string>
+    <string name="brandAdaptor">Brand:</string>
 </resources>

@@ -23,11 +23,11 @@ import java.util.List;
 
 public class InventoryActivity extends AppCompatActivity {
 
-    EditText editBarcode, editName, editStock;
+    EditText editBarcode, editName, editStock, editContainerType, editBrand;
     Button deleteSpice, insertSpice;
     RecyclerView listSpice;
     RecyclerView.Adapter adapter;
-    String barcode,barcodeID, name, stock, scannedBarcode;
+    String barcode,barcodeID, name, stock, scannedBarcode, container, brand;
     Spice_Database mySpiceRackDb;
     SpiceDao mySpiceDao;
     Spice temp;
@@ -64,6 +64,8 @@ public class InventoryActivity extends AppCompatActivity {
         insertSpice = findViewById(R.id.btnaddSpiceInventory);
         listSpice = findViewById(R.id.rvSpiceList);
         fabScanner = findViewById(R.id.fabScanBarcode);
+        editContainerType = findViewById(R.id.editContainerType);
+        editBrand = findViewById(R.id.editBrand);
 
         mySpiceRackDb = Spice_Database.getINSTANCE(this);
         mySpiceDao = mySpiceRackDb.getSpiceDao();
@@ -77,8 +79,8 @@ public class InventoryActivity extends AppCompatActivity {
     }
 
 
-    public void insert(String barcode, String name, String stock) {
-        Spice spice = new Spice(barcode, name, stock);
+    public void insert(String barcode, String name, String stock, String containerType, String brand) {
+        Spice spice = new Spice(barcode, name, stock, containerType, brand);
         mySpiceDao.insertSpice(spice);
     }
 
@@ -119,6 +121,8 @@ public class InventoryActivity extends AppCompatActivity {
         barcode = editBarcode.getText().toString();
         name = editName.getText().toString();
         stock = editStock.getText().toString();
+        container = editContainerType.getText().toString();
+        brand = editBrand.getText().toString();
         temp = mySpiceDao.getSpiceByBarcode(barcode);
         if(temp != null)
             barcodeID = temp.getBarcodeID();
@@ -131,7 +135,7 @@ public class InventoryActivity extends AppCompatActivity {
             Toast.makeText(this, barcode + " Already exists " + barcodeID, Toast.LENGTH_LONG).show();
         }
         else if (temp == null) {
-            insert(barcode, name, stock);
+            insert(barcode, name, stock, container, brand);
             setDefaultInfo();
         }
     }
@@ -151,6 +155,8 @@ public class InventoryActivity extends AppCompatActivity {
         editBarcode.setText("");
         editName.setText("");
         editStock.setText("");
+        editContainerType.setText("");
+        editBrand.setText("");
 
     }
 }
