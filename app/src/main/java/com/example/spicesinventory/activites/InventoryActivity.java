@@ -19,6 +19,8 @@ import com.example.spicesinventory.database.Spice_Database;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import java.util.Collections;
 import java.util.List;
 
 public class InventoryActivity extends AppCompatActivity {
@@ -91,6 +93,7 @@ public class InventoryActivity extends AppCompatActivity {
 
     public void updateUI() {
         List<Spice> spices = mySpiceDao.getAllSpices();
+        Collections.sort(spices);
         adapter = new SpiceListAdapter(spices);
         listSpice.setAdapter(adapter);
     }

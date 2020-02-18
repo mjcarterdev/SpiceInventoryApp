@@ -11,6 +11,7 @@ public abstract class Spice_Database extends RoomDatabase {
 
     public abstract SpiceDao getSpiceDao();
 
+
     private static volatile Spice_Database INSTANCE;
 
     public static Spice_Database getINSTANCE(Context context) {

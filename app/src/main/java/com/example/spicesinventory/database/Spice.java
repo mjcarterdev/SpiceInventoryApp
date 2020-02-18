@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "spice_inventory")
-public class Spice {
+public class Spice implements Comparable<Spice>{
 
     @NonNull
     @PrimaryKey
@@ -72,7 +72,7 @@ public class Spice {
         this.spice_name = spice_name;
     }
 
-    public String getContainerType() {
+    String getContainerType() {
         return containerType;
     }
 
@@ -80,7 +80,7 @@ public class Spice {
         this.containerType = containerType;
     }
 
-    public String getBrand() {
+    String getBrand() {
         return brand;
     }
 
@@ -88,11 +88,17 @@ public class Spice {
         this.brand = brand;
     }
 
-    public boolean isStrikeThrough() {
+    boolean isStrikeThrough() {
         return strikeThrough;
     }
 
-    public void setStrikeThrough(boolean strikeThrough) {
+    void setStrikeThrough(boolean strikeThrough) {
         this.strikeThrough = strikeThrough;
+    }
+
+
+    @Override
+    public int compareTo(Spice o) {
+        return this.getSpice_name().compareTo(o.spice_name);
     }
 }
