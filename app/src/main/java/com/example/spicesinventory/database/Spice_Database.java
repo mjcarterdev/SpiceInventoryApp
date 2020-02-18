@@ -6,10 +6,11 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Spice.class}, version = 1, exportSchema = false)
+@Database(entities = {Spice.class, ShoppingItem.class}, version = 1, exportSchema = false)
 public abstract class Spice_Database extends RoomDatabase {
 
     public abstract SpiceDao getSpiceDao();
+    public abstract ShoppingDao getShoppingDao();
 
 
     private static volatile Spice_Database INSTANCE;

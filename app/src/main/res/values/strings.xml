@@ -32,6 +32,16 @@
     <string name="you_have_2_chilli_spices_in_your_cupboard">You have 2 Chilli spices in your cupboard</string>
     <string name="add_one">Add One</string>
     <string name="take_one">Take One</string>
+    <string name="add_item">Add Item</string>
+    <string name="clear_list">Clear List</string>
+    <string name="shopping_list_name">Name:</string>
+    <string name="shopping_list_edit_name">Name here</string>
+    <string name="shopping_list_amount">Amount:</string>
+    <string name="shopping_list_edit_amount">Amount here</string>
+    <string name="shopping_list_adaptor_name">Name:</string>
+    <string name="shopping_list_adaptor_nameRV">Name</string>
+    <string name="shopping_list_adaptor_amount">Amount:</string>
+    <string name="shopping_list_adaptor_amountRV">Amount</string>
     <string name="RVcontainertype">ContainerType</string>
     <string name="RVbrand">Brand</string>
     <string name="brand">Brand</string>
