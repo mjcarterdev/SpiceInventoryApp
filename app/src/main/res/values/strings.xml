@@ -51,4 +51,14 @@
     <string name="stockAdaptor">Stock:</string>
     <string name="container_type_adaptor">Container Type:</string>
     <string name="brandAdaptor">Brand:</string>
+    <string name="signUp">Sign Up</string>
+    <string name="label_user_name">Name: </string>
+    <string name="user_name">Your name here</string>
+    <string name="label_email_address">Email address:</string>
+    <string name="email_address">Your email address here</string>
+    <string name="label_password">Password:</string>
+    <string name="password">Your password here</string>
+    <string name="label_confirm_password">Confirm password:</string>
+    <string name="confirm_password">Confirm your password here</string>
+    <string name="button_sign_up">Sign up</string>
 </resources>
