@@ -49,18 +49,24 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    public void signUp() {
+    /*public void insert(String username, String emailAddress, String password) {
         user = new User(userName, emailAddress, editPasswordString);
+        myUserDao.insertUser(user);
+    }*/
 
+    public void signUp() {
         userName = editUserName.getText().toString();
         emailAddress = editEmailAddress.getText().toString();
         editPasswordString = editPassword.getText().toString();
         editConfirmPasswordString = editConfirmPassword.getText().toString();
 
+        user = new User(userName, emailAddress, editPasswordString);
+
         if (!(editConfirmPasswordString.equals(editPasswordString))){
             Toast.makeText(SignUpActivity.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
         }else {
 
+            //insert(userName, emailAddress, editPasswordString);
             myUserDao.insertUser(user);
 
             Intent openActivity = new Intent(this, HomeActivity.class);

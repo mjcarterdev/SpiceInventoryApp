@@ -20,6 +20,12 @@ public interface UserDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void upDate(User user);
 
+    @Query("SELECT * FROM users WHERE password = :password")
+    User getUserByPw(String password);
+
+    @Query("SELECT * FROM users WHERE email_address = :email_address")
+    User getUserByEmail(String email_address);
+
     @Query("SELECT * from users")
     List<User> getAllUsers();
 

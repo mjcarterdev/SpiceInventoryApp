@@ -17,8 +17,8 @@ public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.View
 
     private List<Spice> spices;
 
-    public SpiceListAdapter(List<Spice> users) {
-        this.spices = users;
+    public SpiceListAdapter(List<Spice> spices) {
+        this.spices = spices;
     }
 
     @NonNull
@@ -32,10 +32,9 @@ public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.View
     public void onBindViewHolder(@NonNull SpiceListAdapter.ViewHolder holder, int position) {
         holder.barcode.setText(spices.get(position).getBarcodeID());
         holder.spiceName.setText(spices.get(position).getSpice_name());
-        holder.stock.setText(spices.get(position).getStock());
         holder.containerType.setText(spices.get(position).getContainerType());
         holder.brand.setText(spices.get(position).getBrand());
-
+        holder.stock.setText(spices.get(position).getStock());
     }
 
     @Override
@@ -50,10 +49,9 @@ public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.View
             super(itemView);
             barcode = itemView.findViewById(R.id.RVBarcode);
             spiceName = itemView.findViewById(R.id.RVSpiceName);
-            stock = itemView.findViewById(R.id.RVStock);
-            containerType = itemView.findViewById(R.id.RVContainerType);
             brand = itemView.findViewById(R.id.RVBrand);
-
+            containerType = itemView.findViewById(R.id.RVContainerType);
+            stock = itemView.findViewById(R.id.RVStock);
         }
     }
 }

@@ -22,6 +22,7 @@ package="com.example.spice_sqlite_test">
 
     <activity android:name="com.example.spicesinventory.activites.ShoppingListActivity" />
     <activity android:name="com.example.spicesinventory.login.SignUpActivity" />
+    <activity android:name="com.example.spicesinventory.login.LoginActivity" />
     <activity android:name="com.example.spicesinventory.login.StartupActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
