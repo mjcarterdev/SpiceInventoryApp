@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
 
             Intent openActivity = new Intent(this, HomeActivity.class);
             startActivity(openActivity);
+
         } else {
             Toast.makeText(com.example.spicesinventory.login.LoginActivity.this, "Wrong user or password", Toast.LENGTH_SHORT).show();
         }
