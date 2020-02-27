@@ -1,21 +1,20 @@
-package com.example.spicesinventory.activites;
+package SpiceRack.Application.activites;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.spice_sqlite_test.R;
-import com.example.spicesinventory.database.ShoppingDao;
-import com.example.spicesinventory.database.ShoppingItem;
-import com.example.spicesinventory.database.ShoppingListAdapter;
-import com.example.spicesinventory.database.Spice_Database;
+
+import SpiceRack.Application.database.ShoppingDao;
+import SpiceRack.Application.database.ShoppingItem;
+import SpiceRack.Application.database.ShoppingListAdapter;
+import SpiceRack.Application.database.SpiceDatabase;
+import SpiceRack.R;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class ShoppingListActivity extends AppCompatActivity {
     EditText editName, editAmount;
     Button addItem, clearList;
     String name, amount;
-    Spice_Database mySpiceRackDb;
+    SpiceDatabase mySpiceRackDb;
     ShoppingDao myShoppingDao;
     ShoppingItem Item;
     RecyclerView listShopping;
@@ -62,7 +61,7 @@ public class ShoppingListActivity extends AppCompatActivity {
         addItem.setOnClickListener(myClick);
         clearList.setOnClickListener(myClick);
 
-        mySpiceRackDb = Spice_Database.getINSTANCE(this);
+        mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         myShoppingDao = mySpiceRackDb.getShoppingDao();
 
         listShopping.setLayoutManager(new LinearLayoutManager(this));

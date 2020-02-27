@@ -1,4 +1,4 @@
-package com.example.spicesinventory.database;
+package SpiceRack.Application.database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

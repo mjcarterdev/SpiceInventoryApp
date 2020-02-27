@@ -1,4 +1,4 @@
-package com.example.spicesinventory.activites;
+package SpiceRack.Application.activites;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,32 +8,22 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.spice_sqlite_test.R;
-import com.example.spicesinventory.database.Spice;
-import com.example.spicesinventory.database.SpiceDao;
-import com.example.spicesinventory.database.SpiceListAdapter;
-import com.example.spicesinventory.database.Spice_Database;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 
-import java.util.Collections;
-import java.util.List;
+import SpiceRack.Application.database.Spice;
+import SpiceRack.Application.database.SpiceDao;
+import SpiceRack.Application.database.SpiceDatabase;
+import SpiceRack.R;
 
-public class InventoryActivity extends AppCompatActivity {
 
+public class InventoryEditorActivity extends AppCompatActivity {
     EditText editBarcode, editName, editStock, editContainerType, editBrand;
     Button deleteSpice, insertSpice;
-    RecyclerView listSpice;
-    RecyclerView.Adapter adapter;
-    String barcode,barcodeID, name, stock, scannedBarcode, container, brand;
-    Spice_Database mySpiceRackDb;
+    String barcode,barcodeID, name, stock, container, brand;
+    SpiceDatabase mySpiceRackDb;
     SpiceDao mySpiceDao;
     Spice temp;
-    FloatingActionButton fabScanner;
+
 
     private View.OnClickListener myClick = new View.OnClickListener() {
 
@@ -47,37 +37,32 @@ public class InventoryActivity extends AppCompatActivity {
                     addSpice();
                     break;
                 default:
-                    scanner(v);
                     barcode = editBarcode.getText().toString();
             }
-            updateUI();
         }
     };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.inventory_activity);
+        setContentView(R.layout.inventory_editor_activity);
         editBarcode = findViewById(R.id.editBarcode);
         editName = findViewById(R.id.editSpiceName);
         editStock = findViewById(R.id.tvStock);
         deleteSpice = findViewById(R.id.deleteSpices);
         insertSpice = findViewById(R.id.btnaddSpiceInventory);
-        listSpice = findViewById(R.id.rvSpiceList);
-        fabScanner = findViewById(R.id.fabScanBarcode);
         editContainerType = findViewById(R.id.editContainerType);
         editBrand = findViewById(R.id.editBrand);
 
-        mySpiceRackDb = Spice_Database.getINSTANCE(this);
+        mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         mySpiceDao = mySpiceRackDb.getSpiceDao();
 
         deleteSpice.setOnClickListener(myClick);
         insertSpice.setOnClickListener(myClick);
-        fabScanner.setOnClickListener(myClick);
 
-        listSpice.setLayoutManager(new LinearLayoutManager(this));
-        updateUI();
+        Intent incomingIntent = getIntent();
+        String incomingBarcode = incomingIntent.getStringExtra("ScannedBarcode");
+        editBarcode.setText(incomingBarcode);
     }
 
 
@@ -91,34 +76,6 @@ public class InventoryActivity extends AppCompatActivity {
         mySpiceDao.deleteSpice(toDelete);
     }
 
-    public void updateUI() {
-        List<Spice> spices = mySpiceDao.getAllSpices();
-        Collections.sort(spices);
-        adapter = new SpiceListAdapter(spices);
-        listSpice.setAdapter(adapter);
-    }
-
-    /*
-    Barcode Scanner
-    */
-    public void scanner(View v) {
-        new IntentIntegrator(this).initiateScan();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
-            if (result.getContents() == null) {
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
-            } else {
-                scannedBarcode = result.getContents();
-                editBarcode.setText(scannedBarcode);
-            }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
 
     public void addSpice() {
         barcode = editBarcode.getText().toString();
@@ -128,7 +85,7 @@ public class InventoryActivity extends AppCompatActivity {
         brand = editBrand.getText().toString();
         temp = mySpiceDao.getSpiceByBarcode(barcode);
         if(temp != null)
-            barcodeID = temp.getBarcodeID();
+            barcodeID = temp.getBarcode();
 
 
         if (barcode.isEmpty() || name.isEmpty() || stock.isEmpty()) {

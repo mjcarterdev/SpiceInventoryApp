@@ -1,4 +1,4 @@
-package com.example.spicesinventory.profile;
+package SpiceRack.Application.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.spice_sqlite_test.R;
-import com.example.spicesinventory.login.StartupActivity;
+
+import SpiceRack.Application.login.StartupActivity;
+import SpiceRack.R;
 
 public class ProfileActivity extends AppCompatActivity {
 

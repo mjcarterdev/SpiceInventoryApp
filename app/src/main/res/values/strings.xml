@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Spice Inventory</string>
+    <string name="app_name">SpiceRack</string>
     <string name="shopping_list">Shopping List</string>
     <string name="barcode_number">Barcode Number:</string>
     <string name="spice_name">Spice Name:</string>
@@ -51,4 +51,6 @@
     <string name="stockAdaptor">Stock:</string>
     <string name="container_type_adaptor">Container Type:</string>
     <string name="brandAdaptor">Brand:</string>
+    <string name="barcode_number_inventory">Barcode Number</string>
+    <string name="spice_name_inventory">Spice Name</string>
 </resources>

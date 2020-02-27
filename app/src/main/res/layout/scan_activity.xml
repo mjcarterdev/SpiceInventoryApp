@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/green_white_background"
-    tools:context="com.example.spicesinventory.activites.ScanActivity">
+    tools:context=".Application.activites.ScanActivity">
 
     <TableLayout
         android:id="@+id/tableLayout"

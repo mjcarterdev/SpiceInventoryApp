@@ -1,20 +1,21 @@
-package com.example.spicesinventory.activites;
+package SpiceRack.Application.activites;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import com.example.spice_sqlite_test.R;
-import com.example.spicesinventory.database.Spice;
-import com.example.spicesinventory.database.SpiceDao;
-import com.example.spicesinventory.database.Spice_Database;
+
+import SpiceRack.Application.database.Spice;
+import SpiceRack.Application.database.SpiceDao;
+import SpiceRack.Application.database.SpiceDatabase;
+import SpiceRack.R;
 
 
 public class ScanActivity extends AppCompatActivity {
 
     TextView Barcode, SpiceName, Stock,tvYouHave;
-    Spice_Database mySpiceRackDb;
+    SpiceDatabase mySpiceRackDb;
     SpiceDao mySpiceDao;
     Spice receivedSpice;
     String spiceName, spiceStock, spiceMessage;
@@ -32,7 +33,7 @@ public class ScanActivity extends AppCompatActivity {
         String incomingBarcode = incomingIntent.getStringExtra("ScannedBarcode");
         Barcode.setText(incomingBarcode);
 
-        mySpiceRackDb = Spice_Database.getINSTANCE(this);
+        mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         searchByBarcode();
 
     }
@@ -47,7 +48,7 @@ public class ScanActivity extends AppCompatActivity {
             SpiceName.setText("");
             Stock.setText("");
         }else {
-            spiceName = receivedSpice.getSpice_name();
+            spiceName = receivedSpice.getSpiceName();
             spiceStock = receivedSpice.getStock();
             spiceMessage = receivedSpice.getInfo();
 

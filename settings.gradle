@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='Spice_SQLite_Test'
+rootProject.name='SpiceRack'

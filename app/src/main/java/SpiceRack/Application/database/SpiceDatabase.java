@@ -1,4 +1,4 @@
-package com.example.spicesinventory.database;
+package SpiceRack.Application.database;
 
 import android.content.Context;
 
@@ -7,20 +7,20 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 @Database(entities = {Spice.class, ShoppingItem.class}, version = 1, exportSchema = false)
-public abstract class Spice_Database extends RoomDatabase {
+public abstract class SpiceDatabase extends RoomDatabase {
 
     public abstract SpiceDao getSpiceDao();
     public abstract ShoppingDao getShoppingDao();
 
 
-    private static volatile Spice_Database INSTANCE;
+    private static volatile SpiceDatabase INSTANCE;
 
-    public static Spice_Database getINSTANCE(Context context) {
+    public static SpiceDatabase getINSTANCE(Context context) {
         if (INSTANCE == null) {
-            synchronized (Spice_Database.class) {
+            synchronized (SpiceDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            Spice_Database.class, "SpiceRack.db").allowMainThreadQueries().build();
+                            SpiceDatabase.class, "SpiceRack.db").allowMainThreadQueries().build();
                 }
             }
         }

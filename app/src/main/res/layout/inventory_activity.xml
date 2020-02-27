@@ -6,225 +6,57 @@
     android:layout_height="match_parent"
     android:background="@drawable/green_white_background"
     android:windowSoftInputMode="adjustResize"
-    tools:context="com.example.spicesinventory.activites.InventoryActivity">
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="36dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2">
-
-        <Button
-            android:id="@+id/deleteSpices"
-            style="@style/ButtonStyleBackOnYellow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/delete_spice"
-            android:textStyle="normal|bold"
-            tools:ignore="RelativeOverlap" />
-
-        <Button
-            android:id="@+id/btnaddSpiceInventory"
-            style="@style/ButtonStyleBackOnYellow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:text="@string/add_spice"
-            android:textStyle="normal|bold" />
-
-    </LinearLayout>
-
-    <TableLayout
-        android:id="@+id/tableLayout2"
-        android:layout_width="338dp"
-        android:layout_height="227dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="36dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/Barcode_Number"
-                style="@style/EditTextDefault"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical|center"
-                android:text="@string/barcode_number" />
-
-            <EditText
-                android:id="@+id/editBarcode"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:gravity="center_vertical|center"
-                android:hint="@string/barcode_here"
-                android:importantForAutofill="no"
-                android:inputType="numberDecimal"
-                android:textColor="@color/textColour" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="343dp"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/Spice_Name"
-                style="@style/EditTextDefault"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical|center"
-                android:text="@string/spice_name" />
-
-            <EditText
-                android:id="@+id/editSpiceName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:gravity="center_vertical|center"
-                android:hint="@string/spice_name_here"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                android:textColor="@color/textColour" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/StockNumber"
-                style="@style/EditTextDefault"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical|center"
-                android:text="@string/current_stock" />
-
-            <EditText
-                android:id="@+id/tvStock"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="center_vertical|center"
-                android:hint="@string/stock_here"
-                android:importantForAutofill="no"
-                android:inputType="numberDecimal"
-                android:textColor="@color/textColour" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tvContainerType"
-                style="@style/EditTextDefault"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical|center"
-                android:text="@string/container_type" />
-
-            <EditText
-                android:id="@+id/editContainerType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="center_vertical|center"
-                android:hint="@string/container_type_here"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColor="@color/textColour" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tvBrand"
-                style="@style/EditTextDefault"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical|center"
-                android:text="@string/brand" />
-
-            <EditText
-                android:id="@+id/editBrand"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="center_vertical|center"
-                android:hint="@string/brand"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColor="@color/textColour" />
-        </TableRow>
-    </TableLayout>
+    tools:context=".Application.activites.InventoryActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="36dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tvBarcodeInventory"
             style="@style/EditTextDefault"
-            android:layout_width="76dp"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
             android:layout_marginStart="8dp"
-            android:layout_height="wrap_content"
-            android:text="@string/barcode_number" />
+            android:text="@string/barcode_number_inventory" />
 
         <TextView
             android:id="@+id/tvSpiceNameInventory"
             style="@style/EditTextDefault"
-            android:layout_width="54dp"
-            android:layout_height="match_parent"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
             android:layout_marginStart="8dp"
-            android:text="@string/spice_name" />
+            android:text="@string/spice_name_inventory" />
 
         <TextView
             android:id="@+id/tvBrandInventory"
             style="@style/EditTextDefault"
-            android:layout_marginStart="8dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
             android:text="@string/brand" />
 
         <TextView
             android:id="@+id/tvContainerTypeInventory"
             style="@style/EditTextDefault"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:layout_marginStart="8dp"
-            android:layout_width="75dp"
-            android:layout_height="wrap_content"
             android:text="@string/container_type" />
 
         <TextView
             android:id="@+id/tvStockInventory"
             style="@style/EditTextDefault"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:text="@string/stock" />
 
@@ -247,8 +79,8 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabScanBarcode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="91dp"
+        android:layout_height="74dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/colorPrimaryDark"

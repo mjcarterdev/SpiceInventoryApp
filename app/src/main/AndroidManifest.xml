@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
-package="com.example.spice_sqlite_test">
+package="SpiceRack">
 
 <application
 
     android:icon="@mipmap/spicerack_emblem_round"
-    android:label="@string/app_name"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme"
@@ -18,20 +17,21 @@ package="com.example.spice_sqlite_test">
         android:screenOrientation="fullSensor"
         tools:replace="screenOrientation" />
 
-    <activity android:name="com.example.spicesinventory.activites.HomeActivity" />
+    <activity android:name=".Application.activites.HomeActivity" />
 
-    <activity android:name="com.example.spicesinventory.activites.ShoppingListActivity" />
-    <activity android:name="com.example.spicesinventory.login.StartupActivity">
+    <activity android:name=".Application.activites.ShoppingListActivity" />
+    <activity android:name=".Application.login.StartupActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-    <activity android:name="com.example.spicesinventory.activites.ScanActivity" />
-    <activity android:name="com.example.spicesinventory.profile.ProfileActivity" />
-    <activity android:name="com.example.spicesinventory.activites.InventoryActivity"
+    <activity android:name=".Application.activites.ScanActivity" />
+    <activity android:name=".Application.profile.ProfileActivity" />
+    <activity android:name=".Application.activites.InventoryActivity"
         android:windowSoftInputMode="adjustNothing"/>
+    <activity android:name=".Application.activites.InventoryEditorActivity" />
 
 </application>
 

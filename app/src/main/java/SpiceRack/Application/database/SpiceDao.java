@@ -1,4 +1,4 @@
-package com.example.spicesinventory.database;
+package SpiceRack.Application.database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -21,15 +21,15 @@ public interface SpiceDao {
     @Update (onConflict = OnConflictStrategy.REPLACE)
     void upDate(Spice spice);
 
-    @Query("SELECT * from spice_inventory")
+    @Query("SELECT * from spiceInventory")
     List<Spice> getAllSpices();
 
-    @Query("SELECT * FROM spice_inventory WHERE spice_name = :name")
+    @Query("SELECT * FROM spiceInventory WHERE spiceName = :name")
     List<Spice> getSpiceByName(String name);
 
-    @Query("SELECT * FROM spice_inventory WHERE barcode = :barcode LIMIT 1")
+    @Query("SELECT * FROM spiceInventory WHERE barcode = :barcode LIMIT 1")
     Spice getSpiceByBarcode(String barcode);
 
-    @Query("SELECT * FROM spice_inventory WHERE stock = :stock")
+    @Query("SELECT * FROM spiceInventory WHERE stock = :stock")
     List<Spice> getSpiceByStock(String stock);
 }

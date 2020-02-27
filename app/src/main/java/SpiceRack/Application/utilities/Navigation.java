@@ -1,13 +1,15 @@
-package com.example.spicesinventory.utilities;
+package SpiceRack.Application.utilities;
 
 import android.content.Context;
 import android.content.Intent;
 
-import com.example.spicesinventory.activites.InventoryActivity;
-import com.example.spicesinventory.profile.ProfileActivity;
-import com.example.spicesinventory.activites.ScanActivity;
-import com.example.spicesinventory.activites.ShoppingListActivity;
-import com.example.spicesinventory.login.StartupActivity;
+import SpiceRack.Application.activites.HomeActivity;
+import SpiceRack.Application.activites.InventoryActivity;
+import SpiceRack.Application.activites.InventoryEditorActivity;
+import SpiceRack.Application.profile.ProfileActivity;
+import SpiceRack.Application.activites.ScanActivity;
+import SpiceRack.Application.activites.ShoppingListActivity;
+import SpiceRack.Application.login.StartupActivity;
 
 
 public class Navigation {
@@ -43,4 +45,13 @@ public class Navigation {
         context.startActivity(openActivity);
     }
 
+    public void inventoryEditor() {
+        Intent openActivity = new Intent(context, InventoryEditorActivity.class);
+        context.startActivity(openActivity);
+    }
+
+    public void homePage() {
+        Intent openActivity = new Intent(context, HomeActivity.class);
+        context.startActivity(openActivity);
+    }
 }

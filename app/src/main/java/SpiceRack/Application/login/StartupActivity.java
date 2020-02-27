@@ -1,4 +1,4 @@
-package com.example.spicesinventory.login;
+package SpiceRack.Application.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,9 +7,10 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.spice_sqlite_test.R;
-import com.example.spicesinventory.activites.HomeActivity;
-import com.example.spicesinventory.activites.ScanActivity;
+
+import SpiceRack.Application.activites.HomeActivity;
+import SpiceRack.Application.activites.ScanActivity;
+import SpiceRack.R;
 
 public class StartupActivity extends AppCompatActivity {
 

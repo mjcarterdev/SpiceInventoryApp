@@ -1,4 +1,4 @@
-package com.example.spicesinventory.database;
+package SpiceRack.Application.database;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +8,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.spice_sqlite_test.R;
+
 
 import java.util.List;
+
+import SpiceRack.R;
 
 
 public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.ViewHolder> {
@@ -30,8 +32,8 @@ public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull SpiceListAdapter.ViewHolder holder, int position) {
-        holder.barcode.setText(spices.get(position).getBarcodeID());
-        holder.spiceName.setText(spices.get(position).getSpice_name());
+        holder.barcode.setText(spices.get(position).getBarcode());
+        holder.spiceName.setText(spices.get(position).getSpiceName());
         holder.containerType.setText(spices.get(position).getContainerType());
         holder.brand.setText(spices.get(position).getBrand());
         holder.stock.setText(spices.get(position).getStock());
