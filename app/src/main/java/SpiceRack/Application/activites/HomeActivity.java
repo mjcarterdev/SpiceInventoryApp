@@ -105,7 +105,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 return result;
             }
-            return result;
+            return false;
         }
     }
 

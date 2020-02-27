@@ -29,7 +29,7 @@
             android:textStyle="normal|bold" />
 
         <Button
-            android:id="@+id/btnaddSpiceInventory"
+            android:id="@+id/btnaddSpice"
             style="@style/ButtonStyleBackOnYellow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -113,7 +113,7 @@
                 android:text="@string/current_stock" />
 
             <EditText
-                android:id="@+id/tvStock"
+                android:id="@+id/editStock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -173,4 +173,20 @@
                 android:textColor="@color/textColour" />
         </TableRow>
     </TableLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fBtnScanBarcode"
+        android:layout_width="91dp"
+        android:layout_height="74dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorPrimaryDark"
+        android:backgroundTint="#F8BE19"
+        android:backgroundTintMode="add"
+        android:clickable="true"
+        android:focusable="true"
+        android:foregroundGravity="center"
+        app:fabCustomSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

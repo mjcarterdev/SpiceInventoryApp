@@ -49,12 +49,7 @@ public class InventoryActivity extends AppCompatActivity {
         mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         mySpiceDao = mySpiceRackDb.getSpiceDao();
 
-        inventoryLayout.fabScanBarcode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                scanner(v);
-            }
-        });
+
         inventoryLayout.rvSpiceList.setLayoutManager(new LinearLayoutManager(this));
         updateUI();
     }
@@ -105,30 +100,6 @@ public class InventoryActivity extends AppCompatActivity {
                 }
             }
             return result;
-        }
-    }
-
-    /*
-    Barcode Scanner
-    */
-    public void scanner(View v) {
-        new IntentIntegrator(this).initiateScan();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
-            if (result.getContents() == null) {
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
-            } else {
-                String scannedBarcode = result.getContents();
-                Intent intent = new Intent(InventoryActivity.this, InventoryEditorActivity.class);
-                intent.putExtra("ScannedBarcode", scannedBarcode);
-                startActivity(intent);
-            }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 

@@ -32,7 +32,6 @@ public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull SpiceListAdapter.ViewHolder holder, int position) {
-        holder.barcode.setText(spices.get(position).getBarcode());
         holder.spiceName.setText(spices.get(position).getSpiceName());
         holder.containerType.setText(spices.get(position).getContainerType());
         holder.brand.setText(spices.get(position).getBrand());
@@ -49,7 +48,6 @@ public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.View
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            barcode = itemView.findViewById(R.id.RVBarcode);
             spiceName = itemView.findViewById(R.id.RVSpiceName);
             brand = itemView.findViewById(R.id.RVBrand);
             containerType = itemView.findViewById(R.id.RVContainerType);
