@@ -13,11 +13,12 @@ public class User {
     @ColumnInfo(name = "userID")
     private int userID;
 
-    @ColumnInfo(name = "username")
-    private String username;
-
+    @NonNull
     @ColumnInfo(name = "email_address")
     private String emailAddress;
+
+    @ColumnInfo(name = "username")
+    private String username;
 
     @ColumnInfo(name = "password")
     private String password;

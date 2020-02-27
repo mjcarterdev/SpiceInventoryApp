@@ -1,6 +1,8 @@
 package com.example.spicesinventory.login;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -76,6 +78,12 @@ public class LoginActivity extends AppCompatActivity {
         if (emailAddress.equals(emailID) && editPasswordString.equals(pw)){
             //Toast.makeText(com.example.spicesinventory.login.LoginActivity.this, "ok", Toast.LENGTH_SHORT).show();
             myUserDao.getAllUsers();
+
+            //store logged in user to SharedPreferences
+            SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
+            SharedPreferences.Editor prefEditor = prefPut.edit();
+            prefEditor.putString("User logged in", emailAddress);
+            prefEditor.commit();
 
             Intent openActivity = new Intent(this, HomeActivity.class);
             startActivity(openActivity);

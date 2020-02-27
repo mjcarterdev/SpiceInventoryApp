@@ -1,6 +1,8 @@
 package com.example.spicesinventory.profile;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,23 +16,22 @@ import com.example.spicesinventory.activites.HomeActivity;
 import com.example.spicesinventory.database.Spice_Database;
 import com.example.spicesinventory.database.User;
 import com.example.spicesinventory.database.UserDao;
-import com.example.spicesinventory.login.LoginActivity;
+import com.example.spicesinventory.login.StartupActivity;
 
 public class ProfileActivity extends AppCompatActivity {
 
     EditText editUserName, editEmailAddress, editPassword, editConfirmPassword;
-    String userName, emailAddress, editPasswordString, editConfirmPasswordString;
     Spice_Database mySpiceRackDb;
-    User user;
     UserDao myUserDao;
-    //Button btnEditProfile;
-    User tempUser, tempEmail, tempPw, tempConfirmPw;
+    private SharedPreferences prefGet;
 
     private View.OnClickListener myClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
             if (v.getId() == R.id.btnEditProfile) {
                 editProfile();
+            }else if (v.getId() == R.id.btnDeleteUser){
+                deleteUserAccount();
             }
         }
     };
@@ -43,6 +44,9 @@ public class ProfileActivity extends AppCompatActivity {
         Button btnEditProfile = findViewById(R.id.btnEditProfile);
         btnEditProfile.setOnClickListener(myClick);
 
+        Button btnDeleteUser = findViewById(R.id.btnDeleteUser);
+        btnDeleteUser.setOnClickListener(myClick);
+
         editUserName = findViewById(R.id.editUserName);
         editEmailAddress = findViewById(R.id.editEmailAddress);
         editPassword = findViewById(R.id.editPassword);
@@ -51,34 +55,49 @@ public class ProfileActivity extends AppCompatActivity {
         mySpiceRackDb = Spice_Database.getINSTANCE(this);
         myUserDao = mySpiceRackDb.getUserDao();
 
-        myUserDao.getAllUsers();
+        prefGet = getSharedPreferences("User", Activity.MODE_PRIVATE);
+
+
+        User userFromDB = myUserDao.getUserByEmail(prefGet.getString("User logged in", "defValue"));
+
+        editEmailAddress.setText(userFromDB.getEmailAddress());
+        editUserName.setText(userFromDB.getUsername());
+
     }
 
     public void editProfile() {
-        //Toast.makeText(this,"edit profile pressed",Toast.LENGTH_LONG).show();
-
-        userName = editUserName.getText().toString();
-        emailAddress = editEmailAddress.getText().toString();
-        editPasswordString = editPassword.getText().toString();
-        editConfirmPasswordString  = editConfirmPassword.getText().toString();
-
-        tempUser = myUserDao.getUserByUser(userName);
-        tempEmail = myUserDao.getUserByEmail(emailAddress);
-        tempPw = myUserDao.getUserByPw(editPasswordString);
-
-        user = new User(userName, emailAddress, editPasswordString);
-
-        if (!(editConfirmPasswordString.equals(editPasswordString))){
+        if (!(editPassword.getText().toString().equals(editConfirmPassword.getText().toString()))){
             Toast.makeText(ProfileActivity.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
         } else {
 
-            //insert(userName, emailAddress, editPasswordString);
-            myUserDao.upDate(user);
+            User userFromDB = myUserDao.getUserByEmail(prefGet.getString("User logged in", "defValue"));
+            userFromDB.setEmailAddress(editEmailAddress.getText().toString());
+            userFromDB.setUsername(editUserName.getText().toString());
+            userFromDB.setPassword(editPassword.getText().toString());
+            myUserDao.upDate(userFromDB);
+
+            SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
+            SharedPreferences.Editor prefEditor = prefPut.edit();
+            prefEditor.putString("User logged in", editEmailAddress.getText().toString());
+            prefEditor.commit();
 
             Intent openActivity = new Intent(this, HomeActivity.class);
             startActivity(openActivity);
         }
 
+    }
+
+    public void deleteUserAccount(){
+        User userFromDB = myUserDao.getUserByEmail(prefGet.getString("User logged in", "defValue"));
+        myUserDao.deleteUser(userFromDB);
+
+        SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor prefEditor = prefPut.edit();
+        prefEditor.putString("User logged in", "defValue");
+        prefEditor.commit();
+
+        Intent openActivity = new Intent(this, StartupActivity.class);
+        startActivity(openActivity);
     }
 
 }
