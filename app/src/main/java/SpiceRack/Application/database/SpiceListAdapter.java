@@ -12,15 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import SpiceRack.Application.utilities.RecyclerViewClickInterface;
 import SpiceRack.R;
 
 
 public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.ViewHolder> {
 
     private List<Spice> spices;
+    private RecyclerViewClickInterface recyclerViewClickInterface;
 
-    public SpiceListAdapter(List<Spice> spices) {
+    public SpiceListAdapter(List<Spice> spices, RecyclerViewClickInterface recyclerViewClickInterface) {
         this.spices = spices;
+        this.recyclerViewClickInterface = recyclerViewClickInterface;
     }
 
     @NonNull
@@ -52,6 +55,19 @@ public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.View
             brand = itemView.findViewById(R.id.RVBrand);
             containerType = itemView.findViewById(R.id.RVContainerType);
             stock = itemView.findViewById(R.id.RVStock);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    recyclerViewClickInterface.onLongItemClick(getAdapterPosition());
+                    return true;
+                }
+            });
         }
     }
 }

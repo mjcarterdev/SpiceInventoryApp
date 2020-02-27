@@ -10,4 +10,5 @@
     <color name="textBackgroundTransparent">#D9417505</color>
     <color name="yellowText">#f7bf23</color>
     <color name="logOutText">#c60058</color>
+    <color name="purpleBackground">#8623f7</color>
 </resources>

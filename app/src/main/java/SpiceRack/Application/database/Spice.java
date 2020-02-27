@@ -60,9 +60,6 @@ public class Spice implements Comparable<Spice>{
         return "you have " + this.stock + " units of " + this.spiceName + " in your inventory.";
     }
 
-    public void setSpice_name(String spiceName) {
-        this.spiceName = spiceName;
-    }
 
     String getContainerType() {
         return containerType;
@@ -98,7 +95,7 @@ public class Spice implements Comparable<Spice>{
         return spiceID;
     }
 
-    public void setSpiceID(int spiceID) {
+    void setSpiceID(int spiceID) {
         this.spiceID = spiceID;
     }
 }

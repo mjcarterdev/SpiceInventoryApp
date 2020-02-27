@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Toast;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
@@ -20,21 +20,20 @@ import SpiceRack.Application.database.SpiceListAdapter;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.utilities.Navigation;
 
+import SpiceRack.Application.utilities.RecyclerViewClickInterface;
 import SpiceRack.databinding.InventoryActivityBinding;
-
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 
 import java.util.Collections;
 import java.util.List;
 
-public class InventoryActivity extends AppCompatActivity {
+public class InventoryActivity extends AppCompatActivity implements RecyclerViewClickInterface {
 
     InventoryActivityBinding inventoryLayout;
     RecyclerView.Adapter adapter;
     SpiceDatabase mySpiceRackDb;
     SpiceDao mySpiceDao;
     Navigation nav;
+    List<Spice> spiceList;
     private GestureDetectorCompat myGesture;
 
     @Override
@@ -49,7 +48,6 @@ public class InventoryActivity extends AppCompatActivity {
         mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         mySpiceDao = mySpiceRackDb.getSpiceDao();
 
-
         inventoryLayout.rvSpiceList.setLayoutManager(new LinearLayoutManager(this));
         updateUI();
     }
@@ -61,17 +59,32 @@ public class InventoryActivity extends AppCompatActivity {
     }
 
     public void updateUI() {
-        List<Spice> spices = mySpiceDao.getAllSpices();
-        Collections.sort(spices);
-        adapter = new SpiceListAdapter(spices);
+        spiceList = mySpiceDao.getAllSpices();
+        Collections.sort(spiceList);
+        adapter = new SpiceListAdapter(spiceList, this);
         inventoryLayout.rvSpiceList.setAdapter(adapter);
     }
-
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.myGesture.onTouchEvent(event);
         return super.onTouchEvent(event);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        String scannedBarcode = spiceList.get(position).getBarcode();
+        Intent intent = new Intent(InventoryActivity.this, ScanActivity.class);
+        intent.putExtra("ScannedBarcode", scannedBarcode);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onLongItemClick(int position) {
+        String scannedBarcode = spiceList.get(position).getBarcode();
+        Intent intent = new Intent(InventoryActivity.this, ScanActivity.class);
+        intent.putExtra("ScannedBarcode", scannedBarcode);
+        startActivity(intent);
     }
 
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
