@@ -24,12 +24,12 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
     @Override
     public ShoppingListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapterview_shopping, parent, false);
-        return new ShoppingListAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ShoppingListAdapter.ViewHolder holder, int position) {
-        holder.spiceName.setText(shopping_Lists.get(position).getItem_name());
+        holder.spiceName.setText(shopping_Lists.get(position).getItemName());
         holder.amount.setText(shopping_Lists.get(position).getAmount());
     }
 
@@ -38,7 +38,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
         return shopping_Lists.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder{
         TextView spiceName, amount;
 
         ViewHolder(@NonNull View itemView) {

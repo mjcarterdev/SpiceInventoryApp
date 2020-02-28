@@ -3,27 +3,25 @@ package SpiceRack.Application.database;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
 
-@Entity(tableName = "shoppingList")
+@Entity(tableName = "shoppingList", indices ={@Index(value = {"itemName"},
+        unique = true)})
 public class ShoppingItem {
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "ID")
     private int shoppingID;
     @NonNull
-    @ColumnInfo(name = "item_name")
-    private String item_name;
+    private String itemName;
     @NonNull
-    @ColumnInfo(name = "amount")
     private String amount;
-    @ColumnInfo(name = "strikethrough")
     private boolean strikeThrough;
 
-    public ShoppingItem(@NonNull String item_name,@NonNull String amount) {
-        this.item_name = item_name;
+    public ShoppingItem(@NonNull String itemName,@NonNull String amount) {
+        this.itemName = itemName;
         this.amount = amount;
         this.strikeThrough = false;
     }
@@ -37,12 +35,12 @@ public class ShoppingItem {
     }
 
     @NotNull
-    String getItem_name() {
-        return item_name;
+    String getItemName() {
+        return itemName;
     }
 
-    void setItem_name(@NotNull String item_name) {
-        this.item_name = item_name;
+    void setItemName(@NotNull String item_name) {
+        this.itemName = item_name;
     }
 
     @NotNull

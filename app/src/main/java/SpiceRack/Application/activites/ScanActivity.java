@@ -1,14 +1,20 @@
 package SpiceRack.Application.activites;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import androidx.core.view.GestureDetectorCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.widget.TextView;
+import android.view.MotionEvent;
 import android.widget.Toast;
+
 
 import java.util.Collections;
 import java.util.List;
@@ -17,11 +23,11 @@ import SpiceRack.Application.database.Spice;
 import SpiceRack.Application.database.SpiceDao;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.database.SpiceListAdapter;
-import SpiceRack.Application.utilities.RecyclerViewClickInterface;
+import SpiceRack.Application.utilities.Navigation;
 import SpiceRack.databinding.ScanActivityBinding;
 
 
-public class ScanActivity extends AppCompatActivity implements RecyclerViewClickInterface {
+public class ScanActivity extends AppCompatActivity implements SpiceListAdapter.SpiceOnClickListener {
 
     SpiceDatabase mySpiceRackDb;
     SpiceDao mySpiceDao;
@@ -29,6 +35,8 @@ public class ScanActivity extends AppCompatActivity implements RecyclerViewClick
     List<Spice> spiceList;
     ScanActivityBinding scanLayout;
     RecyclerView.Adapter adapter;
+    Navigation nav;
+    GestureDetectorCompat myGesture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +53,10 @@ public class ScanActivity extends AppCompatActivity implements RecyclerViewClick
         Collections.sort(spiceList);
         searchByBarcode();
 
+        nav = new Navigation(this);
+        myGesture = new GestureDetectorCompat(this, new MyGestureListener());
+
+        new ItemTouchHelper(itemTouchCallback).attachToRecyclerView(scanLayout.rvDisplaySpiceList);
         scanLayout.rvDisplaySpiceList.setLayoutManager(new LinearLayoutManager(this));
         updateUI();
 
@@ -82,28 +94,65 @@ public class ScanActivity extends AppCompatActivity implements RecyclerViewClick
         scanLayout.rvDisplaySpiceList.setAdapter(adapter);
     }
 
-
     @Override
-    public void onItemClick(int position) {
-        Toast.makeText(this, "onClick low", Toast.LENGTH_SHORT).show();
-       Spice spice = spiceList.get(position);
-       int stock = spiceList.get(position).getStock();
-       int newStock = stock - 1;
-       spice.setStock(newStock);
-       mySpiceDao.upDate(spice);
-       updateUI();
+    public void spiceOnClick(int position) {
+        Toast.makeText(this, "Spice is pressed", Toast.LENGTH_SHORT).show();
     }
 
+    ItemTouchHelper.SimpleCallback itemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            Spice spice = spiceList.get(viewHolder.getAdapterPosition());
+            int stock = spiceList.get(viewHolder.getAdapterPosition()).getStock();
+            if(direction == ItemTouchHelper.RIGHT){
+                int newStock = stock - 1;
+                spice.setStock(newStock);
+                mySpiceDao.upDate(spice);
+            }else{
+                int newStock = stock + 1;
+                spice.setStock(newStock);
+                mySpiceDao.upDate(spice);
+            }
+            updateUI();
+        }
+    };
+
     @Override
-    public void onLongItemClick(int position) {
-        Toast.makeText(this, "Long Click", Toast.LENGTH_SHORT).show();
-        Spice spice = spiceList.get(position);
-        int stock = spiceList.get(position).getStock();
-        int newStock = stock + 1;
-        spice.setStock(newStock);
-        mySpiceDao.upDate(spice);
-        updateUI();
+    public boolean onTouchEvent(MotionEvent event) {
+        this.myGesture.onTouchEvent(event);
+        return super.onTouchEvent(event);
     }
 
+    class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
 
+        private static final int SWIPE_THRESHOLD = 100;
+        private static final int SWIPE_VELOCITY_THRESHOLD = 100;
+
+        @Override
+        public boolean onDown(MotionEvent e) {
+            return false;
+        }
+
+        @Override
+        public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
+            float diffY = moveEvent.getY() - downEvent.getY();
+            float diffX = moveEvent.getX() - downEvent.getX();
+
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                //right or left swipe
+                if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+                    if (diffX > 0) {
+                        nav.homePage();
+                    } else {
+                        nav.inventoryPage(); }
+                }
+            }
+            return true;
+        }
+    }
 }

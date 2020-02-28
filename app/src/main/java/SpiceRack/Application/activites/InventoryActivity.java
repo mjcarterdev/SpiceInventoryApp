@@ -17,20 +17,19 @@ import SpiceRack.Application.database.SpiceListAdapter;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.utilities.Navigation;
 
-import SpiceRack.Application.utilities.RecyclerViewClickInterface;
 import SpiceRack.databinding.InventoryActivityBinding;
 
 import java.util.Collections;
 import java.util.List;
 
-public class InventoryActivity extends AppCompatActivity implements RecyclerViewClickInterface {
+public class InventoryActivity extends AppCompatActivity implements SpiceListAdapter.SpiceOnClickListener{
 
     InventoryActivityBinding inventoryLayout;
     RecyclerView.Adapter adapter;
     SpiceDatabase mySpiceRackDb;
     SpiceDao mySpiceDao;
-    Navigation nav;
     List<Spice> spiceList;
+    Navigation nav;
     private GestureDetectorCompat myGesture;
 
     @Override
@@ -69,15 +68,7 @@ public class InventoryActivity extends AppCompatActivity implements RecyclerView
     }
 
     @Override
-    public void onItemClick(int position) {
-        String scannedBarcode = spiceList.get(position).getBarcode();
-        Intent intent = new Intent(InventoryActivity.this, ScanActivity.class);
-        intent.putExtra("ScannedBarcode", scannedBarcode);
-        startActivity(intent);
-    }
-
-    @Override
-    public void onLongItemClick(int position) {
+    public void spiceOnClick(int position) {
         String scannedBarcode = spiceList.get(position).getBarcode();
         Intent intent = new Intent(InventoryActivity.this, ScanActivity.class);
         intent.putExtra("ScannedBarcode", scannedBarcode);
@@ -96,7 +87,6 @@ public class InventoryActivity extends AppCompatActivity implements RecyclerView
 
         @Override
         public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
-            boolean result = false;
             float diffY = moveEvent.getY() - downEvent.getY();
             float diffX = moveEvent.getX() - downEvent.getX();
 
@@ -109,7 +99,7 @@ public class InventoryActivity extends AppCompatActivity implements RecyclerView
                         nav.homePage(); }
                 }
             }
-            return result;
+            return true;
         }
     }
 

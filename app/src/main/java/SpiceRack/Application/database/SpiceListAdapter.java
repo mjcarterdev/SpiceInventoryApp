@@ -19,18 +19,18 @@ import SpiceRack.R;
 public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.ViewHolder> {
 
     private List<Spice> spices;
-    private RecyclerViewClickInterface recyclerViewClickInterface;
+    private SpiceOnClickListener mySpiceListener;
 
-    public SpiceListAdapter(List<Spice> spices, RecyclerViewClickInterface recyclerViewClickInterface) {
+    public SpiceListAdapter(List<Spice> spices, SpiceOnClickListener spiceOnClickListener) {
         this.spices = spices;
-        this.recyclerViewClickInterface = recyclerViewClickInterface;
+        this.mySpiceListener = spiceOnClickListener;
     }
 
     @NonNull
     @Override
     public SpiceListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapterview, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, mySpiceListener);
     }
 
     @Override
@@ -46,28 +46,27 @@ public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.View
         return spices.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView spiceName, stock, containerType, brand;
+        SpiceOnClickListener spiceOnClickListener;
 
-        ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView, SpiceOnClickListener spiceOnClickListener) {
             super(itemView);
+            this.spiceOnClickListener = spiceOnClickListener;
             spiceName = itemView.findViewById(R.id.RVSpiceName);
             brand = itemView.findViewById(R.id.RVBrand);
             containerType = itemView.findViewById(R.id.RVContainerType);
             stock = itemView.findViewById(R.id.RVStock);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
-                }
-            });
-            itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    recyclerViewClickInterface.onLongItemClick(getAdapterPosition());
-                    return true;
-                }
-            });
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            spiceOnClickListener.spiceOnClick(getAdapterPosition());
+        }
+    }
+
+    public interface SpiceOnClickListener{
+        void spiceOnClick(int position);
     }
 }
