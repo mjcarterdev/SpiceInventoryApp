@@ -69,8 +69,6 @@ public class ShoppingListActivity extends AppCompatActivity {
 
     }
 
-
-
     public void addSpiceToShopping() {
         name = editName.getText().toString();
         amount = editAmount.getText().toString();

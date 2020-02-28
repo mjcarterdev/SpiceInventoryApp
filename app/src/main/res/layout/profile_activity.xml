@@ -1,58 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/green_white_background">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="255dp"
-        android:layout_height="254dp"
-        android:layout_marginTop="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/profilepic" />
-
-    <Button
-        android:id="@+id/btnEditProfile"
-        android:layout_width="322dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="84dp"
-        android:background="@color/yellowText"
-        android:fontFamily="@font/bowlbyonesc_regular"
-        android:shadowColor="@color/textColour"
-        android:shadowDx="4"
-        android:shadowDy="4"
-        android:shadowRadius="4"
+    <TextView
+        android:id="@+id/tvEditProfile"
+        style="@style/EditTextDefault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:layout_weight="30"
+        android:gravity="center"
         android:text="@string/edit_profile"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="322dp"
-        android:layout_height="76dp"
-        android:layout_marginBottom="84dp"
-        android:background="@color/logOutText"
-        android:fontFamily="@font/bowlbyonesc_regular"
-        android:shadowColor="#000000"
-        android:shadowDx="4"
-        android:shadowDy="4"
-        android:shadowRadius="4"
-        android:text="@string/log_out"
-        android:textColor="@color/textColour"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/tableLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEditProfile">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvUserName"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="@string/label_user_name" />
+
+            <EditText
+                android:id="@+id/editUserName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center_vertical|center"
+                android:hint="@string/user_name"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:textColor="@color/textColour" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvEmail"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="@string/label_email_address" />
+
+            <EditText
+                android:id="@+id/editEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center_vertical|center"
+                android:hint="@string/email_address"
+                android:importantForAutofill="no"
+                android:inputType="textWebEmailAddress"
+                android:textColor="@color/textColour" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvPassword"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="@string/label_password" />
+
+            <EditText
+                android:id="@+id/editPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center_vertical|center"
+                android:hint="@string/password"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:textColor="@color/textColour" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvConfirmPassword"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="@string/label_confirm_password" />
+
+            <EditText
+                android:id="@+id/editConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center_vertical|center"
+                android:hint="@string/confirm_password"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:textColor="@color/textColour" />
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginEnd="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="55dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout4">
+
+        <Button
+            android:id="@+id/btnEditProfile"
+            android:text="@string/edit_profile"
+            style="@style/ButtonStyleBackOnYellow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="normal|bold"
+            tools:ignore="RelativeOverlap" />
+
+        <Button
+            android:id="@+id/btnDeleteUser"
+            android:text="@string/deleteAccount"
+            style="@style/ButtonStyleBackOnYellow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="normal|bold"
+            tools:ignore="RelativeOverlap" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
