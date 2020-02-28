@@ -11,22 +11,22 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="36dp"
+        android:layout_marginBottom="200dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/fBtnScanBarcode"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout2">
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/deleteSpices"
             style="@style/ButtonStyleBackOnYellow"
-            tools:ignore="RelativeOverlap"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/delete_spice"
-            android:textStyle="normal|bold" />
+            android:textStyle="normal|bold"
+            tools:ignore="RelativeOverlap" />
 
         <Button
             android:id="@+id/btnaddSpice"
@@ -43,10 +43,11 @@
     <TableLayout
         android:id="@+id/tableLayout2"
         android:layout_width="338dp"
-        android:layout_height="227dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="55dp"
         android:layout_marginEnd="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -137,16 +138,12 @@
                 android:gravity="center_vertical|center"
                 android:text="@string/container_type" />
 
-            <EditText
-                android:id="@+id/editContainerType"
+            <Spinner
+                android:id="@+id/spContainerType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="center_vertical|center"
-                android:hint="@string/container_type_here"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColor="@color/textColour" />
+                android:spinnerMode="dropdown" />
+
         </TableRow>
 
         <TableRow
@@ -161,16 +158,11 @@
                 android:gravity="center_vertical|center"
                 android:text="@string/brand" />
 
-            <EditText
-                android:id="@+id/editBrand"
+            <Spinner
+                android:id="@+id/spBrand"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="center_vertical|center"
-                android:hint="@string/brand"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColor="@color/textColour" />
+                android:layout_height="wrap_content" />
+
         </TableRow>
     </TableLayout>
 
@@ -189,4 +181,5 @@
         app:fabCustomSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

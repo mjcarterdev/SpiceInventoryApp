@@ -56,8 +56,8 @@ public class Spice implements Comparable<Spice>{
         return spiceName;
     }
 
-    public String getInfo(){
-        return "you have " + this.stock + " units of " + this.spiceName + " in your inventory.";
+    public String getInfo(int stock){
+        return "you have " + stock + " units of " + this.spiceName + " in your inventory.";
     }
 
 

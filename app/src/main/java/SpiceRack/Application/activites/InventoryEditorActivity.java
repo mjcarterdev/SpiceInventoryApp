@@ -6,6 +6,8 @@ import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +24,7 @@ import SpiceRack.R;
 import SpiceRack.databinding.InventoryEditorActivityBinding;
 
 
-public class InventoryEditorActivity extends AppCompatActivity {
+public class InventoryEditorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String barcode,barcodeID, name, stock, container, brand;
     SpiceDatabase mySpiceRackDb;
     SpiceDao mySpiceDao;
@@ -30,6 +32,8 @@ public class InventoryEditorActivity extends AppCompatActivity {
     InventoryEditorActivityBinding inventoryEditorLayout;
     Navigation nav;
     private GestureDetectorCompat myGesture;
+    private static final String[] containerType = {"Jar", "Refill"};
+    private static final String[] brands = {"KMarket", "SMarket", "Santa Maria", "Other"};
 
     private View.OnClickListener myClick = new View.OnClickListener() {
 
@@ -59,6 +63,19 @@ public class InventoryEditorActivity extends AppCompatActivity {
 
         inventoryEditorLayout.deleteSpices.setOnClickListener(myClick);
         inventoryEditorLayout.btnaddSpice.setOnClickListener(myClick);
+
+        ArrayAdapter<String> containerAdaptor = new ArrayAdapter<>(InventoryEditorActivity.this, android.R.layout.simple_spinner_dropdown_item, containerType);
+        ArrayAdapter<String> brandAdaptor = new ArrayAdapter<>(InventoryEditorActivity.this, android.R.layout.simple_spinner_dropdown_item, brands);
+
+        containerAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        brandAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        inventoryEditorLayout.spContainerType.setAdapter(containerAdaptor);
+        inventoryEditorLayout.spBrand.setAdapter(brandAdaptor);
+
+        inventoryEditorLayout.spContainerType.setOnItemSelectedListener(this);
+        inventoryEditorLayout.spBrand.setOnItemSelectedListener(this);
+
 
         nav = new Navigation(this);
         myGesture = new GestureDetectorCompat(this, new MyGestureListener());
@@ -97,6 +114,22 @@ public class InventoryEditorActivity extends AppCompatActivity {
     public boolean onTouchEvent(MotionEvent event) {
         this.myGesture.onTouchEvent(event);
         return super.onTouchEvent(event);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch(parent.getId()){
+            case R.id.spContainerType:
+                container = inventoryEditorLayout.spContainerType.getSelectedItem().toString();
+                break;
+            case R.id.spBrand:
+                brand = inventoryEditorLayout.spBrand.getSelectedItem().toString();
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
@@ -141,8 +174,6 @@ public class InventoryEditorActivity extends AppCompatActivity {
         barcode = inventoryEditorLayout.editBarcode.getText().toString();
         name = inventoryEditorLayout.editSpiceName.getText().toString();
         stock = inventoryEditorLayout.editStock.getText().toString();
-        container = inventoryEditorLayout.editContainerType.getText().toString();
-        brand = inventoryEditorLayout.editBrand.getText().toString();
         temp = mySpiceDao.getSpiceByBarcode(barcode);
         if(temp != null)
             barcodeID = temp.getBarcode();
@@ -174,7 +205,7 @@ public class InventoryEditorActivity extends AppCompatActivity {
         inventoryEditorLayout.editBarcode.setText("");
         inventoryEditorLayout.editSpiceName.setText("");
         inventoryEditorLayout.editStock.setText("");
-        inventoryEditorLayout.editContainerType.setText("");
-        inventoryEditorLayout.editBrand.setText("");
+        //inventoryEditorLayout.editContainerType.setText("");
+        //inventoryEditorLayout.editBrand.setText("");
     }
 }
