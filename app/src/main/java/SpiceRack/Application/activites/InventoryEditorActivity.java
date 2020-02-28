@@ -25,15 +25,15 @@ import SpiceRack.databinding.InventoryEditorActivityBinding;
 
 
 public class InventoryEditorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    String barcode,barcodeID, name, stock, container, brand;
+    String barcode,barcodeID, name, container, brand;
     SpiceDatabase mySpiceRackDb;
     SpiceDao mySpiceDao;
     Spice temp;
     InventoryEditorActivityBinding inventoryEditorLayout;
     Navigation nav;
     private GestureDetectorCompat myGesture;
-    private static final String[] containerType = {"Jar", "Refill"};
-    private static final String[] brands = {"KMarket", "SMarket", "Santa Maria", "Other"};
+    private static final String[] containerType = {"Select One...","Jar", "Refill"};
+    private static final String[] brands = {"Select One...", "KMarket", "SMarket", "Santa Maria", "Other"};
 
     private View.OnClickListener myClick = new View.OnClickListener() {
 
@@ -124,6 +124,7 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
                 break;
             case R.id.spBrand:
                 brand = inventoryEditorLayout.spBrand.getSelectedItem().toString();
+                break;
         }
     }
 
@@ -159,7 +160,7 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         }
     }
 
-    public void insert(String barcode, String name, String stock, String containerType, String brand) {
+    public void insert(String barcode, String name, int stock, String containerType, String brand) {
         Spice spice = new Spice(barcode, name, stock, containerType, brand);
         mySpiceDao.insertSpice(spice);
     }
@@ -173,12 +174,12 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
     public void addSpice() {
         barcode = inventoryEditorLayout.editBarcode.getText().toString();
         name = inventoryEditorLayout.editSpiceName.getText().toString();
-        stock = inventoryEditorLayout.editStock.getText().toString();
+        int stock = Integer.parseInt(inventoryEditorLayout.editStock.getText().toString());
         temp = mySpiceDao.getSpiceByBarcode(barcode);
         if(temp != null)
             barcodeID = temp.getBarcode();
 
-        if (barcode.isEmpty() || name.isEmpty() || stock.isEmpty() || container.isEmpty() || brand.isEmpty()) {
+        if (barcode.isEmpty() || name.isEmpty() || stock == 0 || container.isEmpty() || brand.isEmpty() || container.contains("Select One...") || brand.contains("Select One...")) {
             Toast.makeText(this, "Error - one of the boxes is empty. Please fill all details.", Toast.LENGTH_LONG).show();
 
         } else if (barcode.equals(barcodeID)) {
@@ -205,7 +206,7 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         inventoryEditorLayout.editBarcode.setText("");
         inventoryEditorLayout.editSpiceName.setText("");
         inventoryEditorLayout.editStock.setText("");
-        //inventoryEditorLayout.editContainerType.setText("");
-        //inventoryEditorLayout.editBrand.setText("");
+        inventoryEditorLayout.spContainerType.setSelection(0);
+        inventoryEditorLayout.spBrand.setSelection(0);
     }
 }

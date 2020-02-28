@@ -31,5 +31,5 @@ public interface SpiceDao {
     Spice getSpiceByBarcode(String barcode);
 
     @Query("SELECT * FROM spiceInventory WHERE stock = :stock")
-    List<Spice> getSpiceByStock(String stock);
+    List<Spice> getSpiceByStock(int stock);
 }

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
@@ -60,7 +61,7 @@ public class ScanActivity extends AppCompatActivity implements RecyclerViewClick
             scanLayout.tvDisplayStock.setText("");
         }else {
             String spiceName = receivedSpice.getSpiceName();
-            String spiceStock = receivedSpice.getStock();
+            String spiceStock = String.valueOf(receivedSpice.getStock());
             String spiceID = String.valueOf(receivedSpice.getSpiceID());
 
             scanLayout.tvDisplaySpiceName.setText(spiceName);
@@ -74,7 +75,7 @@ public class ScanActivity extends AppCompatActivity implements RecyclerViewClick
         Collections.sort(spiceList);
         int sum = 0;
         for (Spice element: spiceList) {
-            sum+= Integer.parseInt(element.getStock());
+            sum+= element.getStock();
         }
         scanLayout.tvDisplayMessage.setText(receivedSpice.getInfo(sum));
         adapter = new SpiceListAdapter(spiceList, this);
@@ -84,12 +85,24 @@ public class ScanActivity extends AppCompatActivity implements RecyclerViewClick
 
     @Override
     public void onItemClick(int position) {
-
+        Toast.makeText(this, "onClick low", Toast.LENGTH_SHORT).show();
+       Spice spice = spiceList.get(position);
+       int stock = spiceList.get(position).getStock();
+       int newStock = stock - 1;
+       spice.setStock(newStock);
+       mySpiceDao.upDate(spice);
+       updateUI();
     }
 
     @Override
     public void onLongItemClick(int position) {
-
+        Toast.makeText(this, "Long Click", Toast.LENGTH_SHORT).show();
+        Spice spice = spiceList.get(position);
+        int stock = spiceList.get(position).getStock();
+        int newStock = stock + 1;
+        spice.setStock(newStock);
+        mySpiceDao.upDate(spice);
+        updateUI();
     }
 
 

@@ -18,10 +18,13 @@ public interface ShoppingDao {
     @Delete
     void deleteItem(ShoppingItem shoppingItem);
 
+    @Query("DELETE FROM  shoppingList")
+    void deleteList();
+
     @Update (onConflict = OnConflictStrategy.REPLACE)
     void upDate(ShoppingItem shoppingItem);
 
-    @Query("SELECT * from shopping_list")
+    @Query("SELECT * from shoppingList")
     List<ShoppingItem> getAllShoppingItems();
 
 }

@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import SpiceRack.Application.database.ShoppingDao;
 import SpiceRack.Application.database.ShoppingItem;
 import SpiceRack.Application.database.ShoppingListAdapter;
+import SpiceRack.Application.database.Spice;
+import SpiceRack.Application.database.SpiceDao;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.R;
 
@@ -25,6 +27,7 @@ public class ShoppingListActivity extends AppCompatActivity {
     String name, amount;
     SpiceDatabase mySpiceRackDb;
     ShoppingDao myShoppingDao;
+    List<Spice> spiceList;
     ShoppingItem Item;
     RecyclerView listShopping;
     RecyclerView.Adapter adapterShopping;
@@ -63,10 +66,16 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         myShoppingDao = mySpiceRackDb.getShoppingDao();
+        spiceList = mySpiceRackDb.getSpiceDao().getSpiceByStock(0);
+
+        for (Spice element:spiceList) {
+            String name = element.getSpiceName();
+            Item = new ShoppingItem(name, "1");
+            myShoppingDao.insertItem(Item);
+        }
 
         listShopping.setLayoutManager(new LinearLayoutManager(this));
         updateUI();
-
     }
 
     public void addSpiceToShopping() {
@@ -79,7 +88,7 @@ public class ShoppingListActivity extends AppCompatActivity {
     }
 
     public void clearList(){
-
+        myShoppingDao.deleteList();
     }
 
     public void updateUI() {

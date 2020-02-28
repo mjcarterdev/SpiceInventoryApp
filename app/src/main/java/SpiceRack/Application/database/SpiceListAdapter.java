@@ -38,7 +38,7 @@ public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.View
         holder.spiceName.setText(spices.get(position).getSpiceName());
         holder.containerType.setText(spices.get(position).getContainerType());
         holder.brand.setText(spices.get(position).getBrand());
-        holder.stock.setText(spices.get(position).getStock());
+        holder.stock.setText(String.valueOf(spices.get(position).getStock()));
     }
 
     @Override
@@ -47,7 +47,7 @@ public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.View
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        TextView barcode, spiceName, stock, containerType, brand;
+        TextView spiceName, stock, containerType, brand;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);

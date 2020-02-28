@@ -5,66 +5,60 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "shopping_list")
+import org.jetbrains.annotations.NotNull;
+
+@Entity(tableName = "shoppingList")
 public class ShoppingItem {
 
-    @NonNull
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ID")
     private int shoppingID;
-
+    @NonNull
     @ColumnInfo(name = "item_name")
     private String item_name;
-
+    @NonNull
     @ColumnInfo(name = "amount")
     private String amount;
-
     @ColumnInfo(name = "strikethrough")
     private boolean strikeThrough;
 
-    /*public ShoppingItem(@NonNull int shoppingID, String item_name, String amount, boolean strikeThrough) {
-        this.shoppingID = shoppingID;
-        this.item_name = item_name;
-        this.amount = amount;
-        this.strikeThrough = strikeThrough;
-    }*/
-
-    public ShoppingItem(String item_name, String amount) {
+    public ShoppingItem(@NonNull String item_name,@NonNull String amount) {
         this.item_name = item_name;
         this.amount = amount;
         this.strikeThrough = false;
     }
 
-    @NonNull
-    public int getShoppingID() {
+    int getShoppingID() {
         return shoppingID;
     }
 
-    public void setShoppingID(@NonNull int shoppingID) {
+    void setShoppingID(int shoppingID) {
         this.shoppingID = shoppingID;
     }
 
-    public String getItem_name() {
+    @NotNull
+    String getItem_name() {
         return item_name;
     }
 
-    public void setItem_name(String item_name) {
+    void setItem_name(@NotNull String item_name) {
         this.item_name = item_name;
     }
 
-    public String getAmount() {
+    @NotNull
+    String getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    void setAmount(@NonNull  String amount) {
         this.amount = amount;
     }
 
-    public boolean isStrikeThrough() {
+    boolean isStrikeThrough() {
         return strikeThrough;
     }
 
-    public void setStrikeThrough(boolean strikeThrough) {
+    void setStrikeThrough(boolean strikeThrough) {
         this.strikeThrough = strikeThrough;
     }
 }

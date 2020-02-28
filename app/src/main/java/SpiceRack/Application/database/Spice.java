@@ -15,20 +15,18 @@ public class Spice implements Comparable<Spice>{
     @NonNull
     private String barcode;
     private String spiceName;
-    private String stock;
+    private int stock;
     private String containerType;
     private String brand;
-    private boolean strikeThrough;
 
 
-    public Spice(@NonNull String barcode, String spiceName, String stock, String containerType, String brand){
+    public Spice(@NonNull String barcode, String spiceName, int stock, String containerType, String brand){
 
         this.barcode = barcode;
         this.spiceName = spiceName;
         this.stock = stock;
         this.containerType = containerType;
         this.brand = brand;
-        this.strikeThrough = false;
     }
 
     public void setBarcodeID(@NonNull String barcode) {
@@ -39,7 +37,7 @@ public class Spice implements Comparable<Spice>{
         this.spiceName = spice_name;
     }
 
-    public void setStock(String stock) {
+    public void setStock(int stock) {
         this.stock = stock;
     }
 
@@ -48,7 +46,7 @@ public class Spice implements Comparable<Spice>{
         return this.barcode;
     }
 
-    public String getStock() {
+    public int getStock() {
         return this.stock;
     }
 
@@ -59,7 +57,6 @@ public class Spice implements Comparable<Spice>{
     public String getInfo(int stock){
         return "you have " + stock + " units of " + this.spiceName + " in your inventory.";
     }
-
 
     String getContainerType() {
         return containerType;
@@ -76,15 +73,6 @@ public class Spice implements Comparable<Spice>{
     public void setBrand(String brand) {
         this.brand = brand;
     }
-
-    boolean isStrikeThrough() {
-        return strikeThrough;
-    }
-
-    void setStrikeThrough(boolean strikeThrough) {
-        this.strikeThrough = strikeThrough;
-    }
-
 
     @Override
     public int compareTo(Spice o) {
