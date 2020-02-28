@@ -54,4 +54,6 @@
     <string name="barcode_number_inventory">Barcode Number</string>
     <string name="spice_name_inventory">Spice Name</string>
     <string name="spiceid">spiceID</string>
+    <string name="spice_id">Spice ID:</string>
+    <string name="message">Message</string>
 </resources>
