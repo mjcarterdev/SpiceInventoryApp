@@ -11,20 +11,20 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import SpiceRack.Application.activites.HomeActivity;
+import SpiceRack.Application.database.SpiceDatabase;
+import SpiceRack.Application.database.User;
+import SpiceRack.Application.database.UserDao;
 import SpiceRack.Application.login.StartupActivity;
 import SpiceRack.R;
-import com.example.spice_sqlite_test.R;
-import com.example.spicesinventory.activites.HomeActivity;
-import com.example.spicesinventory.database.Spice_Database;
-import com.example.spicesinventory.database.User;
-import com.example.spicesinventory.database.UserDao;
-import com.example.spicesinventory.login.StartupActivity;
+
+
 
 public class ProfileActivity extends AppCompatActivity {
 
     EditText editUserName, editEmailAddress, editPassword, editConfirmPassword;
     String userName, emailAddress, editPasswordString, editConfirmPasswordString;
-    Spice_Database mySpiceRackDb;
+    SpiceDatabase mySpiceRackDb;
     UserDao myUserDao;
     private SharedPreferences prefGet;
 
@@ -55,7 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
         editPassword = findViewById(R.id.editPassword);
         editConfirmPassword = findViewById(R.id.editConfirmPassword);
 
-        mySpiceRackDb = Spice_Database.getINSTANCE(this);
+        mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         myUserDao = mySpiceRackDb.getUserDao();
 
         prefGet = getSharedPreferences("User", Activity.MODE_PRIVATE);
