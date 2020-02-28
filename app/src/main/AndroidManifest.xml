@@ -32,6 +32,8 @@ package="SpiceRack">
     <activity android:name=".Application.activites.InventoryActivity"
         android:windowSoftInputMode="adjustNothing"/>
     <activity android:name=".Application.activites.InventoryEditorActivity" />
+    <activity android:name=".Application.login.SignUpActivity" />
+    <activity android:name=".Application.login.LoginActivity" />
 
 </application>
 
