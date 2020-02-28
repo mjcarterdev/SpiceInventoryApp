@@ -8,9 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.spice_sqlite_test.R;
 import com.example.spicesinventory.activites.HomeActivity;
 import com.example.spicesinventory.database.Spice_Database;
@@ -21,7 +19,7 @@ import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText editEmailAddress, editPassword, textView;
+    EditText editEmailAddress, editPassword;
     String emailID, emailAddress, editPasswordString, pw;
     Spice_Database mySpiceRackDb;
     UserDao myUserDao;
@@ -62,13 +60,6 @@ public class LoginActivity extends AppCompatActivity {
 
         List<User> users = myUserDao.getAllUsers();
 
-        //displays entries
-        //textView = findViewById(R.id.textView);
-        /*int i;
-        for (i = 0; i<users.size(); i++){
-            textView.append(users.get(i).getEmailAddress());
-        }*/
-
         if(tempEmail != null)
             emailID = tempEmail.getEmailAddress();
 
@@ -76,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
             pw = tempPw.getPassword();
 
         if (emailAddress.equals(emailID) && editPasswordString.equals(pw)){
-            //Toast.makeText(com.example.spicesinventory.login.LoginActivity.this, "ok", Toast.LENGTH_SHORT).show();
+
             myUserDao.getAllUsers();
 
             //store logged in user to SharedPreferences

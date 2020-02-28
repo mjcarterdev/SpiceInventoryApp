@@ -127,7 +127,6 @@ public class InventoryActivity extends AppCompatActivity {
         if(temp != null)
             barcodeID = temp.getBarcodeID();
 
-
         if (barcode.isEmpty() || name.isEmpty() || stock.isEmpty()) {
             Toast.makeText(this, "Error - one of the boxes is empty. Please fill all details.", Toast.LENGTH_LONG).show();
 

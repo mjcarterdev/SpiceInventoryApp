@@ -51,10 +51,21 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    /*public void insert(String username, String emailAddress, String password) {
-        user = new User(userName, emailAddress, editPasswordString);
-        myUserDao.insertUser(user);
-    }*/
+    boolean isEmailValid(CharSequence email) {
+        emailAddress = editEmailAddress.getText().toString();
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches();
+    }
+
+    boolean checkIfExists(){
+        emailAddress = editEmailAddress.getText().toString();
+        User userFromDB = myUserDao.getUserByEmail(emailAddress);
+        if (userFromDB != null) {
+            if (emailAddress.equals(userFromDB.getEmailAddress())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void signUp() {
         userName = editUserName.getText().toString();
@@ -66,14 +77,17 @@ public class SignUpActivity extends AppCompatActivity {
 
         if (!(editConfirmPasswordString.equals(editPasswordString))){
             Toast.makeText(SignUpActivity.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
-        }else {
+        } else if (userName.isEmpty() || emailAddress.isEmpty() || editPasswordString.isEmpty() || editConfirmPasswordString.isEmpty()){
+            Toast.makeText(SignUpActivity.this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
+        } else if (!isEmailValid(emailAddress)) {
+            Toast.makeText(SignUpActivity.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
+        } else if (userName.length() <3 || emailAddress.length() <3 || editPasswordString.length() <3 || editConfirmPasswordString.length() <3){
+            Toast.makeText(SignUpActivity.this, "Minimum length 3", Toast.LENGTH_SHORT).show();
+        } else if (checkIfExists()){
+            Toast.makeText(SignUpActivity.this, "User already exists", Toast.LENGTH_SHORT).show();
+        } else {
 
-            //insert(userName, emailAddress, editPasswordString);
             myUserDao.insertUser(user);
-
-            /*
-            int id = myUserDao.getUserByEmail(emailAddress).getUserID();
-            Toast.makeText(SignUpActivity.this, id, Toast.LENGTH_SHORT).show();*/
 
             Intent openActivity = new Intent(this, HomeActivity.class);
             startActivity(openActivity);

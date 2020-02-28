@@ -8,9 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.spice_sqlite_test.R;
 import com.example.spicesinventory.activites.HomeActivity;
 import com.example.spicesinventory.database.Spice_Database;
@@ -21,6 +19,7 @@ import com.example.spicesinventory.login.StartupActivity;
 public class ProfileActivity extends AppCompatActivity {
 
     EditText editUserName, editEmailAddress, editPassword, editConfirmPassword;
+    String userName, emailAddress, editPasswordString, editConfirmPasswordString;
     Spice_Database mySpiceRackDb;
     UserDao myUserDao;
     private SharedPreferences prefGet;
@@ -57,7 +56,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         prefGet = getSharedPreferences("User", Activity.MODE_PRIVATE);
 
-
         User userFromDB = myUserDao.getUserByEmail(prefGet.getString("User logged in", "defValue"));
 
         editEmailAddress.setText(userFromDB.getEmailAddress());
@@ -66,8 +64,17 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void editProfile() {
-        if (!(editPassword.getText().toString().equals(editConfirmPassword.getText().toString()))){
+        userName = editUserName.getText().toString();
+        emailAddress = editEmailAddress.getText().toString();
+        editPasswordString = editPassword.getText().toString();
+        editConfirmPasswordString = editConfirmPassword.getText().toString();
+
+        if (!(editConfirmPasswordString.equals(editPasswordString))){
             Toast.makeText(ProfileActivity.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
+        } else if (userName.isEmpty() || emailAddress.isEmpty() || editPasswordString.isEmpty() || editConfirmPasswordString.isEmpty()) {
+            Toast.makeText(ProfileActivity.this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
+        } else if (userName.length() <3 || emailAddress.length() <3 || editPasswordString.length() <3 || editConfirmPasswordString.length() <3){
+            Toast.makeText(ProfileActivity.this, "Minimum length 3", Toast.LENGTH_SHORT).show();
         } else {
 
             User userFromDB = myUserDao.getUserByEmail(prefGet.getString("User logged in", "defValue"));
