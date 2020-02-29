@@ -27,13 +27,14 @@ public class ShoppingListActivity extends AppCompatActivity {
 
     EditText editName, editAmount;
     Button addItem, clearList;
-    String name, amount;
+    String name;
+    int amount;
     SpiceDatabase mySpiceRackDb;
     ShoppingDao myShoppingDao;
     List<Spice> spiceList;
     ShoppingItem Item;
     RecyclerView listShopping;
-    RecyclerView.Adapter adapterShopping;
+    ShoppingListAdapter adapterShopping;
     Navigation nav;
     private GestureDetectorCompat myGesture;
 
@@ -58,7 +59,7 @@ public class ShoppingListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shoppinglist_activity);
 
-        listShopping = findViewById(R.id.rvShoppingList);
+
 
         editName = findViewById(R.id.editName);
         editAmount = findViewById(R.id.editAmount);
@@ -78,19 +79,22 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         for (Spice element:spiceList) {
             String name = element.getSpiceName();
-            Item = new ShoppingItem(name, "1");
+            String containerType = element.getContainerType();
+            String brand = element.getBrand();
+            Item = new ShoppingItem(name, 1, containerType, brand, 1);
             myShoppingDao.insertItem(Item);
         }
-
-        listShopping.setLayoutManager(new LinearLayoutManager(this));
+        listShopping = findViewById(R.id.rvShoppingList);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        listShopping.setLayoutManager(layoutManager);
         updateUI();
     }
 
     public void addSpiceToShopping() {
         name = editName.getText().toString();
-        amount = editAmount.getText().toString();
+        amount = Integer.parseInt(editAmount.getText().toString());
 
-        Item = new ShoppingItem(name, amount);
+        Item = new ShoppingItem(name, amount, "N/A", "N/A", 0);
 
         myShoppingDao.insertItem(Item);
     }
@@ -101,7 +105,7 @@ public class ShoppingListActivity extends AppCompatActivity {
 
     public void updateUI() {
         List<ShoppingItem> shoppingItem = myShoppingDao.getAllShoppingItems();
-        adapterShopping = new ShoppingListAdapter(shoppingItem);
+        adapterShopping = new ShoppingListAdapter(shoppingItem, this);
         listShopping.setAdapter(adapterShopping);
     }
 

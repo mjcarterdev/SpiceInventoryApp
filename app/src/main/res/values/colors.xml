@@ -9,6 +9,8 @@
     <color name="textBackground">#417505</color>
     <color name="textBackgroundTransparent">#D9417505</color>
     <color name="yellowText">#f7bf23</color>
+    <color name="yellowTextTransparent">#6DF7BF23</color>
     <color name="logOutText">#c60058</color>
     <color name="purpleBackground">#8623f7</color>
+    <color name="recyclerbackground">#39EEE8AA</color>
 </resources>

@@ -21,7 +21,7 @@
 
         <Button
             android:id="@+id/deleteSpices"
-            style="@style/ButtonStyleBackOnYellow"
+            style="@style/ButtonStyleBlackOnYellow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -31,7 +31,7 @@
 
         <Button
             android:id="@+id/btnaddSpice"
-            style="@style/ButtonStyleBackOnYellow"
+            style="@style/ButtonStyleBlackOnYellow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"

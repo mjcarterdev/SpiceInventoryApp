@@ -19,7 +19,7 @@
         <item name="android:shadowDx">4</item>
     </style>
 
-    <style name="ButtonStyleBackOnYellow">
+    <style name="ButtonStyleBlackOnYellow">
         <item name="android:textSize">16sp </item>
         <item name="android:textAlignment">center</item>
         <item name="android:textStyle"> bold|italic</item>
@@ -31,22 +31,33 @@
         <item name="android:background">@color/yellowText</item>
     </style>
 
-    <style name="ButtonStyleYellowOnGreen">
+    <style name="ButtonStyleStartupActivity">
         <item name="android:textSize">16sp </item>
         <item name="android:textAlignment">center</item>
         <item name="android:textStyle"> bold|italic</item>
-        <item name="android:textColor">@color/yellowText</item>
+        <item name="android:textColor">@color/textColour</item>
         <item name="android:shadowColor">#010203</item>
         <item name="android:shadowRadius">4</item>
         <item name="android:shadowDy">4</item>
         <item name="android:shadowDx">4</item>
         <item name="android:background">@color/textBackgroundTransparent</item>
     </style>
-    <style name="EditTextDefaultAdaptor">
+
+    <style name="SpiceAdaptor">
         <item name="android:textSize">16sp </item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle"> bold|italic</item>
-        <item name="android:textColor">@color/yellowText</item>
+        <item name="android:textColor">@color/textColour</item>
+        <item name="android:shadowColor">#010203</item>
+        <item name="android:shadowRadius">4</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowDx">4</item>
+    </style>
+
+    <style name="ShoppingAdaptor">
+        <item name="android:textSize">16sp </item>
+        <item name="android:textStyle"> bold|italic</item>
+        <item name="android:textColor">@color/textColour</item>
         <item name="android:shadowColor">#010203</item>
         <item name="android:shadowRadius">4</item>
         <item name="android:shadowDy">4</item>

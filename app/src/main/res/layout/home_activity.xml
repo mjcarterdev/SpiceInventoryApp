@@ -25,74 +25,48 @@
 
             <Button
                 android:id="@+id/btnShoppingList"
-                android:layout_width="146dp"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:background="@color/yellowText"
-                android:fontFamily="@font/bowlbyonesc_regular"
-                android:shadowColor="@color/textColour"
-                android:shadowDx="4"
-                android:shadowDy="4"
-                android:shadowRadius="4"
-                android:text="@string/shopping_list"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/btnScan"
-                android:layout_width="0dp"
+                style="@style/ButtonStyleBlackOnYellow"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:background="@color/yellowText"
-                android:fontFamily="@font/bowlbyonesc_regular"
-                android:shadowColor="@color/textColour"
-                android:shadowDx="4"
-                android:shadowDy="4"
-                android:shadowRadius="4"
+                android:text="@string/shopping_list"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnScan"
+                style="@style/ButtonStyleBlackOnYellow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
                 android:text="@string/scan"
-                android:textAlignment="center"
-                android:textColor="#000000"
                 android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="82dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnInventory"
-                android:layout_width="146dp"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:background="@color/yellowText"
-                android:fontFamily="@font/bowlbyonesc_regular"
-                android:shadowColor="@color/textColour"
-                android:shadowDx="4"
-                android:shadowDy="4"
-                android:shadowRadius="4"
-                android:text="@string/inventory"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/btnProfile"
-                android:layout_width="0dp"
+                style="@style/ButtonStyleBlackOnYellow"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:background="@color/yellowText"
-                android:fontFamily="@font/badscript_regular"
-                android:shadowColor="@color/textColour"
-                android:shadowDx="4"
-                android:shadowDy="4"
-                android:shadowRadius="4"
+                android:text="@string/inventory"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnProfile"
+                style="@style/ButtonStyleBlackOnYellow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
                 android:text="@string/profile"
-                android:textAlignment="center"
-                android:textColor="#000000"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -104,7 +78,6 @@
         android:layout_height="76dp"
         android:layout_marginBottom="68dp"
         android:background="@color/logOutText"
-        android:fontFamily="@font/bowlbyonesc_regular"
         android:shadowColor="#000000"
         android:shadowDx="4"
         android:shadowDy="4"

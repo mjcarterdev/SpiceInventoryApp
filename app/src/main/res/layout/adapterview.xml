@@ -8,51 +8,57 @@
     android:weightSum="100">
 
     <LinearLayout
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/btn_background"
         android:orientation="horizontal"
         android:weightSum="100"
-        android:background="@drawable/btn_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/RVSpiceName"
-            style="@style/EditTextDefaultAdaptor"
+            style="@style/SpiceAdaptor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="4dp"
-            android:layout_weight="25"
+            android:layout_weight="22"
+
             android:gravity="center"
             android:text="@string/spice_name" />
 
         <TextView
             android:id="@+id/RVBrand"
-            style="@style/EditTextDefaultAdaptor"
+            style="@style/SpiceAdaptor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="25"
+            android:layout_weight="22"
+
+            android:drawableStart="@color/yellowText"
             android:gravity="center"
             android:text="@string/RVbrand" />
 
         <TextView
             android:id="@+id/RVContainerType"
-            style="@style/EditTextDefaultAdaptor"
+            style="@style/SpiceAdaptor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="25"
+            android:layout_weight="28"
+
+            android:drawableStart="@color/yellowText"
             android:gravity="center"
             android:text="@string/RVcontainertype" />
 
         <TextView
             android:id="@+id/RVStock"
-            style="@style/EditTextDefaultAdaptor"
+            style="@style/SpiceAdaptor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="25"
+            android:layout_weight="28"
             android:gravity="center"
             android:text="@string/stock" />
     </LinearLayout>

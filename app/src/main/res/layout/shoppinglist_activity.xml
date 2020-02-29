@@ -10,24 +10,28 @@
     <TextView
         android:id="@+id/tvShoppingList"
         style="@style/EditTextDefault"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="55dp"
+        android:layout_marginEnd="32dp"
         android:layout_weight="30"
         android:gravity="center"
         android:text="@string/shopping_list"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
         android:id="@+id/tableLayout5"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/rvShoppingList"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="149dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/rvShoppingList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvShoppingList">
@@ -39,8 +43,9 @@
             <TextView
                 android:id="@+id/tvName"
                 style="@style/EditTextDefault"
-                android:layout_width="match_parent"
+                android:layout_width="84dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center_vertical|center"
                 android:text="@string/shopping_list_name" />
 
@@ -48,6 +53,7 @@
                 android:id="@+id/editName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:ems="10"
                 android:gravity="center_vertical|center"
                 android:hint="@string/shopping_list_edit_name"
@@ -63,8 +69,9 @@
             <TextView
                 android:id="@+id/tvAmount"
                 style="@style/EditTextDefault"
-                android:layout_width="match_parent"
+                android:layout_width="125dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center_vertical|center"
                 android:text="@string/shopping_list_amount" />
 
@@ -72,6 +79,7 @@
                 android:id="@+id/editAmount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:ems="10"
                 android:gravity="center_vertical|center"
                 android:hint="@string/shopping_list_edit_amount"
@@ -86,18 +94,19 @@
         android:id="@+id/linearLayout4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="55dp"
-        android:orientation="horizontal"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="22dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/rvShoppingList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvShoppingList">
+        app:layout_constraintStart_toEndOf="@+id/tableLayout5"
+        app:layout_constraintTop_toBottomOf="@+id/tvShoppingList">
 
         <Button
             android:id="@+id/btnAddItem"
-            style="@style/ButtonStyleBackOnYellow"
+            style="@style/ButtonStyleBlackOnYellow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -107,10 +116,10 @@
 
         <Button
             android:id="@+id/btnClearList"
-            style="@style/ButtonStyleBackOnYellow"
+            style="@style/ButtonStyleBlackOnYellow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
             android:layout_weight="1"
             android:text="@string/clear_list"
             android:textStyle="normal|bold" />
@@ -121,11 +130,15 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvShoppingList"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginEnd="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/generic_boarder"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout5" />
 

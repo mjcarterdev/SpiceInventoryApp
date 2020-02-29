@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/green_white_background"
-    tools:context="com.example.spicesinventory.login.SignUpActivity">
+    tools:context=".Application.login.SignUpActivity">
 
     <TextView
         android:id="@+id/tvSignUp"
@@ -130,6 +130,7 @@
 
     <Button
         android:id="@+id/btnSignUp"
+        style="@style/ButtonStyleBlackOnYellow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="164dp"

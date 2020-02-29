@@ -11,16 +11,15 @@ import androidx.core.view.GestureDetectorCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import SpiceRack.Application.database.Spice;
-import SpiceRack.Application.database.SpiceDao;
-import SpiceRack.Application.database.SpiceListAdapter;
-import SpiceRack.Application.database.SpiceDatabase;
-import SpiceRack.Application.utilities.Navigation;
-
-import SpiceRack.databinding.InventoryActivityBinding;
-
 import java.util.Collections;
 import java.util.List;
+
+import SpiceRack.Application.database.Spice;
+import SpiceRack.Application.database.SpiceDao;
+import SpiceRack.Application.database.SpiceDatabase;
+import SpiceRack.Application.database.SpiceListAdapter;
+import SpiceRack.Application.utilities.Navigation;
+import SpiceRack.databinding.InventoryActivityBinding;
 
 public class InventoryActivity extends AppCompatActivity implements SpiceListAdapter.SpiceOnClickListener{
 

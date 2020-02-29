@@ -6,7 +6,7 @@ package="SpiceRack">
 <application
 
     android:icon="@mipmap/spicerack_emblem_round"
-    android:roundIcon="@mipmap/ic_launcher_round"
+    android:roundIcon="@mipmap/spicerack_emblem_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme"
     tools:ignore="AllowBackup,GoogleAppIndexingWarning"
@@ -23,7 +23,8 @@ package="SpiceRack">
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-    <activity android:name=".Application.activites.ShoppingListActivity" />
+    <activity android:name=".Application.activites.ShoppingListActivity"
+        android:windowSoftInputMode="adjustNothing"/>
     <activity android:name=".Application.login.StartupActivity"/>
 
     <activity android:name=".Application.activites.ScanActivity" />

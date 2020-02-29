@@ -141,21 +141,25 @@
 
         <Button
             android:id="@+id/btnEditProfile"
-            android:text="@string/edit_profile"
-            style="@style/ButtonStyleBackOnYellow"
+            style="@style/ButtonStyleBlackOnYellow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
+            android:text="@string/edit_profile"
             android:textStyle="normal|bold"
             tools:ignore="RelativeOverlap" />
 
         <Button
             android:id="@+id/btnDeleteUser"
-            android:text="@string/deleteAccount"
-            style="@style/ButtonStyleBackOnYellow"
+            style="@style/ButtonStyleBlackOnYellow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
+            android:text="@string/deleteAccount"
             android:textStyle="normal|bold"
             tools:ignore="RelativeOverlap" />
     </LinearLayout>

@@ -1,7 +1,6 @@
 package SpiceRack.Application.database;
 
 import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
@@ -16,14 +15,26 @@ public class ShoppingItem {
     private int shoppingID;
     @NonNull
     private String itemName;
-    @NonNull
-    private String amount;
+    private int amount;
     private boolean strikeThrough;
+    private int viewType;
+    private String containerType;
+    private String brand;
 
-    public ShoppingItem(@NonNull String itemName,@NonNull String amount) {
+    /*public ShoppingItem(@NonNull String itemName, int amount) {
         this.itemName = itemName;
         this.amount = amount;
         this.strikeThrough = false;
+        this.viewType = 0;
+    }*/
+
+    public ShoppingItem(@NonNull String itemName, int amount, String containerType, String brand, int viewType){
+        this.itemName = itemName;
+        this.amount = amount;
+        this.strikeThrough = false;
+        this.containerType = containerType;
+        this.brand = brand;
+        this.viewType = viewType;
     }
 
     int getShoppingID() {
@@ -43,12 +54,12 @@ public class ShoppingItem {
         this.itemName = item_name;
     }
 
-    @NotNull
-    String getAmount() {
+
+    int getAmount() {
         return amount;
     }
 
-    void setAmount(@NonNull  String amount) {
+    void setAmount(int amount) {
         this.amount = amount;
     }
 
@@ -58,5 +69,29 @@ public class ShoppingItem {
 
     void setStrikeThrough(boolean strikeThrough) {
         this.strikeThrough = strikeThrough;
+    }
+
+    int getViewType() {
+        return viewType;
+    }
+
+    public void setViewType(int viewType) {
+        this.viewType = viewType;
+    }
+
+    String getContainerType() {
+        return containerType;
+    }
+
+    public void setContainerType(String containerType) {
+        this.containerType = containerType;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 }

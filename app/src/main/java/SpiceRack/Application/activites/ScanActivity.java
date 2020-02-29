@@ -92,6 +92,7 @@ public class ScanActivity extends AppCompatActivity implements SpiceListAdapter.
         scanLayout.tvDisplayMessage.setText(receivedSpice.getInfo(sum));
         adapter = new SpiceListAdapter(spiceList, this);
         scanLayout.rvDisplaySpiceList.setAdapter(adapter);
+        searchByBarcode();
     }
 
     @Override
