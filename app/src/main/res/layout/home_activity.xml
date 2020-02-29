@@ -85,7 +85,7 @@
                 android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:background="@color/yellowText"
-                android:fontFamily="@font/bowlbyonesc_regular"
+                android:fontFamily="@font/badscript_regular"
                 android:shadowColor="@color/textColour"
                 android:shadowDx="4"
                 android:shadowDy="4"

@@ -69,8 +69,10 @@
         android:layout_marginBottom="295dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.0">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -92,7 +94,7 @@
 
     <TextView
         android:id="@+id/tvInventoryTitle"
-        style="@style/TitleActivitiesText"
+        style="@style/EditTextDefault"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="34dp"
