@@ -25,10 +25,10 @@ import SpiceRack.databinding.InventoryEditorActivityBinding;
 
 
 public class InventoryEditorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    String barcode,barcodeID, name, container, brand;
+    String barcode,barcodeID, name, container, brand, stock;
     SpiceDatabase mySpiceRackDb;
     SpiceDao mySpiceDao;
-    Spice temp;
+    Spice receivedSpice;
     InventoryEditorActivityBinding inventoryEditorLayout;
     Navigation nav;
     private GestureDetectorCompat myGesture;
@@ -46,11 +46,16 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
                 case R.id.btnaddSpice:
                     addSpice();
                     break;
+                case R.id.btnUpdateSpice:
+                    updateSpice();
+                    break;
                 default:
                     barcode = inventoryEditorLayout.editBarcode.getText().toString();
             }
         }
     };
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +68,7 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
 
         inventoryEditorLayout.deleteSpices.setOnClickListener(myClick);
         inventoryEditorLayout.btnaddSpice.setOnClickListener(myClick);
+        inventoryEditorLayout.btnUpdateSpice.setOnClickListener(myClick);
 
         ArrayAdapter<String> containerAdaptor = new ArrayAdapter<>(InventoryEditorActivity.this, android.R.layout.simple_spinner_dropdown_item, containerType);
         ArrayAdapter<String> brandAdaptor = new ArrayAdapter<>(InventoryEditorActivity.this, android.R.layout.simple_spinner_dropdown_item, brands);
@@ -75,6 +81,7 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
 
         inventoryEditorLayout.spContainerType.setOnItemSelectedListener(this);
         inventoryEditorLayout.spBrand.setOnItemSelectedListener(this);
+
 
 
         nav = new Navigation(this);
@@ -160,44 +167,61 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         }
     }
 
-    public void insert(String barcode, String name, int stock, String containerType, String brand) {
-        Spice spice = new Spice(barcode, name, stock, containerType, brand);
-        mySpiceDao.insertSpice(spice);
-    }
+    private void updateSpice() {
+        barcode = inventoryEditorLayout.editBarcode.getText().toString();
+        name = inventoryEditorLayout.editSpiceName.getText().toString();
+        stock = inventoryEditorLayout.editStock.getText().toString();
+        container = inventoryEditorLayout.spContainerType.getSelectedItem().toString();
+        brand = inventoryEditorLayout.spBrand.getSelectedItem().toString();
+        receivedSpice = mySpiceDao.getSpiceByBarcode(barcode);
+        if (receivedSpice == null) {
+            Toast.makeText(this, "Error - Barcode was not found! Please try again.", Toast.LENGTH_LONG).show();
 
-    public void delete(String barcode) {
-        Spice toDelete = mySpiceDao.getSpiceByBarcode(barcode);
-        mySpiceDao.deleteSpice(toDelete);
+        }else if (barcode.isEmpty() || name.isEmpty() || stock.isEmpty() || container.isEmpty() || brand.isEmpty() || container.contains("Select One...") || brand.contains("Select One...")) {
+                Toast.makeText(this, "Error - one of the boxes is empty. Please fill all details.", Toast.LENGTH_LONG).show();
+        } else {
+            String oldName = receivedSpice.getSpiceName();
+            receivedSpice.setSpiceName(name);
+            receivedSpice.setBrand(brand);
+            receivedSpice.setContainerType(container);
+            receivedSpice.setStock(Integer.parseInt(stock));
+            mySpiceDao.upDate(receivedSpice);
+            Toast.makeText(this,  oldName + " was updated to "+ receivedSpice.getSpiceName(), Toast.LENGTH_SHORT).show();
+            setDefaultInfo();
+        }
     }
-
 
     public void addSpice() {
         barcode = inventoryEditorLayout.editBarcode.getText().toString();
         name = inventoryEditorLayout.editSpiceName.getText().toString();
-        int stock = Integer.parseInt(inventoryEditorLayout.editStock.getText().toString());
-        temp = mySpiceDao.getSpiceByBarcode(barcode);
-        if(temp != null)
-            barcodeID = temp.getBarcode();
-
-        if (barcode.isEmpty() || name.isEmpty() || stock == 0 || container.isEmpty() || brand.isEmpty() || container.contains("Select One...") || brand.contains("Select One...")) {
+        stock = inventoryEditorLayout.editStock.getText().toString();
+        container = inventoryEditorLayout.spContainerType.getSelectedItem().toString();
+        brand = inventoryEditorLayout.spBrand.getSelectedItem().toString();
+        receivedSpice = mySpiceDao.getSpiceByBarcode(barcode);
+        if(receivedSpice != null) {
+            barcodeID = receivedSpice.getBarcode();
+        }
+        if (barcode.isEmpty() || name.isEmpty() || stock.isEmpty() || container.isEmpty() || brand.isEmpty() || container.contains("Select One...") || brand.contains("Select One...")) {
             Toast.makeText(this, "Error - one of the boxes is empty. Please fill all details.", Toast.LENGTH_LONG).show();
 
         } else if (barcode.equals(barcodeID)) {
-            Toast.makeText(this, barcode + " Already exists " + barcodeID, Toast.LENGTH_LONG).show();
-        }
-        else if (temp == null) {
-            insert(barcode, name, stock, container, brand);
+            Toast.makeText(this, barcode + " Already exists!", Toast.LENGTH_LONG).show();
+        } else if (receivedSpice == null) {
+            Spice spice = new Spice(barcode, name, Integer.parseInt(stock), container, brand);
+            mySpiceDao.insertSpice(spice);
+            Toast.makeText(this,  name + " was added to inventory!", Toast.LENGTH_SHORT).show();
             setDefaultInfo();
         }
     }
 
     public void deleteSpice(){
         barcode = inventoryEditorLayout.editBarcode.getText().toString();
-        temp = mySpiceDao.getSpiceByBarcode(barcode);
-        if (temp == null) {
+        receivedSpice = mySpiceDao.getSpiceByBarcode(barcode);
+        if (receivedSpice == null) {
             Toast.makeText(this, "Error - Barcode was not found! Please try again.", Toast.LENGTH_LONG).show();
         } else {
-            delete(barcode);
+            mySpiceDao.deleteSpice(receivedSpice);
+            Toast.makeText(this,  receivedSpice.getBarcode() +" " + receivedSpice.getSpiceName() + " was deleted!", Toast.LENGTH_SHORT).show();
             setDefaultInfo();
         }
     }
@@ -209,4 +233,5 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         inventoryEditorLayout.spContainerType.setSelection(0);
         inventoryEditorLayout.spBrand.setSelection(0);
     }
+
 }

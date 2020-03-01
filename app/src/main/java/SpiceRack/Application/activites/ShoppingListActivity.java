@@ -91,13 +91,13 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         listShopping.setLayoutManager(layoutManager);
         shoppingItem = myShoppingDao.getAllShoppingItems();
-        adapterShopping = new ShoppingListAdapter(this, shoppingItem, this);
+        adapterShopping = new ShoppingListAdapter(shoppingItem, this);
         listShopping.setAdapter(adapterShopping);
     }
 
     private void updateUI() {
         shoppingItem = myShoppingDao.getAllShoppingItems();
-        adapterShopping = new ShoppingListAdapter(this, shoppingItem, this);
+        adapterShopping = new ShoppingListAdapter(shoppingItem, this);
         listShopping.setAdapter(adapterShopping);
     }
 
@@ -152,7 +152,6 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         }
         myShoppingDao.upDate(shoppingItem.get(position));
         updateUI();
-        Toast.makeText(this, "Spice is pressed", Toast.LENGTH_SHORT).show();
     }
 
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
@@ -192,6 +191,7 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
             ShoppingItem item = shoppingItem.get(viewHolder.getAdapterPosition());
             if (direction == ItemTouchHelper.RIGHT) {
                 myShoppingDao.deleteItem(item);
+                updateUI();
                 Toast.makeText(ShoppingListActivity.this, item.getItemName() + " is Deleted", Toast.LENGTH_SHORT).show();
             } else {
                 String name = editName.getText().toString();

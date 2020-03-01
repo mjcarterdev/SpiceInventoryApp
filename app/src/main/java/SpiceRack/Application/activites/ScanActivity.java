@@ -58,8 +58,11 @@ public class ScanActivity extends AppCompatActivity implements SpiceListAdapter.
 
         new ItemTouchHelper(itemTouchCallback).attachToRecyclerView(scanLayout.rvDisplaySpiceList);
         scanLayout.rvDisplaySpiceList.setLayoutManager(new LinearLayoutManager(this));
-        updateUI();
-
+        if(receivedSpice == null) {
+            Toast.makeText(this, "Error Barcode not in Inventory", Toast.LENGTH_SHORT).show();
+        }else{
+            updateUI();
+        }
     }
 
     public void searchByBarcode(){
@@ -89,11 +92,12 @@ public class ScanActivity extends AppCompatActivity implements SpiceListAdapter.
         for (Spice element: spiceList) {
             sum+= element.getStock();
         }
-        scanLayout.tvDisplayMessage.setText(receivedSpice.getInfo(sum));
-        adapter = new SpiceListAdapter(spiceList, this);
-        scanLayout.rvDisplaySpiceList.setAdapter(adapter);
-        searchByBarcode();
-    }
+            scanLayout.tvDisplayMessage.setText(receivedSpice.getInfo(sum));
+            adapter = new SpiceListAdapter(spiceList, this);
+            scanLayout.rvDisplaySpiceList.setAdapter(adapter);
+            searchByBarcode();
+        }
+
 
     @Override
     public void spiceOnClick(int position) {

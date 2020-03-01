@@ -30,6 +30,15 @@
             tools:ignore="RelativeOverlap" />
 
         <Button
+            android:id="@+id/btnUpdateSpice"
+            style="@style/ButtonStyleBlackOnYellow"
+            android:layout_marginStart="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/update" />
+
+        <Button
             android:id="@+id/btnaddSpice"
             style="@style/ButtonStyleBlackOnYellow"
             android:layout_width="match_parent"

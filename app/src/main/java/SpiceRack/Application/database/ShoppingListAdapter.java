@@ -2,15 +2,13 @@ package SpiceRack.Application.database;
 
 
 import android.content.Context;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
+import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
@@ -23,16 +21,13 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static final int SPICE_STRIKE = 2;
     private static final int SHOPPING_NORMAL = 3;
     private static final int SHOPPING_STRIKE = 4;
-    private String TAG = "DEBUGGING";
 
     private List<ShoppingItem> shoppingLists;
-    private Context mContext;
+
     private OnItemClickListener onItemClickListener;
 
-
-    public ShoppingListAdapter(Context context, List<ShoppingItem> shoppingLists, OnItemClickListener onItemClickListener) {
+    public ShoppingListAdapter(List<ShoppingItem> shoppingLists, OnItemClickListener onItemClickListener) {
         this.shoppingLists = shoppingLists;
-        this.mContext= context;
         this.onItemClickListener = onItemClickListener;
     }
 
@@ -46,16 +41,12 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         ShoppingItem item = shoppingLists.get(position);
         switch (item.getViewType()) {
             case SPICE_NORMAL:
-                Log.d(TAG, "spice normal");
                 return SPICE_NORMAL;
             case SPICE_STRIKE:
-                Log.d(TAG, "spice strike");
                 return SPICE_STRIKE;
             case SHOPPING_NORMAL:
-                Log.d(TAG, "shopping normal");
                 return SHOPPING_NORMAL;
             case SHOPPING_STRIKE:
-                Log.d(TAG, "spice strike");
                 return SHOPPING_STRIKE;
             default:
                 return -1;

@@ -14,6 +14,19 @@ public class Spice implements Comparable<Spice>{
     private int spiceID;
     @NonNull
     private String barcode;
+
+    public void setBarcode(@NonNull String barcode) {
+        this.barcode = barcode;
+    }
+
+    public void setSpiceName(String spiceName) {
+        this.spiceName = spiceName;
+    }
+
+    public void setContainerType(String containerType) {
+        this.containerType = containerType;
+    }
+
     private String spiceName;
     private int stock;
     private String containerType;
@@ -44,7 +57,7 @@ public class Spice implements Comparable<Spice>{
         return this.stock;
     }
 
-     public String getSpiceName() {
+    public String getSpiceName() {
         return spiceName;
     }
 

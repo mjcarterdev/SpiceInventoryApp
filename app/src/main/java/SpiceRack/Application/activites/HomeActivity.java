@@ -18,7 +18,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
-
+    View v;
     Navigation nav;
     private GestureDetectorCompat myGesture;
 
@@ -97,7 +97,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
                     if (diffY > 0) {
-                        nav.inventoryEditor();
+                        scanner(v);
                     } else {
                         nav.profilePage();
                     }
