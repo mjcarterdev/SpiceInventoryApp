@@ -68,27 +68,21 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         View view;
         switch (viewType){
             case SPICE_NORMAL:
-                Log.d(TAG, "spice normal viewholderSpice");
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapterview_spice, parent, false);
                 return new ViewHolderSpice(view, onItemClickListener);
             case SPICE_STRIKE:
-                Log.d(TAG, "spice strike viewholderSpice");
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adaptorview_spice_strikethrough, parent, false);
                 return new ViewHolderSpice(view, onItemClickListener);
             case SHOPPING_NORMAL:
-                Log.d(TAG, "shopping normal viewholderhopping");
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapterview_shopping, parent, false);
                 return new ViewHolderShopping(view, onItemClickListener);
             case SHOPPING_STRIKE:
-                Log.d(TAG, "shopping strike viewholderhopping");
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapterview_shopping_strikethrough, parent, false);
                 return new ViewHolderShopping(view, onItemClickListener);
             default:
-                Log.d(TAG, "default should be seeing this!");
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_activity, parent, false);
                 return new ViewHolderSpice(view, onItemClickListener);
         }
-
     }
 
     @Override
@@ -107,7 +101,6 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             viewHolderShopping.amount.setText(String.valueOf(shoppingLists.get(position).getAmount()));
         }
     }
-
 
     // Static inner class to initialize the views of rows
     static class ViewHolderSpice extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -151,5 +144,4 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public interface OnItemClickListener{
         void onItemClick(int position);
     }
-
 }

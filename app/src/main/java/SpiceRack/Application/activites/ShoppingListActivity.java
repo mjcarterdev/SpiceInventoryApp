@@ -1,8 +1,7 @@
 package SpiceRack.Application.activites;
 
-import android.content.ClipData;
+
 import android.os.Bundle;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -10,11 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 import SpiceRack.Application.database.ShoppingDao;
 import SpiceRack.Application.database.ShoppingItem;
@@ -32,11 +32,25 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
     private static final int SPICE_STRIKE = 2;
     private static final int SHOPPING_NORMAL = 3;
     private static final int SHOPPING_STRIKE = 4;
+    private GestureDetectorCompat myGesture;
+    int amount;
+    private View.OnClickListener myClick = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+
+            if (v.getId() == R.id.btnAddItem) {
+                addItemToShopping();
+            } else {
+                clearList();
+            }
+            updateUI();
+        }
+    };
 
     EditText editName, editAmount;
     Button addItem, clearList;
     String name;
-    int amount;
     SpiceDatabase mySpiceRackDb;
     ShoppingDao myShoppingDao;
     List<Spice> spiceList;
@@ -45,22 +59,6 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
     RecyclerView listShopping;
     ShoppingListAdapter adapterShopping;
     Navigation nav;
-    private GestureDetectorCompat myGesture;
-
-    private View.OnClickListener myClick = new View.OnClickListener() {
-
-        @Override
-        public void onClick(View v) {
-
-            if (v.getId() == R.id.btnAddItem){
-                addItemToShopping();
-                //Toast.makeText(ShoppingListActivity.this, "BLA", Toast.LENGTH_SHORT).show();
-            } else {
-                clearList();
-            }
-            updateUI();
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +70,7 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
 
         addItem = findViewById(R.id.btnAddItem);
         clearList = findViewById(R.id.btnClearList);
-
+        listShopping = findViewById(R.id.rvShoppingList);
         addItem.setOnClickListener(myClick);
         clearList.setOnClickListener(myClick);
 
@@ -83,28 +81,28 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         nav = new Navigation(this);
         myGesture = new GestureDetectorCompat(this, new MyGestureListener());
 
+        new ItemTouchHelper(itemTouchCallback).attachToRecyclerView(listShopping);
+
         addZeroStockSpices(spiceList);
         initRecyclerView();
     }
 
-    private void initRecyclerView(){
-        listShopping = findViewById(R.id.rvShoppingList);
+    private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         listShopping.setLayoutManager(layoutManager);
         shoppingItem = myShoppingDao.getAllShoppingItems();
         adapterShopping = new ShoppingListAdapter(this, shoppingItem, this);
         listShopping.setAdapter(adapterShopping);
-
     }
 
-    private void updateUI(){
+    private void updateUI() {
         shoppingItem = myShoppingDao.getAllShoppingItems();
         adapterShopping = new ShoppingListAdapter(this, shoppingItem, this);
         listShopping.setAdapter(adapterShopping);
     }
 
-    private void addZeroStockSpices(List<Spice> spiceList){
-        for (Spice element:spiceList) {
+    private void addZeroStockSpices(List<Spice> spiceList) {
+        for (Spice element : spiceList) {
             String name = element.getSpiceName();
             String containerType = element.getContainerType();
             String brand = element.getBrand();
@@ -120,8 +118,13 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         myShoppingDao.insertItem(Item);
     }
 
-    public void clearList(){
-        myShoppingDao.deleteList();
+    public void clearList() {
+        List<ShoppingItem> list = myShoppingDao.getAllShoppingItems();
+        for (ShoppingItem element : list) {
+            if (element.getViewType() == 2 || element.getViewType() == 4) {
+                myShoppingDao.deleteItem(element);
+            }
+        }
     }
 
     @Override
@@ -133,7 +136,7 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
     @Override
     public void onItemClick(int position) {
         ShoppingItem item = shoppingItem.get(position);
-        switch(item.getViewType()){
+        switch (item.getViewType()) {
             case SPICE_NORMAL:
                 item.setViewType(SPICE_STRIKE);
                 break;
@@ -149,6 +152,7 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         }
         myShoppingDao.upDate(shoppingItem.get(position));
         updateUI();
+        Toast.makeText(this, "Spice is pressed", Toast.LENGTH_SHORT).show();
     }
 
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
@@ -176,4 +180,32 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
             return true;
         }
     }
+
+    ItemTouchHelper.SimpleCallback itemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            ShoppingItem item = shoppingItem.get(viewHolder.getAdapterPosition());
+            if (direction == ItemTouchHelper.RIGHT) {
+                myShoppingDao.deleteItem(item);
+                Toast.makeText(ShoppingListActivity.this, item.getItemName() + " is Deleted", Toast.LENGTH_SHORT).show();
+            } else {
+                String name = editName.getText().toString();
+                String amount = editAmount.getText().toString();
+                if (name.isEmpty() || amount.isEmpty()) {
+                    Toast.makeText(ShoppingListActivity.this, "Error - name or amount is empty!", Toast.LENGTH_SHORT).show();
+                } else {
+                    item.setItemName(name);
+                    item.setAmount(Integer.parseInt(amount));
+                    myShoppingDao.upDate(item);
+                    Toast.makeText(ShoppingListActivity.this, item.getItemName() + " has been updated", Toast.LENGTH_SHORT).show();
+                }
+                updateUI();
+            }
+        }
+    };
 }

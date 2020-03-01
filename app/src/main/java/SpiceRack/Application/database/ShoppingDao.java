@@ -21,6 +21,9 @@ public interface ShoppingDao {
     @Query("DELETE FROM  shoppingList")
     void deleteList();
 
+    @Query("DELETE FROM shoppingList WHERE viewType = 2 || 4")
+    void deleteStrikethrough();
+
     @Update (onConflict = OnConflictStrategy.REPLACE)
     void upDate(ShoppingItem shoppingItem);
 
