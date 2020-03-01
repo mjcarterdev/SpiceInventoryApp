@@ -23,7 +23,7 @@ public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.View
     @NonNull
     @Override
     public SpiceListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapterview, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapterview_spice, parent, false);
         return new ViewHolder(view, mySpiceListener);
     }
 

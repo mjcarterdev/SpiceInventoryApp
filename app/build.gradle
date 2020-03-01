@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "SpiceRack.Application"
-        minSdkVersion 28
+        minSdkVersion 29
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"

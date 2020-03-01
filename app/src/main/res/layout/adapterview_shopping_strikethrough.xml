@@ -7,6 +7,9 @@
     android:layout_marginTop="4dp"
     android:layout_marginEnd="8dp"
     android:background="@drawable/btn_background"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="@drawable/btn_background_strikethrough"
     android:orientation="horizontal"
     android:weightSum="100">
 
@@ -15,7 +18,6 @@
         android:id="@+id/rvShoppingName"
         style="@style/ShoppingAdaptor"
         android:layout_width="match_parent"
-
         android:layout_height="match_parent"
         android:layout_weight="33"
         android:gravity="center"
@@ -40,4 +42,3 @@
 
 
 </LinearLayout>
-

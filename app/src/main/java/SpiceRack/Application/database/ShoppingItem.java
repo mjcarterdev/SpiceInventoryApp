@@ -16,62 +16,46 @@ public class ShoppingItem {
     @NonNull
     private String itemName;
     private int amount;
-    private boolean strikeThrough;
+    private boolean isSpice;
     private int viewType;
     private String containerType;
     private String brand;
 
-    /*public ShoppingItem(@NonNull String itemName, int amount) {
+    public ShoppingItem(@NonNull String itemName, int amount, String containerType, String brand, int viewType, boolean isSpice){
         this.itemName = itemName;
         this.amount = amount;
-        this.strikeThrough = false;
-        this.viewType = 0;
-    }*/
-
-    public ShoppingItem(@NonNull String itemName, int amount, String containerType, String brand, int viewType){
-        this.itemName = itemName;
-        this.amount = amount;
-        this.strikeThrough = false;
+        this.isSpice = isSpice;
         this.containerType = containerType;
         this.brand = brand;
         this.viewType = viewType;
     }
 
-    int getShoppingID() {
+    public int getShoppingID() {
         return shoppingID;
     }
 
-    void setShoppingID(int shoppingID) {
+    public void setShoppingID(int shoppingID) {
         this.shoppingID = shoppingID;
     }
 
     @NotNull
-    String getItemName() {
+    public String getItemName() {
         return itemName;
     }
 
-    void setItemName(@NotNull String item_name) {
+    public void setItemName(@NotNull String item_name) {
         this.itemName = item_name;
     }
 
-
-    int getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    void setAmount(int amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 
-    boolean isStrikeThrough() {
-        return strikeThrough;
-    }
-
-    void setStrikeThrough(boolean strikeThrough) {
-        this.strikeThrough = strikeThrough;
-    }
-
-    int getViewType() {
+    public int getViewType() {
         return viewType;
     }
 
@@ -79,7 +63,7 @@ public class ShoppingItem {
         this.viewType = viewType;
     }
 
-    String getContainerType() {
+    public String getContainerType() {
         return containerType;
     }
 
@@ -93,5 +77,13 @@ public class ShoppingItem {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public boolean isSpice() {
+        return isSpice;
+    }
+
+    public void setSpice(boolean spice) {
+        isSpice = spice;
     }
 }

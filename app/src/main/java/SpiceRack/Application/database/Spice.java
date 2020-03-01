@@ -18,6 +18,7 @@ public class Spice implements Comparable<Spice>{
     private int stock;
     private String containerType;
     private String brand;
+    private Boolean isSpice;
 
 
     public Spice(@NonNull String barcode, String spiceName, int stock, String containerType, String brand){
@@ -27,6 +28,7 @@ public class Spice implements Comparable<Spice>{
         this.stock = stock;
         this.containerType = containerType;
         this.brand = brand;
+        this.isSpice = true;
     }
 
     public void setStock(int stock) {
@@ -76,4 +78,11 @@ public class Spice implements Comparable<Spice>{
         this.spiceID = spiceID;
     }
 
+    public Boolean getSpice() {
+        return isSpice;
+    }
+
+    public void setSpice(Boolean spice) {
+        isSpice = spice;
+    }
 }

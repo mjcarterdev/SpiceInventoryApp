@@ -1,11 +1,14 @@
 package SpiceRack.Application.activites;
 
+import android.content.ClipData;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
@@ -23,7 +26,12 @@ import SpiceRack.R;
 
 import java.util.List;
 
-public class ShoppingListActivity extends AppCompatActivity {
+public class ShoppingListActivity extends AppCompatActivity implements ShoppingListAdapter.OnItemClickListener {
+
+    private static final int SPICE_NORMAL = 1;
+    private static final int SPICE_STRIKE = 2;
+    private static final int SHOPPING_NORMAL = 3;
+    private static final int SHOPPING_STRIKE = 4;
 
     EditText editName, editAmount;
     Button addItem, clearList;
@@ -32,6 +40,7 @@ public class ShoppingListActivity extends AppCompatActivity {
     SpiceDatabase mySpiceRackDb;
     ShoppingDao myShoppingDao;
     List<Spice> spiceList;
+    List<ShoppingItem> shoppingItem;
     ShoppingItem Item;
     RecyclerView listShopping;
     ShoppingListAdapter adapterShopping;
@@ -44,12 +53,11 @@ public class ShoppingListActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             if (v.getId() == R.id.btnAddItem){
-                addSpiceToShopping();
+                addItemToShopping();
                 //Toast.makeText(ShoppingListActivity.this, "BLA", Toast.LENGTH_SHORT).show();
             } else {
                 clearList();
             }
-
             updateUI();
         }
     };
@@ -58,8 +66,6 @@ public class ShoppingListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shoppinglist_activity);
-
-
 
         editName = findViewById(R.id.editName);
         editAmount = findViewById(R.id.editAmount);
@@ -77,25 +83,40 @@ public class ShoppingListActivity extends AppCompatActivity {
         nav = new Navigation(this);
         myGesture = new GestureDetectorCompat(this, new MyGestureListener());
 
+        addZeroStockSpices(spiceList);
+        initRecyclerView();
+    }
+
+    private void initRecyclerView(){
+        listShopping = findViewById(R.id.rvShoppingList);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        listShopping.setLayoutManager(layoutManager);
+        shoppingItem = myShoppingDao.getAllShoppingItems();
+        adapterShopping = new ShoppingListAdapter(this, shoppingItem, this);
+        listShopping.setAdapter(adapterShopping);
+
+    }
+
+    private void updateUI(){
+        shoppingItem = myShoppingDao.getAllShoppingItems();
+        adapterShopping = new ShoppingListAdapter(this, shoppingItem, this);
+        listShopping.setAdapter(adapterShopping);
+    }
+
+    private void addZeroStockSpices(List<Spice> spiceList){
         for (Spice element:spiceList) {
             String name = element.getSpiceName();
             String containerType = element.getContainerType();
             String brand = element.getBrand();
-            Item = new ShoppingItem(name, 1, containerType, brand, 1);
+            Item = new ShoppingItem(name, 1, containerType, brand, SPICE_NORMAL, true);
             myShoppingDao.insertItem(Item);
         }
-        listShopping = findViewById(R.id.rvShoppingList);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        listShopping.setLayoutManager(layoutManager);
-        updateUI();
     }
 
-    public void addSpiceToShopping() {
+    public void addItemToShopping() {
         name = editName.getText().toString();
         amount = Integer.parseInt(editAmount.getText().toString());
-
-        Item = new ShoppingItem(name, amount, "N/A", "N/A", 0);
-
+        Item = new ShoppingItem(name, amount, "N/A", "N/A", SHOPPING_NORMAL, false);
         myShoppingDao.insertItem(Item);
     }
 
@@ -103,16 +124,31 @@ public class ShoppingListActivity extends AppCompatActivity {
         myShoppingDao.deleteList();
     }
 
-    public void updateUI() {
-        List<ShoppingItem> shoppingItem = myShoppingDao.getAllShoppingItems();
-        adapterShopping = new ShoppingListAdapter(shoppingItem, this);
-        listShopping.setAdapter(adapterShopping);
-    }
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.myGesture.onTouchEvent(event);
         return super.onTouchEvent(event);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        ShoppingItem item = shoppingItem.get(position);
+        switch(item.getViewType()){
+            case SPICE_NORMAL:
+                item.setViewType(SPICE_STRIKE);
+                break;
+            case SPICE_STRIKE:
+                item.setViewType(SPICE_NORMAL);
+                break;
+            case SHOPPING_NORMAL:
+                item.setViewType(SHOPPING_STRIKE);
+                break;
+            case SHOPPING_STRIKE:
+                item.setViewType(SHOPPING_NORMAL);
+                break;
+        }
+        myShoppingDao.upDate(shoppingItem.get(position));
+        updateUI();
     }
 
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
