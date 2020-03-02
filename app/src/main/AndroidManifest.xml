@@ -17,16 +17,15 @@ package="SpiceRack">
         android:screenOrientation="fullSensor"
         tools:replace="screenOrientation" />
 
-    <activity android:name=".Application.activites.HomeActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+    <activity android:name=".Application.activites.HomeActivity" />
     <activity android:name=".Application.activites.ShoppingListActivity"
         android:windowSoftInputMode="adjustNothing"/>
-    <activity android:name=".Application.login.StartupActivity"/>
-
+    <activity android:name=".Application.login.StartupActivity">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+    </activity>
     <activity android:name=".Application.activites.ScanActivity" />
     <activity android:name=".Application.profile.ProfileActivity" />
     <activity android:name=".Application.activites.InventoryActivity"
