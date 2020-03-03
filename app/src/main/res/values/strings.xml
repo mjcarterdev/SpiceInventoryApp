@@ -72,4 +72,5 @@
     <string name="textview">TextView</string>
     <string name="update">Update</string>
     <string name="loginHint">Login Hint</string>
+    <string name="showHint">Show Hint</string>
 </resources>

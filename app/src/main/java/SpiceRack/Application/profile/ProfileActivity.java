@@ -22,8 +22,8 @@ import SpiceRack.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    EditText editUserName, editEmailAddress, editPassword, editConfirmPassword;
-    String userName, emailAddress, editPasswordString, editConfirmPasswordString;
+    EditText editUserName, editEmailAddress, editPassword, editConfirmPassword, editLoginHint;
+    String userName, emailAddress, editPasswordString, editConfirmPasswordString, editLoginHintString;
     SpiceDatabase mySpiceRackDb;
     UserDao myUserDao;
     private SharedPreferences prefGet;
@@ -54,16 +54,18 @@ public class ProfileActivity extends AppCompatActivity {
         editEmailAddress = findViewById(R.id.editEmailAddress);
         editPassword = findViewById(R.id.editPassword);
         editConfirmPassword = findViewById(R.id.editConfirmPassword);
+        editLoginHint = findViewById(R.id.editLoginHint);
 
         mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         myUserDao = mySpiceRackDb.getUserDao();
 
         prefGet = getSharedPreferences("User", Activity.MODE_PRIVATE);
 
-        User userFromDB = myUserDao.getUserByEmail(prefGet.getString("User logged in", "defValue"));
+        User userFromDB = myUserDao.getUserByEmail(prefGet.getString("User", "defValue"));
 
         editEmailAddress.setText(userFromDB.getEmailAddress());
         editUserName.setText(userFromDB.getUsername());
+        editLoginHint.setText(userFromDB.getLoginHint());
 
     }
 
@@ -72,12 +74,13 @@ public class ProfileActivity extends AppCompatActivity {
         emailAddress = editEmailAddress.getText().toString();
         editPasswordString = editPassword.getText().toString();
         editConfirmPasswordString = editConfirmPassword.getText().toString();
+        editLoginHintString = editLoginHint.getText().toString();
 
         if (!(editConfirmPasswordString.equals(editPasswordString))){
             Toast.makeText(ProfileActivity.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
-        } else if (userName.isEmpty() || emailAddress.isEmpty() || editPasswordString.isEmpty() || editConfirmPasswordString.isEmpty()) {
+        } else if (userName.isEmpty() || emailAddress.isEmpty() || editPasswordString.isEmpty() || editConfirmPasswordString.isEmpty() || editLoginHintString.isEmpty()) {
             Toast.makeText(ProfileActivity.this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
-        } else if (userName.length() <3 || emailAddress.length() <3 || editPasswordString.length() <3 || editConfirmPasswordString.length() <3){
+        } else if (userName.length() <3 || emailAddress.length() <3 || editPasswordString.length() <3 || editConfirmPasswordString.length() <3 || editLoginHintString.length() <3){
             Toast.makeText(ProfileActivity.this, "Minimum length 3", Toast.LENGTH_SHORT).show();
         } else {
 
@@ -85,6 +88,7 @@ public class ProfileActivity extends AppCompatActivity {
             userFromDB.setEmailAddress(editEmailAddress.getText().toString());
             userFromDB.setUsername(editUserName.getText().toString());
             userFromDB.setPassword(editPassword.getText().toString());
+            userFromDB.setLoginHint(editLoginHint.getText().toString());
             myUserDao.upDate(userFromDB);
 
             SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);

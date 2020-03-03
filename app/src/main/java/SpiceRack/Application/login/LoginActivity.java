@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     String emailID, emailAddress, editPasswordString, pw;
     SpiceDatabase mySpiceRackDb;
     UserDao myUserDao;
-    Button btnLogIn;
+    Button btnLogIn, btnShowHint;
     User tempEmail, tempPw;
 
     private View.OnClickListener myClick = new View.OnClickListener() {
@@ -34,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
         public void onClick(View v) {
             if (v.getId() == R.id.btnLogIn) {
                 logIn();
+            } else if (v.getId() == R.id.btnShowHint) {
+                showHint();
             }
         }
     };
@@ -46,11 +48,24 @@ public class LoginActivity extends AppCompatActivity {
         btnLogIn = findViewById(R.id.btnLogIn);
         btnLogIn.setOnClickListener(myClick);
 
+        btnShowHint = findViewById(R.id.btnShowHint);
+        btnShowHint.setOnClickListener(myClick);
+
         editEmailAddress = findViewById(R.id.editEmailAddress);
         editPassword = findViewById(R.id.editPassword);
 
         mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         myUserDao = mySpiceRackDb.getUserDao();
+
+    }
+
+    public void showHint(){
+        emailAddress = editEmailAddress.getText().toString();
+        tempEmail = myUserDao.getUserByEmail(emailAddress);
+
+        if(tempEmail != null){
+            Toast.makeText(LoginActivity.this, tempEmail.getLoginHint(), Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -76,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
             //store logged in user to SharedPreferences
             SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = prefPut.edit();
-            prefEditor.putString("User logged in", emailAddress);
+            prefEditor.putString("User", emailAddress);
             prefEditor.commit();
 
             Intent openActivity = new Intent(this, HomeActivity.class);

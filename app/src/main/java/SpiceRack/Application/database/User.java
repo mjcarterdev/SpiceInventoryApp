@@ -23,10 +23,22 @@ public class User {
     @ColumnInfo(name = "password")
     private String password;
 
-    public User(String username, String emailAddress, String password) {
+    @ColumnInfo(name = "loginHint")
+    private String loginHint;
+
+    public User(String username, String emailAddress, String password, String loginHint) {
         this.username = username;
         this.emailAddress = emailAddress;
         this.password = password;
+        this.loginHint = loginHint;
+    }
+
+    public String getLoginHint() {
+        return loginHint;
+    }
+
+    public void setLoginHint(String loginHint) {
+        this.loginHint = loginHint;
     }
 
     public int getUserID() {
