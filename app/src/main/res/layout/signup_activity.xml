@@ -126,6 +126,30 @@
                 android:textColor="@color/textColour" />
         </TableRow>
 
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvLoginHint"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="@string/loginHint" />
+
+            <EditText
+                android:id="@+id/editLoginHint"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center_vertical|center"
+                android:hint="@string/loginHint"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:textColor="@color/textColour" />
+        </TableRow>
+
     </TableLayout>
 
     <Button
