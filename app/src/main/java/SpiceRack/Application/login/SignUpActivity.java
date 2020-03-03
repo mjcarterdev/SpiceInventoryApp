@@ -10,13 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
 import SpiceRack.Application.activites.HomeActivity;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.database.User;
 import SpiceRack.Application.database.UserDao;
 import SpiceRack.R;
-
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -52,7 +50,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         myUserDao = mySpiceRackDb.getUserDao();
-
     }
 
     boolean isEmailValid(CharSequence email) {
@@ -99,11 +96,10 @@ public class SignUpActivity extends AppCompatActivity {
 
             SharedPreferences prefPutU = getSharedPreferences("User", Activity.MODE_PRIVATE);
             SharedPreferences.Editor prefEditorU = prefPutU.edit();
-            prefEditorU.putString("User", emailAddress);
+            prefEditorU.putString("UserLoggedIn", emailAddress);
             prefEditorU.commit();
 
         }
     }
-
 }
 

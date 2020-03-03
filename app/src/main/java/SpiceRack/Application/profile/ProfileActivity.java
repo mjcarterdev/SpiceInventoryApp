@@ -9,16 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
-
 import SpiceRack.Application.activites.HomeActivity;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.database.User;
 import SpiceRack.Application.database.UserDao;
 import SpiceRack.Application.login.StartupActivity;
 import SpiceRack.R;
-
-
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -66,7 +62,6 @@ public class ProfileActivity extends AppCompatActivity {
         editEmailAddress.setText(userFromDB.getEmailAddress());
         editUserName.setText(userFromDB.getUsername());
         editLoginHint.setText(userFromDB.getLoginHint());
-
     }
 
     public void editProfile() {
@@ -84,7 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
             Toast.makeText(ProfileActivity.this, "Minimum length 3", Toast.LENGTH_SHORT).show();
         } else {
 
-            User userFromDB = myUserDao.getUserByEmail(prefGet.getString("User logged in", "defValue"));
+            User userFromDB = myUserDao.getUserByEmail(prefGet.getString("User", "defValue"));
             userFromDB.setEmailAddress(editEmailAddress.getText().toString());
             userFromDB.setUsername(editUserName.getText().toString());
             userFromDB.setPassword(editPassword.getText().toString());
@@ -93,26 +88,24 @@ public class ProfileActivity extends AppCompatActivity {
 
             SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = prefPut.edit();
-            prefEditor.putString("User logged in", editEmailAddress.getText().toString());
+            prefEditor.putString("User", editEmailAddress.getText().toString());
             prefEditor.commit();
 
             Intent openActivity = new Intent(this, HomeActivity.class);
             startActivity(openActivity);
         }
-
     }
 
     public void deleteUserAccount(){
-        User userFromDB = myUserDao.getUserByEmail(prefGet.getString("User logged in", "defValue"));
+        User userFromDB = myUserDao.getUserByEmail(prefGet.getString("UserLoggedIn", "defValue"));
         myUserDao.deleteUser(userFromDB);
 
         SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = prefPut.edit();
-        prefEditor.putString("User logged in", "defValue");
+        prefEditor.putString("UserLoggedIn", "defValue");
         prefEditor.commit();
 
         Intent openActivity = new Intent(this, StartupActivity.class);
         startActivity(openActivity);
     }
-
 }

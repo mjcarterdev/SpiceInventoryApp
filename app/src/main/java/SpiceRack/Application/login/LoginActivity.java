@@ -1,6 +1,5 @@
 package SpiceRack.Application.login;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,10 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
-
 import java.util.List;
-
 import SpiceRack.Application.activites.HomeActivity;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.database.User;
@@ -56,7 +52,6 @@ public class LoginActivity extends AppCompatActivity {
 
         mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         myUserDao = mySpiceRackDb.getUserDao();
-
     }
 
     public void showHint(){
@@ -66,7 +61,6 @@ public class LoginActivity extends AppCompatActivity {
         if(tempEmail != null){
             Toast.makeText(LoginActivity.this, tempEmail.getLoginHint(), Toast.LENGTH_SHORT).show();
         }
-
     }
 
     public void logIn() {
@@ -91,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
             //store logged in user to SharedPreferences
             SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = prefPut.edit();
-            prefEditor.putString("User", emailAddress);
+            prefEditor.putString("UserLoggedIn", emailAddress);
             prefEditor.commit();
 
             Intent openActivity = new Intent(this, HomeActivity.class);
@@ -100,7 +94,5 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             Toast.makeText(LoginActivity.this, "Wrong user or password", Toast.LENGTH_SHORT).show();
         }
-
     }
-
 }

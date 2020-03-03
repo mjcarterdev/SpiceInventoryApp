@@ -1,18 +1,20 @@
 package SpiceRack.Application.login;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import SpiceRack.Application.activites.HomeActivity;
-import SpiceRack.Application.activites.ScanActivity;
+import SpiceRack.Application.database.User;
 import SpiceRack.R;
 
 public class StartupActivity extends AppCompatActivity {
+
+    private SharedPreferences prefGet;
 
     private View.OnClickListener myClick = new View.OnClickListener() {
         @Override
@@ -37,8 +39,15 @@ public class StartupActivity extends AppCompatActivity {
     }
 
     public void logIn() {
-        Intent openActivity = new Intent(this, LoginActivity.class);
-        startActivity(openActivity);
+        prefGet = getSharedPreferences("User", Activity.MODE_PRIVATE);
+
+        if (prefGet.contains("UserLoggedIn")) {
+            Intent openActivity = new Intent(this, HomeActivity.class);
+            startActivity(openActivity);
+        } else {
+            Intent openActivity = new Intent(this, LoginActivity.class);
+            startActivity(openActivity);
+        }
     }
 
     public void signUp() {
