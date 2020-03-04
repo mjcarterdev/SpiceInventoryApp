@@ -1,6 +1,5 @@
 package SpiceRack.Application.login;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -98,7 +97,6 @@ public class SignUpActivity extends AppCompatActivity {
             SharedPreferences.Editor prefEditorU = prefPutU.edit();
             prefEditorU.putString("UserLoggedIn", emailAddress);
             prefEditorU.commit();
-
         }
     }
 }

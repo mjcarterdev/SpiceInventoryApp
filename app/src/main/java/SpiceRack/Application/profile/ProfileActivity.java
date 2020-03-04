@@ -57,7 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         prefGet = getSharedPreferences("User", Activity.MODE_PRIVATE);
 
-        User userFromDB = myUserDao.getUserByEmail(prefGet.getString("User", "defValue"));
+        User userFromDB = myUserDao.getUserByEmail(prefGet.getString("UserLoggedIn", "defValue"));
 
         editEmailAddress.setText(userFromDB.getEmailAddress());
         editUserName.setText(userFromDB.getUsername());
@@ -79,7 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
             Toast.makeText(ProfileActivity.this, "Minimum length 3", Toast.LENGTH_SHORT).show();
         } else {
 
-            User userFromDB = myUserDao.getUserByEmail(prefGet.getString("User", "defValue"));
+            User userFromDB = myUserDao.getUserByEmail(prefGet.getString("UserLoggedIn", "defValue"));
             userFromDB.setEmailAddress(editEmailAddress.getText().toString());
             userFromDB.setUsername(editUserName.getText().toString());
             userFromDB.setPassword(editPassword.getText().toString());
@@ -88,7 +88,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = prefPut.edit();
-            prefEditor.putString("User", editEmailAddress.getText().toString());
+            prefEditor.putString("UserLoggedIn", editEmailAddress.getText().toString());
             prefEditor.commit();
 
             Intent openActivity = new Intent(this, HomeActivity.class);
@@ -101,9 +101,7 @@ public class ProfileActivity extends AppCompatActivity {
         myUserDao.deleteUser(userFromDB);
 
         SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor prefEditor = prefPut.edit();
-        prefEditor.putString("UserLoggedIn", "defValue");
-        prefEditor.commit();
+        prefPut.edit().clear().commit();
 
         Intent openActivity = new Intent(this, StartupActivity.class);
         startActivity(openActivity);
