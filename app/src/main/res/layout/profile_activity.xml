@@ -9,9 +9,11 @@
     <TextView
         android:id="@+id/tvEditProfile"
         style="@style/EditTextDefault"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="55dp"
+        android:layout_marginEnd="40dp"
         android:layout_weight="30"
         android:gravity="center"
         android:text="@string/edit_profile"
@@ -22,8 +24,13 @@
 
     <TableLayout
         android:id="@+id/tableLayout4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEditProfile">
@@ -153,15 +160,16 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="225dp"
         android:orientation="horizontal"
-        android:layout_marginEnd="36dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout4">
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/btnEditProfile"

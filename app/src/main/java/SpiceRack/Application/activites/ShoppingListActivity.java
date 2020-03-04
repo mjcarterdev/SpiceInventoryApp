@@ -2,6 +2,7 @@ package SpiceRack.Application.activites;
 
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,6 +26,7 @@ import SpiceRack.Application.utilities.Navigation;
 import SpiceRack.R;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ShoppingListActivity extends AppCompatActivity implements ShoppingListAdapter.OnItemClickListener {
 
@@ -34,6 +36,7 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
     private static final int SHOPPING_STRIKE = 4;
     private GestureDetectorCompat myGesture;
     int amount;
+    private Parcelable recyclerViewState;
     private View.OnClickListener myClick = new View.OnClickListener() {
 
         @Override
@@ -99,6 +102,7 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         shoppingItem = myShoppingDao.getAllShoppingItems();
         adapterShopping = new ShoppingListAdapter(shoppingItem, this);
         listShopping.setAdapter(adapterShopping);
+        Objects.requireNonNull(listShopping.getLayoutManager()).onRestoreInstanceState(recyclerViewState);
     }
 
     private void addZeroStockSpices(List<Spice> spiceList) {
@@ -151,6 +155,8 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
                 break;
         }
         myShoppingDao.upDate(shoppingItem.get(position));
+
+        recyclerViewState = Objects.requireNonNull(listShopping.getLayoutManager()).onSaveInstanceState();
         updateUI();
     }
 
