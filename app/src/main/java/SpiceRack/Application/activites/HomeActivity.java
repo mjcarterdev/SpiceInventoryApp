@@ -16,6 +16,9 @@ import SpiceRack.databinding.HomeActivityBinding;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+/**
+ *
+ */
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
     View v;
@@ -58,9 +61,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         myGesture = new GestureDetectorCompat(this, new MyGestureListener());
     }
 
-       /*
-    Gesture recognition to change activity
-     */
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

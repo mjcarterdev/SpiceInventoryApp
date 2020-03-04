@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/green_white_background"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:background="@drawable/green_white_background">
 
 
     <LinearLayout
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginEnd="36dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="58dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/fBtnScanBarcode"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,9 +32,9 @@
         <Button
             android:id="@+id/btnUpdateSpice"
             style="@style/ButtonStyleBlackOnYellow"
-            android:layout_marginStart="8dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:text="@string/update" />
 
@@ -183,8 +183,8 @@
         android:id="@+id/fBtnScanBarcode"
         android:layout_width="91dp"
         android:layout_height="74dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="46dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="188dp"
         android:background="@color/colorPrimaryDark"
         android:backgroundTint="#F8BE19"
         android:backgroundTintMode="add"
