@@ -73,4 +73,8 @@
     <string name="update">Update</string>
     <string name="loginHint">Login Hint</string>
     <string name="showHint">Show Hint</string>
+    <string name="spice_inventory_editor">Spice Inventory Editor</string>
+    <string name="spice_information">Spice Information</string>
+    <string name="pic1">Pic1</string>
+    <string name="pic2">pic2</string>
 </resources>

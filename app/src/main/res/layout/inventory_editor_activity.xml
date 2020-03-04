@@ -11,13 +11,15 @@
         android:id="@+id/linearLayout3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="58dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="2dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/fBtnScanBarcode"
+        app:layout_constraintBottom_toTopOf="@id/SpiceImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tableLayout2">
 
         <Button
             android:id="@+id/deleteSpices"
@@ -52,16 +54,16 @@
 
     <TableLayout
         android:id="@+id/tableLayout2"
-        android:layout_width="338dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="36dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/tvInventoryEditorTitle">
 
         <TableRow
             android:layout_width="match_parent"
@@ -179,20 +181,52 @@
         </TableRow>
     </TableLayout>
 
+    <TextView
+        android:id="@+id/tvInventoryEditorTitle"
+        style="@style/EditTextDefault"
+        android:layout_width="302dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/spice_inventory_editor"
+        android:textFontWeight="700"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fBtnScanBarcode"
-        android:layout_width="91dp"
-        android:layout_height="74dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="188dp"
-        android:background="@color/colorPrimaryDark"
-        android:backgroundTint="#F8BE19"
-        android:backgroundTintMode="add"
-        android:clickable="true"
-        android:focusable="true"
-        android:foregroundGravity="center"
-        app:fabCustomSize="40dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_gravity="bottom|end"
+        android:backgroundTint="@color/yellowText"
+        android:src="@drawable/barcode_clipart"
+        app:fabCustomSize="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.815"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.187"
+        app:maxImageSize="50dp" />
+
+    <ImageView
+        android:id="@+id/SpiceImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/spicenmortar_clipart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
