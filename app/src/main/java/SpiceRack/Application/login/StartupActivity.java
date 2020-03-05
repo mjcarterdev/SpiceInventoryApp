@@ -9,12 +9,25 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import SpiceRack.Application.activites.HomeActivity;
-import SpiceRack.Application.database.User;
 import SpiceRack.R;
 
+/**
+ * <h1>SpiceRack</h1>
+ * <p>
+ *      The SpiceRack application is a database management system for spices and herbs within
+ *      the kitchen. It is intended for home personal use and has additional features for building
+ *      simple shopping lists.
+ *</p>
+ * <p>
+ *      The startup activity class is the first activity to be initiated upon opening of a new
+ *      instance of the app. The user has two onclick buttons to either move to new user entry
+ *      or to log in.
+ * </p>
+ * @author michael and astrid
+ * @version 1.0
+ * @since 05.03.2020
+ */
 public class StartupActivity extends AppCompatActivity {
-
-    private SharedPreferences prefGet;
 
     private View.OnClickListener myClick = new View.OnClickListener() {
         @Override
@@ -38,8 +51,13 @@ public class StartupActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(myClick);
     }
 
+    /**
+     * The logIn method is called when the Log In button is clicked. Previous users login data is
+     * stored as a shared preference. If data is found, the method will move straight to the home
+     * activity. Otherwise, it will direct the user to the Log In activity.
+     */
     public void logIn() {
-        prefGet = getSharedPreferences("User", Activity.MODE_PRIVATE);
+        SharedPreferences prefGet = getSharedPreferences("User", Activity.MODE_PRIVATE);
 
         if (prefGet.contains("UserLoggedIn")) {
             Intent openActivity = new Intent(this, HomeActivity.class);
@@ -50,6 +68,10 @@ public class StartupActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * The signUp method is called when Sign Up button is clicked. It moves the user to the SignUp
+     * activity.
+     */
     public void signUp() {
         Intent openActivity = new Intent(this, SignUpActivity.class);
         startActivity(openActivity);

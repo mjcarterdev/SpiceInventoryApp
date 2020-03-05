@@ -17,22 +17,40 @@ package="SpiceRack">
         android:screenOrientation="fullSensor"
         tools:replace="screenOrientation" />
 
-    <activity android:name=".Application.activites.HomeActivity" />
+    <activity android:name=".Application.activites.HomeActivity"
+        android:screenOrientation="portrait"
+        tools:ignore="LockedOrientationActivity" />
     <activity android:name=".Application.activites.ShoppingListActivity"
-        android:windowSoftInputMode="adjustNothing"/>
-    <activity android:name=".Application.login.StartupActivity">
+        android:windowSoftInputMode="adjustNothing"
+        android:screenOrientation="portrait"
+        tools:ignore="LockedOrientationActivity" />
+    <activity android:name=".Application.login.StartupActivity"
+        android:screenOrientation="portrait"
+        tools:ignore="LockedOrientationActivity">
     <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
     </intent-filter>
     </activity>
-    <activity android:name=".Application.activites.ScanActivity" />
-    <activity android:name=".Application.profile.ProfileActivity" />
+    <activity android:name=".Application.activites.ScanActivity"
+        android:screenOrientation="portrait"
+        tools:ignore="LockedOrientationActivity" />
+    <activity android:name=".Application.profile.ProfileActivity"
+        android:screenOrientation="portrait"
+        tools:ignore="LockedOrientationActivity" />
     <activity android:name=".Application.activites.InventoryActivity"
-        android:windowSoftInputMode="adjustNothing"/>
-    <activity android:name=".Application.activites.InventoryEditorActivity" />
-    <activity android:name=".Application.login.SignUpActivity" />
-    <activity android:name=".Application.login.LoginActivity" />
+        android:windowSoftInputMode="adjustNothing"
+        android:screenOrientation="portrait"
+        tools:ignore="LockedOrientationActivity" />
+    <activity android:name=".Application.activites.InventoryEditorActivity"
+        android:screenOrientation="portrait"
+        tools:ignore="LockedOrientationActivity" />
+    <activity android:name=".Application.login.SignUpActivity"
+        android:screenOrientation="portrait"
+        tools:ignore="LockedOrientationActivity" />
+    <activity android:name=".Application.login.LoginActivity"
+        android:screenOrientation="portrait"
+        tools:ignore="LockedOrientationActivity" />
 
 </application>
 
