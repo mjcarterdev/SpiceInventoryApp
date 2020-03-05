@@ -28,8 +28,14 @@ import SpiceRack.R;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ShoppingListActivity extends AppCompatActivity implements ShoppingListAdapter.OnItemClickListener {
-
+    /**
+     * Static parameters used to identify the viewType for each item. This decides on which layout
+     * is created in the recyclerView.
+     */
     private static final int SPICE_NORMAL = 1;
     private static final int SPICE_STRIKE = 2;
     private static final int SHOPPING_NORMAL = 3;
@@ -90,6 +96,10 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         initRecyclerView();
     }
 
+    /**
+     *
+     */
+
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         listShopping.setLayoutManager(layoutManager);
@@ -98,12 +108,21 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         listShopping.setAdapter(adapterShopping);
     }
 
+    /**
+     *
+     */
+
     private void updateUI() {
         shoppingItem = myShoppingDao.getAllShoppingItems();
         adapterShopping = new ShoppingListAdapter(shoppingItem, this);
         listShopping.setAdapter(adapterShopping);
         Objects.requireNonNull(listShopping.getLayoutManager()).onRestoreInstanceState(recyclerViewState);
     }
+
+    /**
+     *
+     * @param spiceList
+     */
 
     private void addZeroStockSpices(List<Spice> spiceList) {
         for (Spice element : spiceList) {
@@ -115,12 +134,20 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         }
     }
 
+    /**
+     *
+     */
+
     public void addItemToShopping() {
         name = editName.getText().toString();
         amount = Integer.parseInt(editAmount.getText().toString());
         Item = new ShoppingItem(name, amount, "N/A", "N/A", SHOPPING_NORMAL, false);
         myShoppingDao.insertItem(Item);
     }
+
+    /**
+     *
+     */
 
     public void clearList() {
         List<ShoppingItem> list = myShoppingDao.getAllShoppingItems();
@@ -131,11 +158,25 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         }
     }
 
+    /**
+     * <p>
+     *     Analyzes the given motion event and if applicable triggers the appropriate callbacks on
+     *     the GestureDetector.OnGestureListener supplied.
+     * </p>
+     * @param event the current motion event
+     * @return true if the GestureDetector.OnGestureListener consumed the event, else false.
+     */
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.myGesture.onTouchEvent(event);
         return super.onTouchEvent(event);
     }
+
+    /**
+     *
+     * @param position
+     */
 
     @Override
     public void onItemClick(int position) {
@@ -160,8 +201,26 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         updateUI();
     }
 
-    class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
+    /**
+     * <p>
+     *     MyGestureListener class extends GestureDetector.SimpleOnGestureListener a convenient class
+     *     where only a subset of gestures are required. This implements onDown() and onFLing() methods
+     *     but does nothing and return false.
+     * </p>
+     */
 
+    class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
+        /**
+         * <p>
+         *      Swipe_Threshold is the distance travelled from the initial screen contact till the
+         *      final position in any of the four directions.
+         * </p>
+         * <p>
+         *      Swipe_Velocity_Threshold is the speed at which a movement needs to travel before being
+         *      identified as a gesture.
+         * </p>
+         * <p> The value given is an arbitrary number based on what feels right</p>
+         */
         private static final int SWIPE_THRESHOLD = 100;
         private static final int SWIPE_VELOCITY_THRESHOLD = 100;
 
@@ -169,6 +228,15 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         public boolean onDown(MotionEvent e) {
             return false;
         }
+
+         /**
+         * @param downEvent The first down motion that started the fling.
+         * @param moveEvent The move motion event that triggered the current onFLing.
+         * @param velocityX The velocity of this fling measured in pixels per second along the x axis.
+         * @param velocityY The velocity of this fling measured in pixels per second along the y axis.
+         * @return Boolean. If false nothing will happen. If returned true the event has been completed
+         * successfully. The outcome of the return is dependent on the direction of this fling.
+         */
 
         public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
             float diffY = moveEvent.getY() - downEvent.getY();
@@ -186,6 +254,9 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         }
     }
 
+    /**
+     *
+     */
     ItemTouchHelper.SimpleCallback itemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
