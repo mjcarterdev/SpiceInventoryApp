@@ -99,10 +99,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     *
+     * MyGestureListener class extends GestureDetector.SimpleOnGestureListener a convenient class
+     * where only a subset of gestures are required. This implements onDown() and onFLing() methods
+     * but does nothing and return false.
      */
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
-
+        /**
+         * <p>Swipe_Threshold is the distance travelled from the initial screen contact till the
+         * final position in any of the four directions.
+         * </p>
+         * <p>Swipe_Velocity_Threshold is the speed at which a movement needs to travel before being
+         * identified as a gesture.</p>
+         * <p> The value given is an arbitrary number based on what feels right</p>
+         */
         private static final int SWIPE_THRESHOLD = 100;
         private static final int SWIPE_VELOCITY_THRESHOLD = 100;
 
@@ -114,11 +123,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         /**
          *
-         * @param downEvent
-         * @param moveEvent
-         * @param velocityX
-         * @param velocityY
-         * @return
+         * @param downEvent The first down motion that started the fling.
+         * @param moveEvent The move motion event that triggered the current onFLing.
+         * @param velocityX The velocity of this fling measured in pixels per second along the x axis.
+         * @param velocityY The velocity of this fling measured in pixels per second along the y axis.
+         * @return Boolean. If false nothing will happen. If returned true the event has been completed
+         * successfully. The outcome of the return is dependent on the direction of this fling.
          */
         @Override
         public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
@@ -150,20 +160,57 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    /**
+    /*
+     * Copyright 2009 ZXing authors
      *
-     * @param v
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
      */
+
+     /**    <p> A utility class which helps ease integration with Barcode Scanner via Intent's.
+      *     This is a simple way to invoke barcode scanning and receive the result, without any
+      *     need to integrate, modify, or learn the project's source code.</p>
+      *
+      *     <h1>Initiating a barcode scan</h1>
+      *
+      *     <p> To integrate, create an instance of IntentIntegrator and call initiateScan() which
+      *     can recognise all barcode types and wait for the result in your app.</p>
+      *
+      *     <href>https://github.com/zxing/zxing</href>
+      *     <href>http://javadox.com/com.google.zxing/android-integration/3.1.0/com/google/zxing/integration/android/IntentIntegrator.html</href>
+      *
+      *     @author Sean Owen
+      *     @author Fred Lin
+      *     @author Isaac Potoczny-Jones
+      *     @author Brad Drehmer
+      *     @author gcstang
+      */
+
 
     public void scanner(View v) {
             new IntentIntegrator(this).initiateScan();
         }
 
     /**
+     *  <p>IntentResult encapsulates the result of a barcode scan invoked through IntentIntegrator.</p>
+     *  <href>http://javadox.com/com.google.zxing/android-integration/3.1.0/com/google/zxing/integration/android/IntentResult.html</href>
      *
-     * @param requestCode
-     * @param resultCode
-     * @param data
+     *  @param requestCode static int associated with the scanning process. Code from {@code onActivityResult()}
+     *  @param resultCode static int associated with the scanning process. Code from {@code onActivityResult()}
+     *  @param data the intent call from the activity to start the barcode scan.
+     *
+     *  
+     *
+     *  @author Sean Owen
      */
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
