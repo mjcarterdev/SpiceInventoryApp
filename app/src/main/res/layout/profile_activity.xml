@@ -16,11 +16,9 @@
     <TextView
         android:id="@+id/tvEditProfile"
         style="@style/EditTextDefault"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="55dp"
-        android:layout_marginEnd="40dp"
         android:layout_weight="30"
         android:gravity="center"
         android:text="@string/edit_profile"
@@ -33,140 +31,139 @@
             android:id="@+id/tableLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvEditProfile">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tvUserName"
-                style="@style/EditTextDefault"
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical|center"
-                android:text="@string/label_user_name" />
+                android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/editUserName"
+                <TextView
+                    android:id="@+id/tvUserName"
+                    style="@style/EditTextDefault"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:text="@string/label_user_name" />
+
+                <EditText
+                    android:id="@+id/editUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:gravity="center_vertical|center"
+                    android:hint="@string/user_name"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/textColour" />
+            </TableRow>
+
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:gravity="center_vertical|center"
-                android:hint="@string/user_name"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                android:textColor="@color/textColour" />
-        </TableRow>
+                android:layout_height="match_parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tvEmail"
+                    style="@style/EditTextDefault"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:text="@string/label_email_address" />
 
-            <TextView
-                android:id="@+id/tvEmail"
-                style="@style/EditTextDefault"
+                <EditText
+                    android:id="@+id/editEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:gravity="center_vertical|center"
+                    android:hint="@string/email_address"
+                    android:importantForAutofill="no"
+                    android:inputType="textWebEmailAddress"
+                    android:textColor="@color/textColour" />
+            </TableRow>
+
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical|center"
-                android:text="@string/label_email_address" />
+                android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/editEmailAddress"
+                <TextView
+                    android:id="@+id/tvPassword"
+                    style="@style/EditTextDefault"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:text="@string/label_password" />
+
+                <EditText
+                    android:id="@+id/editPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:gravity="center_vertical|center"
+                    android:hint="@string/password"
+                    android:importantForAutofill="no"
+                    android:inputType="textPassword"
+                    android:textColor="@color/textColour" />
+
+            </TableRow>
+
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:gravity="center_vertical|center"
-                android:hint="@string/email_address"
-                android:importantForAutofill="no"
-                android:inputType="textWebEmailAddress"
-                android:textColor="@color/textColour" />
-        </TableRow>
+                android:layout_height="match_parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tvConfirmPassword"
+                    style="@style/EditTextDefault"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:text="@string/label_confirm_password" />
 
-            <TextView
-                android:id="@+id/tvPassword"
-                style="@style/EditTextDefault"
+                <EditText
+                    android:id="@+id/editConfirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:gravity="center_vertical|center"
+                    android:hint="@string/confirm_password"
+                    android:importantForAutofill="no"
+                    android:inputType="textPassword"
+                    android:textColor="@color/textColour" />
+            </TableRow>
+
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical|center"
-                android:text="@string/label_password" />
+                android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/editPassword"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:gravity="center_vertical|center"
-                android:hint="@string/password"
-                android:importantForAutofill="no"
-                android:inputType="textPassword"
-                android:textColor="@color/textColour" />
+                <TextView
+                    android:id="@+id/tvLoginHint"
+                    style="@style/EditTextDefault"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center"
+                    android:text="@string/loginHint" />
 
-        </TableRow>
+                <EditText
+                    android:id="@+id/editLoginHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:gravity="center_vertical|center"
+                    android:hint="@string/showHint"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/textColour" />
+            </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tvConfirmPassword"
-                style="@style/EditTextDefault"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical|center"
-                android:text="@string/label_confirm_password" />
-
-            <EditText
-                android:id="@+id/editConfirmPassword"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:gravity="center_vertical|center"
-                android:hint="@string/confirm_password"
-                android:importantForAutofill="no"
-                android:inputType="textPassword"
-                android:textColor="@color/textColour" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tvLoginHint"
-                style="@style/EditTextDefault"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical|center"
-                android:text="@string/loginHint" />
-
-            <EditText
-                android:id="@+id/editLoginHint"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:gravity="center_vertical|center"
-                android:hint="@string/showHint"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                android:textColor="@color/textColour" />
-        </TableRow>
-
-    </TableLayout>
+        </TableLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="64dp"
+            android:id="@+id/linearLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -177,9 +174,7 @@
                 android:id="@+id/btnEditProfile"
                 style="@style/ButtonStyleBlackOnYellow"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="64dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
@@ -191,9 +186,7 @@
                 android:id="@+id/btnDeleteUser"
                 style="@style/ButtonStyleBlackOnYellow"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="64dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"

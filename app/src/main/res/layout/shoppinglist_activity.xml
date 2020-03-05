@@ -28,7 +28,6 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -131,7 +130,6 @@
             android:text="@string/clear_list"
             android:textStyle="normal|bold" />
 
-
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -155,7 +153,6 @@
         android:contentDescription="@string/pic1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.242"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/shoppingbanner" />
 

@@ -164,8 +164,6 @@
             style="@style/ButtonStyleBlackOnYellow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="64dp"
             android:text="@string/button_sign_up"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
