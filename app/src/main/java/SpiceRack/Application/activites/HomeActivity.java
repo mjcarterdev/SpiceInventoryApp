@@ -18,9 +18,10 @@ import com.google.zxing.integration.android.IntentResult;
 
 /**
  * <h1>Home Activity</h1>
- * <p> The Home Activity is the main page to navigate through all the various application features.
- * OnSwipe gestures are implemented along with buttons to provide multiple means of transitioning
- * though the application.</p>
+ * <p>  The Home Activity is the main page to navigate through all the various application features.
+ *      OnSwipe gestures are implemented along with buttons to provide multiple means of transitioning
+ *      though the application.
+ * </p>
  *
  * @author Michael and Astrid
  * @version 1.0
@@ -28,13 +29,13 @@ import com.google.zxing.integration.android.IntentResult;
  */
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
-    /**
-     * <p>Global variables for storing a view to pass into the scanner() method and storing a
-     * navigation object to simplify moving around the application.
-     * The private GestureDetectorCompat object is used to detect swipe movements and run code
-     * blocks depending on the type of swipe.
-     * </p>
-     */
+/**
+ * <p>
+ *      Global variables for storing a view to pass into the scanner() method and storing a
+ *      navigation object to simplify moving around the application. The private GestureDetectorCompat
+ *      object is used to detect swipe movements and run code blocks depending on the type of swipe.
+ * </p>
+ */
 
     View v;
     Navigation nav;
@@ -45,8 +46,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
      * button has been pressed. Each case will perform a navigation to another activity except the
      * "Scan" button which called the scanner() method.
      * @param v is the view that has been clicked and is passed to the onClick method.
-     * @link scanner()
-     * @link Navigation
+     * @link scanner().
+     * @link Navigation class.
      */
     @Override
     public void onClick(View v) {
@@ -201,14 +202,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     /**
-     *  <p>IntentResult encapsulates the result of a barcode scan invoked through IntentIntegrator.</p>
+     *  <p>
+     *      onActivityResult() creates IntentResult that encapsulates the result of a barcode scan
+     *      invoked through IntentIntegrator. If the result is null the method is called again.
+     *      If the scan is called but no data is captured before closing, a Toast message is displayed
+     *      stating that the process was cancelled. If data is captured by the scanning event the content
+     *      of the result (i.e. barcode number) is stored as a String and passed to scan_activity class
+     *      through an intent.
+     *  </p>
      *  <href>http://javadox.com/com.google.zxing/android-integration/3.1.0/com/google/zxing/integration/android/IntentResult.html</href>
      *
      *  @param requestCode static int associated with the scanning process. Code from {@code onActivityResult()}
      *  @param resultCode static int associated with the scanning process. Code from {@code onActivityResult()}
      *  @param data the intent call from the activity to start the barcode scan.
-     *
-     *  
      *
      *  @author Sean Owen
      */
