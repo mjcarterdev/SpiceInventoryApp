@@ -19,7 +19,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="80dp"
             android:orientation="horizontal">
 
             <Button
@@ -45,7 +45,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="82dp"
+            android:layout_height="80dp"
             android:orientation="horizontal">
 
             <Button
@@ -75,8 +75,8 @@
         android:id="@+id/btnLogout"
         android:layout_width="322dp"
         android:layout_height="0dp"
-
-        android:layout_marginBottom="68dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="60dp"
         android:background="@color/logOutText"
         android:shadowColor="#000000"
         android:shadowDx="4"
