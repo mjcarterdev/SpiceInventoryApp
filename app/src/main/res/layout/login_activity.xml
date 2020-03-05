@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,49 +10,57 @@
     <TextView
         android:id="@+id/tvLogin"
         style="@style/EditTextDefault"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="30dp"
         android:layout_weight="30"
         android:gravity="center"
         android:text="@string/logIn"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
         android:id="@+id/tableLayout4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="125dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="420dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLogin">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvEmail"
-            style="@style/EditTextDefault"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|center"
-            android:text="@string/label_email_address" />
+            <TextView
+                android:id="@+id/tvEmail"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="@string/label_email_address" />
 
-        <EditText
-            android:id="@+id/editEmailAddress"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:ems="10"
-            android:gravity="center_vertical|center"
-            android:hint="@string/email_address"
-            android:importantForAutofill="no"
-            android:inputType="textWebEmailAddress"
-            android:textColor="@color/textColour" />
+            <EditText
+                android:id="@+id/editEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center_vertical|center"
+                android:hint="@string/email_address"
+                android:importantForAutofill="no"
+                android:inputType="textWebEmailAddress"
+                android:textColor="@color/textColour" />
 
         </TableRow>
 
@@ -61,39 +68,41 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvPassword"
-            style="@style/EditTextDefault"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical|center"
-            android:text="@string/label_password" />
+            <TextView
+                android:id="@+id/tvPassword"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="@string/label_password" />
 
-        <EditText
-            android:id="@+id/editPassword"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:ems="10"
-            android:gravity="center_vertical|center"
-            android:hint="@string/password"
-            android:importantForAutofill="no"
-            android:inputType="textPassword"
-            android:textColor="@color/textColour" />
+            <EditText
+                android:id="@+id/editPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="center_vertical|center"
+                android:hint="@string/password"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:textColor="@color/textColour" />
 
         </TableRow>
 
     </TableLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginBottom="325dp"
         android:orientation="horizontal"
-        android:layout_marginEnd="36dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout4">
 
         <Button
@@ -104,9 +113,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
+            android:text="@string/logIn"
             android:textStyle="normal|bold"
-            tools:ignore="RelativeOverlap"
-            android:text="@string/logIn" />
+            tools:ignore="RelativeOverlap" />
 
         <Button
             android:id="@+id/btnShowHint"
@@ -116,9 +125,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
+            android:text="@string/showHint"
             android:textStyle="normal|bold"
-            tools:ignore="RelativeOverlap"
-            android:text="@string/showHint" />
+            tools:ignore="RelativeOverlap" />
 
     </LinearLayout>
 

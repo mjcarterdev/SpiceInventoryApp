@@ -7,13 +7,32 @@
     android:background="@drawable/green_white_background"
     tools:context=".Application.activites.ScanActivity">
 
+    <TextView
+        android:id="@+id/tvInventoryEditorTitle"
+        style="@style/EditTextDefault"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/spice_information"
+        android:textFontWeight="700"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="35dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvDisplayMessage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -39,6 +58,7 @@
                 android:gravity="center_vertical|center"
                 android:importantForAutofill="no" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="60dp">
@@ -112,30 +132,29 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="45dp"
         android:background="@drawable/generic_boarder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDisplayMessage" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDisplayMessage"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tvDisplayMessage"
+        style="@style/EditTextDefault"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="350dp"
         android:layout_marginEnd="32dp"
         android:text="@string/message"
-        style="@style/EditTextDefault"
-        app:layout_constraintBottom_toTopOf="@+id/rvDisplaySpiceList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

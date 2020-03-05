@@ -1,8 +1,6 @@
 package SpiceRack.Application.activites;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -18,12 +16,38 @@ import SpiceRack.databinding.HomeActivityBinding;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+/**
+ * <h1>Home Activity</h1>
+ * <p> The Home Activity is the main page to navigate through all the various application features.
+ * OnSwipe gestures are implemented along with buttons to provide multiple means of transitioning
+ * though the application.</p>
+ *
+ * @author Michael and Astrid
+ * @version 1.0
+ * @since 05.03.2020
+ */
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
+    /**
+     * <p>Global variables for storing a view to pass into the scanner() method and storing a
+     * navigation object to simplify moving around the application.
+     * The private GestureDetectorCompat object is used to detect swipe movements and run code
+     * blocks depending on the type of swipe.
+     * </p>
+     */
+
     View v;
     Navigation nav;
     private GestureDetectorCompat myGesture;
 
+    /**
+     * Class implements onClickListener method onClick(). A switch case is used to identify which
+     * button has been pressed. Each case will perform a navigation to another activity except the
+     * "Scan" button which called the scanner() method.
+     * @param v is the view that has been clicked and is passed to the onClick method.
+     * @link scanner()
+     * @link Navigation
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -40,7 +64,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 nav.profilePage();
                 break;
             default:
-                logOut();
                 nav.logOut();
         }
     }
@@ -61,14 +84,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         myGesture = new GestureDetectorCompat(this, new MyGestureListener());
     }
 
-    public void logOut() {
-        SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
-        prefPut.edit().clear().commit();
-    }
-
-       /*
-    Gesture recognition to change activity
+    /**
+     * Analyzes the given motion event and if applicable triggers the appropriate callbacks on the
+     * GestureDetector.OnGestureListener supplied.
+     * @param event the current motion event
+     * @return true if the GestureDetector.OnGestureListener consumed the event, else false.
      */
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -76,6 +98,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         return super.onTouchEvent(event);
     }
 
+    /**
+     *
+     */
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
 
         private static final int SWIPE_THRESHOLD = 100;
@@ -87,6 +112,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             return false;
         }
 
+        /**
+         *
+         * @param downEvent
+         * @param moveEvent
+         * @param velocityX
+         * @param velocityY
+         * @return
+         */
         @Override
         public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
             boolean result = false;
@@ -117,13 +150,21 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-        /*
-    Barcode Scanner
+    /**
+     *
+     * @param v
      */
-        public void scanner(View v) {
+
+    public void scanner(View v) {
             new IntentIntegrator(this).initiateScan();
         }
 
+    /**
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
