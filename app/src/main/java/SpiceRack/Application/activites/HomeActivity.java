@@ -1,6 +1,8 @@
 package SpiceRack.Application.activites;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -12,7 +14,6 @@ import androidx.core.view.GestureDetectorCompat;
 import SpiceRack.R;
 import SpiceRack.Application.utilities.Navigation;
 import SpiceRack.databinding.HomeActivityBinding;
-
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -64,8 +65,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 nav.profilePage();
                 break;
             default:
+                logOut();
                 nav.logOut();
         }
+    }
+
+    public void logOut() {
+        SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
+        prefPut.edit().clear().commit();
     }
 
     @Override
@@ -90,6 +97,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
      * @param event the current motion event
      * @return true if the GestureDetector.OnGestureListener consumed the event, else false.
      */
+
 
 
     @Override
