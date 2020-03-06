@@ -58,7 +58,6 @@
                 android:importantForAutofill="no"
                 android:inputType="textWebEmailAddress"
                 android:textColor="@color/textColour" />
-
         </TableRow>
 
         <TableRow
@@ -83,7 +82,6 @@
                 android:importantForAutofill="no"
                 android:inputType="textPassword"
                 android:textColor="@color/textColour" />
-
         </TableRow>
 
     </TableLayout>

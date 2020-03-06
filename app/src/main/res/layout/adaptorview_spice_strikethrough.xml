@@ -62,6 +62,4 @@
             android:text="@string/stockLabel" />
     </LinearLayout>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-

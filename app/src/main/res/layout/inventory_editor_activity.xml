@@ -142,7 +142,6 @@
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
                 android:textColor="@color/textColour" />
-
         </TableRow>
 
         <TableRow
@@ -162,7 +161,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:spinnerMode="dropdown" />
-
         </TableRow>
 
         <TableRow
@@ -181,7 +179,6 @@
                 android:id="@+id/spBrand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
         </TableRow>
     </TableLayout>
 
