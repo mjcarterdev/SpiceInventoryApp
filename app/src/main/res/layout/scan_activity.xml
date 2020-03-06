@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
         android:gravity="center"
-        android:text="@string/spice_information"
+        android:text="@string/spiceInfo"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center"
-                android:text="@string/spice_id" />
+                android:text="@string/spiceIDAdaptor" />
 
             <TextView
                 android:id="@+id/tvDisplaySpiceID"
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center"
-                android:text="@string/barcode_number" />
+                android:text="@string/barcodeNumber" />
 
             <TextView
                 android:id="@+id/tvDisplayBarcode"
@@ -92,7 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center"
-                android:text="@string/spice_name" />
+                android:text="@string/spiceNameAdaptor" />
 
             <TextView
                 android:id="@+id/tvDisplaySpiceName"
@@ -114,7 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center"
-                android:text="@string/current_stock" />
+                android:text="@string/currentStock" />
 
             <TextView
                 android:id="@+id/tvDisplayStock"

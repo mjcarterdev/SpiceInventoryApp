@@ -29,9 +29,8 @@
             android:layout_height="match_parent"
             android:layout_marginStart="4dp"
             android:layout_weight="22"
-
             android:gravity="center"
-            android:text="@string/spice_name" />
+            android:text="@string/spiceNameLabel" />
 
         <TextView
             android:id="@+id/RVBrand"
@@ -39,10 +38,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="22"
-
             android:drawableStart="@color/yellowText"
             android:gravity="center"
-            android:text="@string/RVbrand" />
+            android:text="@string/brand" />
 
         <TextView
             android:id="@+id/RVContainerType"
@@ -50,10 +48,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="28"
-
             android:drawableStart="@color/yellowText"
             android:gravity="center"
-            android:text="@string/RVcontainertype" />
+            android:text="@string/containerLabel" />
 
         <TextView
             android:id="@+id/RVStock"
@@ -62,7 +59,7 @@
             android:layout_height="match_parent"
             android:layout_weight="28"
             android:gravity="center"
-            android:text="@string/stock" />
+            android:text="@string/stockLabel" />
     </LinearLayout>
 
 

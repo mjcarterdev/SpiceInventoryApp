@@ -28,7 +28,7 @@
         android:shadowDx="4"
         android:shadowDy="4"
         android:shadowRadius="4"
-        android:text="@string/spice_rack"
+        android:text="@string/appName"
         android:textAlignment="center"
         android:textColor="@color/textBackground"
         android:textSize="50sp"
@@ -55,7 +55,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:text="@string/sign_up"
+            android:text="@string/signUp"
             android:textSize="24sp"
             tools:ignore="RelativeOverlap" />
 
@@ -67,7 +67,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:text="@string/log_in"
+            android:text="@string/logIn"
             android:textSize="24sp"
             tools:ignore="RelativeOverlap" />
     </LinearLayout>

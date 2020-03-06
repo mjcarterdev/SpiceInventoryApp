@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:layout_weight="33"
         android:gravity="center"
-        android:text="@string/shopping_list_adaptor_name" />
+        android:text="@string/name" />
 
     <TextView
         android:id="@+id/textView"
@@ -34,7 +34,6 @@
         android:layout_height="match_parent"
         android:layout_weight="43"
         android:gravity="center"
-        android:text="@string/shopping_list_adaptor_amount" />
+        android:text="@string/amount" />
 
 </LinearLayout>
-

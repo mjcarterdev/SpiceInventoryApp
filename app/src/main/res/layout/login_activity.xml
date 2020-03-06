@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center"
-                android:text="@string/label_email_address" />
+                android:text="@string/emailAddressLabel" />
 
             <EditText
                 android:id="@+id/editEmailAddress"
@@ -54,7 +54,7 @@
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:gravity="center_vertical|center"
-                android:hint="@string/email_address"
+                android:hint="@string/emailAddress"
                 android:importantForAutofill="no"
                 android:inputType="textWebEmailAddress"
                 android:textColor="@color/textColour" />
@@ -71,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center"
-                android:text="@string/label_password" />
+                android:text="@string/passwordLabel" />
 
             <EditText
                 android:id="@+id/editPassword"

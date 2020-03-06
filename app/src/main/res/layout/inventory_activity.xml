@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
         android:gravity="center"
-        android:text="@string/spice_inventory_list"
+        android:text="@string/spiceInventoryList"
         app:layout_constraintBottom_toTopOf="@id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
             android:layout_height="match_parent"
             android:layout_weight="20"
             android:gravity="center_vertical"
-            android:text="@string/spice_name_inventory" />
+            android:text="@string/spiceNameLabel" />
 
         <TextView
             android:id="@+id/tvBrandInventory"
@@ -67,7 +67,7 @@
             android:layout_height="match_parent"
             android:layout_weight="26"
             android:gravity="center_vertical"
-            android:text="@string/container_type" />
+            android:text="@string/container" />
 
         <TextView
             android:id="@+id/tvStockInventory"
@@ -77,7 +77,7 @@
             android:layout_marginStart="4dp"
             android:layout_weight="28"
             android:gravity="center_vertical"
-            android:text="@string/stock" />
+            android:text="@string/stockLabel" />
 
     </LinearLayout>
 

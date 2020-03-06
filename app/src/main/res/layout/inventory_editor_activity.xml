@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/delete_spice"
+            android:text="@string/deleteSpice"
             android:textStyle="normal|bold"
             tools:ignore="RelativeOverlap" />
 
@@ -53,7 +53,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:text="@string/add_spice"
+            android:text="@string/addSpice"
             android:textStyle="normal|bold" />
 
     </LinearLayout>
@@ -79,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center"
-                android:text="@string/barcode_number" />
+                android:text="@string/barcodeNumber" />
 
             <EditText
                 android:id="@+id/editBarcode"
@@ -88,7 +88,7 @@
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:gravity="center_vertical|center"
-                android:hint="@string/barcode_here"
+                android:hint="@string/editBarcode"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
                 android:textColor="@color/textColour" />
@@ -104,7 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center"
-                android:text="@string/spice_name" />
+                android:text="@string/nameAdaptor" />
 
             <EditText
                 android:id="@+id/editSpiceName"
@@ -113,7 +113,7 @@
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:gravity="center_vertical|center"
-                android:hint="@string/spice_name_here"
+                android:hint="@string/nameEdit"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
                 android:textColor="@color/textColour" />
@@ -129,7 +129,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center"
-                android:text="@string/current_stock" />
+                android:text="@string/currentStock" />
 
             <EditText
                 android:id="@+id/editStock"
@@ -138,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="center_vertical|center"
-                android:hint="@string/stock_here"
+                android:hint="@string/stock"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
                 android:textColor="@color/textColour" />
@@ -155,7 +155,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center"
-                android:text="@string/container_type" />
+                android:text="@string/containerTypeAdaptor" />
 
             <Spinner
                 android:id="@+id/spContainerType"
@@ -175,7 +175,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center"
-                android:text="@string/brand" />
+                android:text="@string/brandAdaptor" />
 
             <Spinner
                 android:id="@+id/spBrand"
@@ -192,7 +192,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
         android:gravity="center"
-        android:text="@string/spice_inventory_editor"
+        android:text="@string/spiceInventoryEditor"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

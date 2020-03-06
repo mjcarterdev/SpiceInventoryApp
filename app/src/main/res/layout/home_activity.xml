@@ -13,7 +13,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:contentDescription="@string/profilePicture"
+        android:contentDescription="@string/profilePic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -42,7 +42,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="@string/shopping_list"
+                android:text="@string/shoppingList"
                 android:textSize="18sp" />
 
             <Button
@@ -95,7 +95,7 @@
         android:shadowDx="4"
         android:shadowDy="4"
         android:shadowRadius="4"
-        android:text="@string/log_out"
+        android:text="@string/logOut"
         android:textColor="@color/textColour"
         android:textSize="22sp"
         app:layout_constraintTop_toBottomOf="@id/linearLayout"
