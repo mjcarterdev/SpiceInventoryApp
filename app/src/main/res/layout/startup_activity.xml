@@ -10,15 +10,11 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="250dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:contentDescription="@string/emblem"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/AppName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,12 +22,8 @@
 
     <TextView
         android:id="@+id/AppName"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="400dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="225dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:shadowColor="#000000"
         android:shadowDx="4"
         android:shadowDy="4"
@@ -40,41 +32,44 @@
         android:textAlignment="center"
         android:textColor="@color/textBackground"
         android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-    <Button
-        android:id="@+id/btnLogIn"
-        style="@style/ButtonStyleStartupActivity"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="225dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="100dp"
-        android:text="@string/log_in"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AppName" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/AppName">
 
-    <Button
-        android:id="@+id/btnSignUp"
-        style="@style/ButtonStyleStartupActivity"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="225dp"
-        android:layout_marginBottom="100dp"
-        android:text="@string/sign_up"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AppName" />
+        <Button
+            android:id="@+id/btnSignUp"
+            style="@style/ButtonStyleStartupActivity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="@string/sign_up"
+            android:textSize="24sp"
+            tools:ignore="RelativeOverlap" />
+
+        <Button
+            android:id="@+id/btnLogIn"
+            style="@style/ButtonStyleStartupActivity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="@string/log_in"
+            android:textSize="24sp"
+            tools:ignore="RelativeOverlap" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

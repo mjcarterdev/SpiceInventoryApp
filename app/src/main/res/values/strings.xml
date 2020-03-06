@@ -26,7 +26,7 @@
     <string name="scan">Scan</string>
     <string name="profile">Profile</string>
     <string name="log_out">Log Out</string>
-    <string name="profilepicture">profilePicture</string>
+    <string name="profilePicture">profilePicture</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="spice_name_inv">Spice Name</string>
     <string name="you_have_2_chilli_spices_in_your_cupboard">You have 2 Chilli spices in your cupboard</string>
@@ -75,6 +75,7 @@
     <string name="showHint">Show Hint</string>
     <string name="spice_inventory_editor">Spice Inventory Editor</string>
     <string name="spice_information">Spice Information</string>
+    <string name="spice">Spice</string>
     <string name="pic1">Pic1</string>
-    <string name="pic2">pic2</string>
+    <string name="pic2">Pic2</string>
 </resources>

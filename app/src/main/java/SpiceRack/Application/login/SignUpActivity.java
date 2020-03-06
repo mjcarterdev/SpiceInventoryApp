@@ -17,12 +17,13 @@ import SpiceRack.R;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    EditText editUserName, editEmailAddress, editPassword, editConfirmPassword, editLoginHint;
-    String userName, emailAddress, editPasswordString, editConfirmPasswordString, editLoginHintString;
-    SpiceDatabase mySpiceRackDb;
-    User user;
-    UserDao myUserDao;
-    Button btnSignUp;
+    public static final String KEY = "UserLoggedIn";
+    private EditText editUserName, editEmailAddress, editPassword, editConfirmPassword, editLoginHint;
+    private String userName, emailAddress, editPasswordString, editConfirmPasswordString, editLoginHintString;
+    private SpiceDatabase mySpiceRackDb;
+    private User user;
+    private UserDao myUserDao;
+    private Button btnSignUp;
 
     private View.OnClickListener myClick = new View.OnClickListener() {
         @Override
@@ -51,12 +52,12 @@ public class SignUpActivity extends AppCompatActivity {
         myUserDao = mySpiceRackDb.getUserDao();
     }
 
-    boolean isEmailValid(CharSequence email) {
+    private boolean isEmailValid(CharSequence email) {
         emailAddress = editEmailAddress.getText().toString();
         return android.util.Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches();
     }
 
-    boolean checkIfExists(){
+    private boolean checkIfExists(){
         emailAddress = editEmailAddress.getText().toString();
         User userFromDB = myUserDao.getUserByEmail(emailAddress);
         if (userFromDB != null) {
@@ -67,7 +68,7 @@ public class SignUpActivity extends AppCompatActivity {
         return false;
     }
 
-    public void signUp() {
+    private void signUp() {
         userName = editUserName.getText().toString();
         emailAddress = editEmailAddress.getText().toString();
         editPasswordString = editPassword.getText().toString();
@@ -82,8 +83,12 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(SignUpActivity.this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
         } else if (!isEmailValid(emailAddress)) {
             Toast.makeText(SignUpActivity.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
-        } else if (userName.length() <3 || emailAddress.length() <3 || editPasswordString.length() <3 || editConfirmPasswordString.length() <3 || editLoginHintString.length() <3){
-            Toast.makeText(SignUpActivity.this, "Minimum length 3", Toast.LENGTH_SHORT).show();
+        } else if (userName.length() <3) {
+            Toast.makeText(SignUpActivity.this, "Username minimum length 3", Toast.LENGTH_SHORT).show();
+        } else if (editPasswordString.length() <6 || editConfirmPasswordString.length() <6){
+            Toast.makeText(SignUpActivity.this, "Password minimum length 6", Toast.LENGTH_SHORT).show();
+        } else if (editLoginHintString.length() <3){
+            Toast.makeText(SignUpActivity.this, "Hint minimum length 3", Toast.LENGTH_SHORT).show();
         } else if (checkIfExists()){
             Toast.makeText(SignUpActivity.this, "User already exists", Toast.LENGTH_SHORT).show();
         } else {
@@ -95,7 +100,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             SharedPreferences prefPutU = getSharedPreferences("User", Activity.MODE_PRIVATE);
             SharedPreferences.Editor prefEditorU = prefPutU.edit();
-            prefEditorU.putString("UserLoggedIn", emailAddress);
+            prefEditorU.putString(KEY, emailAddress);
             prefEditorU.commit();
         }
     }

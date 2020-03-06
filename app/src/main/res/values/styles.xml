@@ -10,11 +10,26 @@
 
     <style name="EditTextDefault">
         <item name="autoSizeMinTextSize">6sp</item>
-       <item name="android:textColorHint">@color/textColourTransparent</item>
+        <item name="android:textColorHint">@color/textColourTransparent</item>
         <item name="autoSizeMaxTextSize">100sp</item>
         <item name="autoSizeStepGranularity">2sp</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textStyle"> bold|italic</item>
+        <item name="android:textColor">@color/yellowText</item>
+        <item name="android:shadowColor">#010203</item>
+        <item name="android:shadowRadius">4</item>
+        <item name="android:shadowDy">4</item>
+        <item name="android:shadowDx">4</item>
+    </style>
+
+    <style name="title">
+        <item name="autoSizeMinTextSize">6sp</item>
+        <item name="autoSizeMaxTextSize">100sp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColorHint">@color/textColourTransparent</item>
+        <item name="autoSizeStepGranularity">2sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/yellowText</item>
         <item name="android:shadowColor">#010203</item>
         <item name="android:shadowRadius">4</item>

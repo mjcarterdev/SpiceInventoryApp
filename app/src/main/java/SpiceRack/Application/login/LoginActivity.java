@@ -18,12 +18,13 @@ import SpiceRack.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText editEmailAddress, editPassword;
-    String emailID, emailAddress, editPasswordString, pw;
-    SpiceDatabase mySpiceRackDb;
-    UserDao myUserDao;
-    Button btnLogIn, btnShowHint;
-    User tempEmail, tempPw;
+    public static final String KEY = "UserLoggedIn";
+    private EditText editEmailAddress, editPassword;
+    private String emailID, emailAddress, editPasswordString, pw;
+    private SpiceDatabase mySpiceRackDb;
+    private UserDao myUserDao;
+    private Button btnLogIn, btnShowHint;
+    private User tempEmail, tempPw;
 
     private View.OnClickListener myClick = new View.OnClickListener() {
         @Override
@@ -54,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         myUserDao = mySpiceRackDb.getUserDao();
     }
 
-    public void showHint(){
+    private void showHint(){
         emailAddress = editEmailAddress.getText().toString();
         tempEmail = myUserDao.getUserByEmail(emailAddress);
 
@@ -63,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public void logIn() {
+    private void logIn() {
         emailAddress = editEmailAddress.getText().toString();
         editPasswordString = editPassword.getText().toString();
 
@@ -85,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
             //store logged in user to SharedPreferences
             SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = prefPut.edit();
-            prefEditor.putString("UserLoggedIn", emailAddress);
+            prefEditor.putString(KEY, emailAddress);
             prefEditor.commit();
 
             Intent openActivity = new Intent(this, HomeActivity.class);

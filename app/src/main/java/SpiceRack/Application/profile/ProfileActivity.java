@@ -4,25 +4,32 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GestureDetectorCompat;
 import SpiceRack.Application.activites.HomeActivity;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.database.User;
 import SpiceRack.Application.database.UserDao;
 import SpiceRack.Application.login.StartupActivity;
+import SpiceRack.Application.utilities.Navigation;
 import SpiceRack.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    EditText editUserName, editEmailAddress, editPassword, editConfirmPassword, editLoginHint;
-    String userName, emailAddress, editPasswordString, editConfirmPasswordString, editLoginHintString;
-    SpiceDatabase mySpiceRackDb;
-    UserDao myUserDao;
+    public static final String KEY = "UserLoggedIn";
+    private EditText editUserName, editEmailAddress, editPassword, editConfirmPassword, editLoginHint;
+    private String userName, emailAddress, editPasswordString, editConfirmPasswordString, editLoginHintString;
+    private SpiceDatabase mySpiceRackDb;
+    private UserDao myUserDao;
     private SharedPreferences prefGet;
+    private Navigation nav;
+    private GestureDetectorCompat myGesture;
 
     private View.OnClickListener myClick = new View.OnClickListener() {
             @Override
@@ -34,6 +41,11 @@ public class ProfileActivity extends AppCompatActivity {
             }
         }
     };
+
+    private boolean isEmailValid(CharSequence email) {
+        emailAddress = editEmailAddress.getText().toString();
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,14 +69,17 @@ public class ProfileActivity extends AppCompatActivity {
 
         prefGet = getSharedPreferences("User", Activity.MODE_PRIVATE);
 
-        User userFromDB = myUserDao.getUserByEmail(prefGet.getString("UserLoggedIn", "defValue"));
+        User userFromDB = myUserDao.getUserByEmail(prefGet.getString(KEY, "defValue"));
 
         editEmailAddress.setText(userFromDB.getEmailAddress());
         editUserName.setText(userFromDB.getUsername());
         editLoginHint.setText(userFromDB.getLoginHint());
+
+        nav = new Navigation(this);
+        myGesture = new GestureDetectorCompat(this, new MyGestureListener());
     }
 
-    public void editProfile() {
+    private void editProfile() {
         userName = editUserName.getText().toString();
         emailAddress = editEmailAddress.getText().toString();
         editPasswordString = editPassword.getText().toString();
@@ -75,11 +90,17 @@ public class ProfileActivity extends AppCompatActivity {
             Toast.makeText(ProfileActivity.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
         } else if (userName.isEmpty() || emailAddress.isEmpty() || editPasswordString.isEmpty() || editConfirmPasswordString.isEmpty() || editLoginHintString.isEmpty()) {
             Toast.makeText(ProfileActivity.this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
-        } else if (userName.length() <3 || emailAddress.length() <3 || editPasswordString.length() <3 || editConfirmPasswordString.length() <3 || editLoginHintString.length() <3){
-            Toast.makeText(ProfileActivity.this, "Minimum length 3", Toast.LENGTH_SHORT).show();
+        } else if (userName.length() <3) {
+            Toast.makeText(ProfileActivity.this, "Username minimum length 3", Toast.LENGTH_SHORT).show();
+        } else if (editPasswordString.length() <6 || editConfirmPasswordString.length() <6){
+            Toast.makeText(ProfileActivity.this, "Password minimum length 6", Toast.LENGTH_SHORT).show();
+        } else if (editLoginHintString.length() <3){
+            Toast.makeText(ProfileActivity.this, "Hint minimum length 3", Toast.LENGTH_SHORT).show();
+        } else if (!isEmailValid(emailAddress)) {
+            Toast.makeText(ProfileActivity.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
         } else {
 
-            User userFromDB = myUserDao.getUserByEmail(prefGet.getString("UserLoggedIn", "defValue"));
+            User userFromDB = myUserDao.getUserByEmail(prefGet.getString(KEY, "defValue"));
             userFromDB.setEmailAddress(editEmailAddress.getText().toString());
             userFromDB.setUsername(editUserName.getText().toString());
             userFromDB.setPassword(editPassword.getText().toString());
@@ -88,7 +109,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = prefPut.edit();
-            prefEditor.putString("UserLoggedIn", editEmailAddress.getText().toString());
+            prefEditor.putString(KEY, editEmailAddress.getText().toString());
             prefEditor.commit();
 
             Intent openActivity = new Intent(this, HomeActivity.class);
@@ -96,8 +117,8 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-    public void deleteUserAccount(){
-        User userFromDB = myUserDao.getUserByEmail(prefGet.getString("UserLoggedIn", "defValue"));
+    private void deleteUserAccount(){
+        User userFromDB = myUserDao.getUserByEmail(prefGet.getString(KEY, "defValue"));
         myUserDao.deleteUser(userFromDB);
 
         SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
@@ -105,5 +126,38 @@ public class ProfileActivity extends AppCompatActivity {
 
         Intent openActivity = new Intent(this, StartupActivity.class);
         startActivity(openActivity);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        this.myGesture.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+
+    class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
+
+        private static final int SWIPE_THRESHOLD = 100;
+        private static final int SWIPE_VELOCITY_THRESHOLD = 100;
+
+        @Override
+        public boolean onDown(MotionEvent e) {
+            return false;
+        }
+
+        @Override
+        public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
+            float diffY = moveEvent.getY() - downEvent.getY();
+            float diffX = moveEvent.getX() - downEvent.getX();
+
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                //right or left swipe
+                if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+                    if (diffX > 0) {
+                        nav.homePage();
+                    }
+                }
+            }
+            return true;
+        }
     }
 }

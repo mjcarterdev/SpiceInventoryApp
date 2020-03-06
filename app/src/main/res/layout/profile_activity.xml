@@ -15,16 +15,15 @@
 
     <TextView
         android:id="@+id/tvEditProfile"
-        style="@style/EditTextDefault"
+        style="@style/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
-        android:layout_weight="30"
         android:gravity="center"
         android:text="@string/edit_profile"
-        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tableLayout4"
         app:layout_constraintTop_toTopOf="parent" />
 
         <TableLayout
