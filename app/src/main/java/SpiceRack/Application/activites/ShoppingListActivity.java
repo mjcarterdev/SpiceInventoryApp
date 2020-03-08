@@ -29,22 +29,41 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ *<p>
+ *      ShoppingListActivity class creates and displays a recyclerview shopping list. This list is
+ *      created from zero stock spices in the inventory and manually added items. The recyclerview
+ *      allows for onTouch items to strike through the item on the list. Any items with this strike
+ *      through are toggled to be removed when the clear list button is pressed. The items on the
+ *      list can also be swiped left or right, either removing the item form the list or updating it
+ *      with information typed in the name and amount fields of the page.
+ *</p>
  *
+ *  @author Michael
+ *  @author Astrid
+ *  @version 1.0
+ *  @since 05.03.2020
  */
 public class ShoppingListActivity extends AppCompatActivity implements ShoppingListAdapter.OnItemClickListener {
     /**
-     * Static parameters used to identify the viewType for each item. This decides on which layout
-     * is created in the recyclerView.
+     * <p>
+     *      Static parameters used to identify the viewType for each item. This decides on which
+     *      layout is created in the recyclerView.
+     * </p>
      */
     private static final int SPICE_NORMAL = 1;
     private static final int SPICE_STRIKE = 2;
     private static final int SHOPPING_NORMAL = 3;
     private static final int SHOPPING_STRIKE = 4;
     private GestureDetectorCompat myGesture;
-    int amount;
     private Parcelable recyclerViewState;
     private View.OnClickListener myClick = new View.OnClickListener() {
-
+        /**
+         *<p>
+         *     onCLick is called when a view is clicked. the id of the clicked view will dictate the
+         *     code block to be ran.
+         *</p>
+         * @param v The view that was clicked.
+         */
         @Override
         public void onClick(View v) {
 
@@ -57,18 +76,23 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         }
     };
 
-    EditText editName, editAmount;
-    Button addItem, clearList;
-    String name;
-    SpiceDatabase mySpiceRackDb;
-    ShoppingDao myShoppingDao;
-    List<Spice> spiceList;
-    List<ShoppingItem> shoppingItem;
-    ShoppingItem Item;
-    RecyclerView listShopping;
-    ShoppingListAdapter adapterShopping;
-    Navigation nav;
+    private EditText editName, editAmount;
+    private ShoppingDao myShoppingDao;
+    private List<ShoppingItem> shoppingItem;
+    private ShoppingItem Item;
+    private RecyclerView listShopping;
+    private ShoppingListAdapter adapterShopping;
+    private Navigation nav;
 
+    /**
+     * <p>
+     *     onCreate() sets the listeners to the ShoppingList activity and instantiates the database.
+     *     it then creates a Spice list based on the stock levels of the inventory being 0. New
+     *     navigation and gesture objects are created along with a ItemTouchListener is attached to
+     *     the recyclerview.
+     * </p>
+     * @param savedInstanceState saved instance state of the activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,15 +101,15 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         editName = findViewById(R.id.editName);
         editAmount = findViewById(R.id.editAmount);
 
-        addItem = findViewById(R.id.btnAddItem);
-        clearList = findViewById(R.id.btnClearList);
+        Button addItem = findViewById(R.id.btnAddItem);
+        Button clearList = findViewById(R.id.btnClearList);
         listShopping = findViewById(R.id.rvShoppingList);
         addItem.setOnClickListener(myClick);
         clearList.setOnClickListener(myClick);
 
-        mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
+        SpiceDatabase mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         myShoppingDao = mySpiceRackDb.getShoppingDao();
-        spiceList = mySpiceRackDb.getSpiceDao().getSpiceByStock(0);
+        List<Spice> spiceList = mySpiceRackDb.getSpiceDao().getSpiceByStock(0);
 
         nav = new Navigation(this);
         myGesture = new GestureDetectorCompat(this, new MyGestureListener());
@@ -97,7 +121,10 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
     }
 
     /**
-     *
+     * <p>
+     *     initRecyclerView handlers the initial creation of the shopping list recyclerview and sets
+     *     the adaptor.
+     * </p>
      */
 
     private void initRecyclerView() {
@@ -109,7 +136,10 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
     }
 
     /**
-     *
+     * <p>
+     *     updateUI() updates the recyclerview after a change of data is carried out on the
+     *     shopping list. The adaptor is reset.
+     * </p>
      */
 
     private void updateUI() {
@@ -120,8 +150,11 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
     }
 
     /**
-     *
-     * @param spiceList
+     *<p>
+     *      adZeroStockSpices() takes a list of zero quantity spice and adds them to the shopping
+     *      list table within the database.
+     *</p>
+     * @param spiceList this is a list of spices from the inventory that have zero stock associated.
      */
 
     private void addZeroStockSpices(List<Spice> spiceList) {
@@ -135,18 +168,24 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
     }
 
     /**
-     *
+     *<p>
+     *     addItemToShopping() takes the values from the name and amount editText fields and saves
+     *     them as a new object within the shopping list table.
+     *</p>
      */
 
     public void addItemToShopping() {
-        name = editName.getText().toString();
-        amount = Integer.parseInt(editAmount.getText().toString());
+        String name = editName.getText().toString();
+        int amount = Integer.parseInt(editAmount.getText().toString());
         Item = new ShoppingItem(name, amount, "N/A", "N/A", SHOPPING_NORMAL, false);
         myShoppingDao.insertItem(Item);
     }
 
     /**
-     *
+     * <p>
+     *     clearList() takes the list of shopping items and checks the viewType of each item. 2 and 4
+     *     symbolise the view with a strike through therefore is selected for deletion.
+     * </p>
      */
 
     public void clearList() {
@@ -158,15 +197,6 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         }
     }
 
-    /**
-     * <p>
-     *     Analyzes the given motion event and if applicable triggers the appropriate callbacks on
-     *     the GestureDetector.OnGestureListener supplied.
-     * </p>
-     * @param event the current motion event
-     * @return true if the GestureDetector.OnGestureListener consumed the event, else false.
-     */
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.myGesture.onTouchEvent(event);
@@ -174,8 +204,14 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
     }
 
     /**
-     *
-     * @param position
+     *<p>
+     *     when the onItemClick is called it checks the position within the shopping list and saves
+     *     that object. The object is then queried for its viewType, depending on this value, the
+     *     number will be changed and updated to toggle the strike through on or off. The location
+     *     of the item clicked is saved so that when the recyclerview is refreshed the scroll
+     *     location is in the same place.
+     *</p>
+     * @param position is the location within the list of items displayed on the recyclerview.
      */
 
     @Override
@@ -201,26 +237,9 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         updateUI();
     }
 
-    /**
-     * <p>
-     *     MyGestureListener class extends GestureDetector.SimpleOnGestureListener a convenient class
-     *     where only a subset of gestures are required. This implements onDown() and onFLing() methods
-     *     but does nothing and return false.
-     * </p>
-     */
 
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
-        /**
-         * <p>
-         *      Swipe_Threshold is the distance travelled from the initial screen contact till the
-         *      final position in any of the four directions.
-         * </p>
-         * <p>
-         *      Swipe_Velocity_Threshold is the speed at which a movement needs to travel before being
-         *      identified as a gesture.
-         * </p>
-         * <p> The value given is an arbitrary number based on what feels right</p>
-         */
+
         private static final int SWIPE_THRESHOLD = 100;
         private static final int SWIPE_VELOCITY_THRESHOLD = 100;
 
@@ -228,15 +247,6 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         public boolean onDown(MotionEvent e) {
             return false;
         }
-
-         /**
-         * @param downEvent The first down motion that started the fling.
-         * @param moveEvent The move motion event that triggered the current onFLing.
-         * @param velocityX The velocity of this fling measured in pixels per second along the x axis.
-         * @param velocityY The velocity of this fling measured in pixels per second along the y axis.
-         * @return Boolean. If false nothing will happen. If returned true the event has been completed
-         * successfully. The outcome of the return is dependent on the direction of this fling.
-         */
 
         public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
             float diffY = moveEvent.getY() - downEvent.getY();
@@ -255,7 +265,11 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
     }
 
     /**
-     *
+     *<p>
+     *     new ItemTouchHelper is created to handle the actions to be done after an item in the
+     *     shopping list is swiped left or right. If the object is swiped right the item is deleted.
+     *     If swiped left the values from name and amount fields is used to update the item object.
+     *</p>
      */
     ItemTouchHelper.SimpleCallback itemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
         @Override

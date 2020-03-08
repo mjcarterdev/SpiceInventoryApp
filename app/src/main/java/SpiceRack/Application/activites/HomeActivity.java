@@ -24,7 +24,8 @@ import com.google.zxing.integration.android.IntentResult;
  *      though the application.
  * </p>
  *
- * @author Michael and Astrid
+ * @author Michael
+ * @author Astrid
  * @version 1.0
  * @since 05.03.2020
  */
@@ -71,10 +72,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * <p>LogOut() calls the shared preference for the user and clears the data saved upon logging
+     * out of the home activity.</p>
+     */
     public void logOut() {
         SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
         prefPut.edit().clear().commit();
     }
+
+    /**
+     * <p>onCreate() creates a navigation object and gesture listener. Sets views for a onClickListener.
+     * @param savedInstanceState saved instance state of the activity.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,8 +109,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
      * @return true if the GestureDetector.OnGestureListener consumed the event, else false.
      */
 
-
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.myGesture.onTouchEvent(event);
@@ -112,7 +120,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
      * where only a subset of gestures are required. This implements onDown() and onFLing() methods
      * but does nothing and return false.
      */
+
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
+
         /**
          * <p>Swipe_Threshold is the distance travelled from the initial screen contact till the
          * final position in any of the four directions.
@@ -121,6 +131,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
          * identified as a gesture.</p>
          * <p> The value given is an arbitrary number based on what feels right</p>
          */
+
         private static final int SWIPE_THRESHOLD = 100;
         private static final int SWIPE_VELOCITY_THRESHOLD = 100;
 
@@ -131,7 +142,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         /**
-         *
          * @param downEvent The first down motion that started the fling.
          * @param moveEvent The move motion event that triggered the current onFLing.
          * @param velocityX The velocity of this fling measured in pixels per second along the x axis.
@@ -139,6 +149,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
          * @return Boolean. If false nothing will happen. If returned true the event has been completed
          * successfully. The outcome of the return is dependent on the direction of this fling.
          */
+
         @Override
         public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
             boolean result = false;
@@ -226,6 +237,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
      *
      *  @author Sean Owen
      */
+
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);

@@ -27,10 +27,12 @@ import SpiceRack.databinding.InventoryActivityBinding;
  *      SpiceListAdapter with a onClickListener so when the item is pressed it passes the Spice object
  *      to ScanActivity. The class has also has gesture control navigation.</p>
  *
- *  @author Michael and Astrid
+ *  @author Michael
+ *  @author Astrid
  *  @version 1.0
  *  @since 05.03.2020
  */
+
 public class InventoryActivity extends AppCompatActivity implements SpiceListAdapter.SpiceOnClickListener{
 
     InventoryActivityBinding inventoryLayout;
@@ -46,6 +48,7 @@ public class InventoryActivity extends AppCompatActivity implements SpiceListAda
      *
      * @param savedInstanceState saved instance state of the activity.
      */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,32 +66,28 @@ public class InventoryActivity extends AppCompatActivity implements SpiceListAda
     }
 
     /**
-     * On resuming the activity updateUI() is called to refresh the recycler view data.
+     * <p> On resuming the activity updateUI() is called to refresh the recycler view data. </p>
      */
+
     @Override
     protected void onResume() {
         super.onResume();
         updateUI();
     }
 
-    /* Check with Karri - the suggested notifyODataChange() method does not work. Currently using
-     * method below. Functional but not very efficient.
+    /**
+     * <p>
+     *      updateUI() is called to refresh the recycler view after data change. After changes occur the
+     *      list is called again and sorted alphabetically and the recycler is reset.
+     * </p>
      */
+
     public void updateUI() {
         spiceList = mySpiceDao.getAllSpices();
         Collections.sort(spiceList);
         adapter = new SpiceListAdapter(spiceList, this);
         inventoryLayout.rvSpiceList.setAdapter(adapter);
     }
-
-    /**
-     * <p>
-     *     Analyzes the given motion event and if applicable triggers the appropriate callbacks on
-     *     the GestureDetector.OnGestureListener supplied.
-     * </p>
-     * @param event the current motion event
-     * @return true if the GestureDetector.OnGestureListener consumed the event, else false.
-     */
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -106,6 +105,7 @@ public class InventoryActivity extends AppCompatActivity implements SpiceListAda
      * @param position is the location within the list of the recyclerview when an click event is
      *                 registered.
      */
+
     @Override
     public void spiceOnClick(int position) {
         String scannedBarcode = spiceList.get(position).getBarcode();
@@ -114,26 +114,8 @@ public class InventoryActivity extends AppCompatActivity implements SpiceListAda
         startActivity(intent);
     }
 
-    /**
-     * <p>
-     *     MyGestureListener class extends GestureDetector.SimpleOnGestureListener a convenient class
-     *     where only a subset of gestures are required. This implements onDown() and onFLing() methods
-     *     but does nothing and return false.
-     * </p>
-     */
-
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
-        /**
-         * <p>
-         *      Swipe_Threshold is the distance travelled from the initial screen contact till the
-         *      final position in any of the four directions.
-         * </p>
-         * <p>
-         *      Swipe_Velocity_Threshold is the speed at which a movement needs to travel before being
-         *      identified as a gesture.
-         * </p>
-         * <p> The value given is an arbitrary number based on what feels right</p>
-         */
+
         private static final int SWIPE_THRESHOLD = 100;
         private static final int SWIPE_VELOCITY_THRESHOLD = 100;
 
@@ -141,16 +123,6 @@ public class InventoryActivity extends AppCompatActivity implements SpiceListAda
         public boolean onDown(MotionEvent e) {
             return false;
         }
-
-        /**
-         *
-         * @param downEvent The first down motion that started the fling.
-         * @param moveEvent The move motion event that triggered the current onFLing.
-         * @param velocityX The velocity of this fling measured in pixels per second along the x axis.
-         * @param velocityY The velocity of this fling measured in pixels per second along the y axis.
-         * @return Boolean. If false nothing will happen. If returned true the event has been completed
-         * successfully. The outcome of the return is dependent on the direction of this fling.
-         */
 
         @Override
         public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
