@@ -6,6 +6,8 @@ import android.content.Intent;
 import SpiceRack.Application.activites.HomeActivity;
 import SpiceRack.Application.activites.InventoryActivity;
 import SpiceRack.Application.activites.InventoryEditorActivity;
+import SpiceRack.Application.login.LoginActivity;
+import SpiceRack.Application.login.SignUpActivity;
 import SpiceRack.Application.profile.ProfileActivity;
 import SpiceRack.Application.activites.ScanActivity;
 import SpiceRack.Application.activites.ShoppingListActivity;
@@ -52,6 +54,16 @@ public class Navigation {
 
     public void homePage() {
         Intent openActivity = new Intent(context, HomeActivity.class);
+        context.startActivity(openActivity);
+    }
+
+    public void signUp() {
+        Intent openActivity = new Intent(context, SignUpActivity.class);
+        context.startActivity(openActivity);
+    }
+
+    public void logIn() {
+        Intent openActivity = new Intent(context, LoginActivity.class);
         context.startActivity(openActivity);
     }
 }

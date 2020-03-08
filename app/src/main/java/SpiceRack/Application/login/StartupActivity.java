@@ -1,13 +1,12 @@
 package SpiceRack.Application.login;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import SpiceRack.Application.activites.HomeActivity;
+import SpiceRack.Application.utilities.Navigation;
 import SpiceRack.R;
 
 /**
@@ -27,6 +26,8 @@ import SpiceRack.R;
  * @since 05.03.2020
  */
 public class StartupActivity extends AppCompatActivity {
+
+    Navigation nav;
 
     private View.OnClickListener myClick = new View.OnClickListener() {
         @Override
@@ -48,6 +49,8 @@ public class StartupActivity extends AppCompatActivity {
 
         btnLogIn.setOnClickListener(myClick);
         btnSignUp.setOnClickListener(myClick);
+
+        nav = new Navigation(this);
     }
 
     /**
@@ -59,11 +62,9 @@ public class StartupActivity extends AppCompatActivity {
         SharedPreferences prefGet = getSharedPreferences("User", Activity.MODE_PRIVATE);
 
         if (prefGet.contains("UserLoggedIn")) {
-            Intent openActivity = new Intent(this, HomeActivity.class);
-            startActivity(openActivity);
+            nav.homePage();
         } else {
-            Intent openActivity = new Intent(this, LoginActivity.class);
-            startActivity(openActivity);
+            nav.logIn();
         }
     }
 
@@ -72,7 +73,6 @@ public class StartupActivity extends AppCompatActivity {
      * activity.
      */
     public void signUp() {
-        Intent openActivity = new Intent(this, SignUpActivity.class);
-        startActivity(openActivity);
+        nav.signUp();
     }
 }

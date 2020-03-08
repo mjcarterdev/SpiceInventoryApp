@@ -1,7 +1,6 @@
 package SpiceRack.Application.profile;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -12,11 +11,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
-import SpiceRack.Application.activites.HomeActivity;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.database.User;
 import SpiceRack.Application.database.UserDao;
-import SpiceRack.Application.login.StartupActivity;
 import SpiceRack.Application.utilities.Navigation;
 import SpiceRack.R;
 
@@ -112,8 +109,7 @@ public class ProfileActivity extends AppCompatActivity {
             prefEditor.putString(KEY, editEmailAddress.getText().toString());
             prefEditor.commit();
 
-            Intent openActivity = new Intent(this, HomeActivity.class);
-            startActivity(openActivity);
+            nav.homePage();
         }
     }
 
@@ -124,8 +120,7 @@ public class ProfileActivity extends AppCompatActivity {
         SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
         prefPut.edit().clear().commit();
 
-        Intent openActivity = new Intent(this, StartupActivity.class);
-        startActivity(openActivity);
+        nav.logOut();
     }
 
     @Override
