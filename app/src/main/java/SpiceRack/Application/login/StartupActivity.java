@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-
 import SpiceRack.Application.activites.HomeActivity;
 import SpiceRack.R;
 

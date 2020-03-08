@@ -9,8 +9,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="327dp"
-        android:layout_height="171dp"
-        android:layout_marginTop="55dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/btnLogout"
@@ -20,7 +19,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="80dp"
             android:orientation="horizontal">
 
             <Button
@@ -46,7 +45,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="82dp"
+            android:layout_height="80dp"
             android:orientation="horizontal">
 
             <Button
@@ -75,8 +74,9 @@
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="322dp"
-        android:layout_height="76dp"
-        android:layout_marginBottom="68dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="60dp"
         android:background="@color/logOutText"
         android:shadowColor="#000000"
         android:shadowDx="4"
@@ -93,16 +93,14 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="251dp"
-        android:layout_height="258dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/profilepicture"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/emblem_round" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
