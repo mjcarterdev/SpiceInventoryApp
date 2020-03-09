@@ -23,14 +23,31 @@ import SpiceRack.Application.utilities.Navigation;
 import SpiceRack.R;
 import SpiceRack.databinding.InventoryEditorActivityBinding;
 
+/**
+ *<p>
+ *      InventoryEditorActivity class is the page where all new Spices are entered into the inventory.
+ *      Spice entry is done in two ways, either by pressing the floating button that will create a
+ *      barcode scanning instance and save the result in the barcode field, with the other fields
+ *      being typed manually. The second way is slightly different in that you manually add the
+ *      barcode number instead of using the barcode scanner. Other functions of this page include
+ *      deleting spices from the inventory by scanning or typing the barcode and pressing the delete
+ *      button, removing said spice from the database. In addition you can fill in the details and
+ *      press update that will search the barcode number and update the entry with the new fields
+ *      typed in.
+ *</p>
+ *
+ * @author Michael
+ * @author Astrid
+ * @version 1.0
+ * @since 05.03.2020
+ */
 
 public class InventoryEditorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    String barcode,barcodeID, name, container, brand, stock;
-    SpiceDatabase mySpiceRackDb;
-    SpiceDao mySpiceDao;
-    Spice receivedSpice;
-    InventoryEditorActivityBinding inventoryEditorLayout;
-    Navigation nav;
+    private String barcode,barcodeID, name, container, brand, stock;
+    private SpiceDao mySpiceDao;
+    private Spice receivedSpice;
+    private InventoryEditorActivityBinding inventoryEditorLayout;
+    private Navigation nav;
     private GestureDetectorCompat myGesture;
     private static final String[] containerType = {"Select One...","Jar", "Refill"};
     private static final String[] brands = {"Select One...", "KMarket", "SMarket", "Santa Maria", "Other"};
@@ -55,7 +72,14 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         }
     };
 
-
+    /**
+     *<p>
+     *     onCreate() instantiates the Spice Inventory database and sets the views for the
+     *     onClickListeners it also sets the spinners for the dropdown menus. Navigation and gesture
+     *     detection are created for additional functionality.
+     *</p>
+     * @param savedInstanceState saved instance state of the activity.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +87,7 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         inventoryEditorLayout = InventoryEditorActivityBinding.inflate(LayoutInflater.from(this));
         setContentView(inventoryEditorLayout.getRoot());
 
-        mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
+        SpiceDatabase mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         mySpiceDao = mySpiceRackDb.getSpiceDao();
 
         inventoryEditorLayout.deleteSpices.setOnClickListener(myClick);
@@ -82,8 +106,6 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         inventoryEditorLayout.spContainerType.setOnItemSelectedListener(this);
         inventoryEditorLayout.spBrand.setOnItemSelectedListener(this);
 
-
-
         nav = new Navigation(this);
         myGesture = new GestureDetectorCompat(this, new MyGestureListener());
 
@@ -95,9 +117,7 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         });
     }
 
-    /*
-   Barcode Scanner
-   */
+   //Barcode Scanner
     public void scanner(View v) {
         new IntentIntegrator(this).initiateScan();
     }
@@ -123,6 +143,16 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         return super.onTouchEvent(event);
     }
 
+    /**
+     *<p>
+     *     Callback method to be invoked when an item in this view has been selected.
+     *     The id of the parent is checked to ensure the item data is stored in the correct variable.
+     *</p>
+     * @param parent The AdapterView where the selection happened
+     * @param view The view within the AdapterView that was clicked
+     * @param position The position of the view in the adapter
+     * @param id The row id of the item that is selected
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch(parent.getId()){
@@ -167,6 +197,15 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         }
     }
 
+    /**
+     *<p>
+     *     updateSpice() is called to change the data of an already existing spice within the database.
+     *     First the barcode of the spice to be modified should be entered, along with the new information
+     *     to update with. This method then checks to makes sure the spice exists, if not will notify
+     *     the user. Then it checks for empty fields that are needs to be filled in. Finally, the spice is
+     *     updated with the new information and the user is notified of the change.
+     *</p>
+     */
     private void updateSpice() {
         barcode = inventoryEditorLayout.editBarcode.getText().toString();
         name = inventoryEditorLayout.editSpiceName.getText().toString();
@@ -191,6 +230,18 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         }
     }
 
+    /**
+     *<p>
+     *     addSpice() is called to add a new spice to the database. It takes the information typed into
+     *     the edit fields of the page and creates a new spice object. Validation is carried out
+     *     before addition of a new spice. The first check is a search of the database for matching
+     *     barcode. If this is not null the barcode is stored for a later check. THe second check is
+     *     to make sure all fields have been filled in. the third check uses the the found barcode previously
+     *     a compares it to the typed field. If they match then a notification is sent to say it already
+     *     exists. Finally if all validation is passed a new spice object is created and added to the
+     *     database table and the typed fields are set to default values.
+     *</p>
+     */
     public void addSpice() {
         barcode = inventoryEditorLayout.editBarcode.getText().toString();
         name = inventoryEditorLayout.editSpiceName.getText().toString();
@@ -214,6 +265,14 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         }
     }
 
+    /**
+     *<p>
+     *     deleteSpice() is called to remove the barcode associated spice from the inventory. The
+     *     spice is searched for by the barcode number and validated to make sure it exists. If returns
+     *     null then a notification is sent saying barcode not found. If not null then the delete
+     *     from table is called and a notification that it was successful is shown.
+     *</p>
+     */
     public void deleteSpice(){
         barcode = inventoryEditorLayout.editBarcode.getText().toString();
         receivedSpice = mySpiceDao.getSpiceByBarcode(barcode);
@@ -226,6 +285,12 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         }
     }
 
+    /**
+     *<p>
+     *     setDefaultInfo() is called after the typed data is used to add, remove or update a Spice.
+     *     This resets all the entries to blanks.
+     *</p>
+     */
     public void setDefaultInfo() {
         inventoryEditorLayout.editBarcode.setText("");
         inventoryEditorLayout.editSpiceName.setText("");

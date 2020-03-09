@@ -9,17 +9,40 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import SpiceRack.R;
 
+/**
+ *
+ * @author Michael
+ * @author Astrid
+ * @version 1.0
+ * @since 05.03.2020
+ */
 
 public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.ViewHolder> {
 
     private List<Spice> spices;
     private SpiceOnClickListener mySpiceListener;
 
+    /**
+     * <p>
+     *     This is the constructor for the ShoppingListAdaptor. It takes a list of Shopping Items and
+     *     a onClickListener as parameters.
+     * </p>
+     * @param spices list of Spices.
+     * @param spiceOnClickListener the ItemClickListener for the recyclerview.
+     */
     public SpiceListAdapter(List<Spice> spices, SpiceOnClickListener spiceOnClickListener) {
         this.spices = spices;
         this.mySpiceListener = spiceOnClickListener;
     }
 
+    /**
+     *<p>
+     *     creates and inflates the layout for a Spice object within the list.
+     *</p>
+     * @param parent ViewGroup
+     * @param viewType the view type of the object
+     * @return new viewHolder for a spice.
+     */
     @NonNull
     @Override
     public SpiceListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -27,6 +50,15 @@ public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.View
         return new ViewHolder(view, mySpiceListener);
     }
 
+    /**
+     *<p>
+     *     Is internally called method to update the viewHolder with the correct data. The method
+     *     checks the holder for which version it is. Then will set the contents of the holder based
+     *     on the information required for that layout view.
+     *</p>
+     * @param holder the viewHolder created depending on object.
+     * @param position The position of the view in the adapter.
+     */
     @Override
     public void onBindViewHolder(@NonNull SpiceListAdapter.ViewHolder holder, int position) {
         holder.spiceName.setText(spices.get(position).getSpiceName());
@@ -40,6 +72,12 @@ public class SpiceListAdapter extends RecyclerView.Adapter<SpiceListAdapter.View
         return spices.size();
     }
 
+    /**
+     *<p>
+     *     viewHolder class extends the Recycler.ViewHolder and implements an onClickListener.
+     *     This class is used for the layout used on Spices from the spice inventory.
+     *</p>
+     */
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView spiceName, stock, containerType, brand;
         SpiceOnClickListener spiceOnClickListener;
