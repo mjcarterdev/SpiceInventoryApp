@@ -17,6 +17,18 @@ import SpiceRack.Application.database.UserDao;
 import SpiceRack.Application.utilities.Navigation;
 import SpiceRack.R;
 
+/**
+ *  <p>
+ *  ProfileActivity class creates and displays the user profile. The logged in user can either update
+ *  or delete their user account.
+ *  </p>
+ *
+ *  @author Michael
+ *  @author Astrid
+ *  @version 1.0
+ *  @since 05.03.2020
+ */
+
 public class ProfileActivity extends AppCompatActivity {
 
     public static final String KEY = "UserLoggedIn";
@@ -28,6 +40,11 @@ public class ProfileActivity extends AppCompatActivity {
     private Navigation nav;
     private GestureDetectorCompat myGesture;
 
+    /**
+     *  <p>
+     *  Implements the OnClickListener. If a button is clicked, the appropriate method is called.
+     *  </p>
+     */
     private View.OnClickListener myClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,11 +56,23 @@ public class ProfileActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     *  <p>
+     *  isEmailValid() checks if the characters entered into the editEmailAddress field
+     *  are a valid email address.
+     *  </p>
+     */
     private boolean isEmailValid(CharSequence email) {
         emailAddress = editEmailAddress.getText().toString();
         return android.util.Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches();
     }
 
+    /**
+     *  <p>
+     *  onCreate() initializes the ProfileActivity. It sets the layout, OnClickListeners, navigation and instantiates the
+     *  database.
+     *  </p>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +105,28 @@ public class ProfileActivity extends AppCompatActivity {
         myGesture = new GestureDetectorCompat(this, new MyGestureListener());
     }
 
+    /**
+     *  <p>
+     *  editProfile() is called to modify an entry from the User table. It performs the checks listed below
+     *  and displays error messages in a toast if needed:
+     *  <li>
+     *      <ul>Ensures that password and confirm password are equal</ul>
+     *      <ul>Ensures that all fields in the form contain data</ul>
+     *      <ul>Verifies that the email address is valid</ul>
+     *      <ul>Verifies that username and hint contain minimum 3 characters</ul>
+     *      <ul>Verifies that the password contains minimum 6 characters</ul>
+     *  </li>
+     *  </p>
+     *  <p>
+     *      After performing the checks above and no errors occur:
+     *  <li>
+     *      <ul>The database table User is updated with the data entered into the form.</ul>
+     *      <ul>The screen continues to the next page, the homePage</ul>
+     *      <ul>The email address entered is stored into Shared Preferences. This is needed when reopening the app
+     *      in order to log in a user automatically.</ul>
+     *  </li>
+     *  </p>
+     */
     private void editProfile() {
         userName = editUserName.getText().toString();
         emailAddress = editEmailAddress.getText().toString();
@@ -113,6 +164,13 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *  <p>
+     *  deleteUserAccount() is called to delete a user object from the User table. Additionally, the
+     *  email address is removed from SharedPreferences in order to avoid login errors. The navigation
+     *  moves to the next screen, the StartupActivity.
+     *  </p>
+     */
     private void deleteUserAccount(){
         User userFromDB = myUserDao.getUserByEmail(prefGet.getString(KEY, "defValue"));
         myUserDao.deleteUser(userFromDB);
@@ -123,6 +181,11 @@ public class ProfileActivity extends AppCompatActivity {
         nav.logOut();
     }
 
+    /**
+     *  <p>
+     *  The user can also swipe right in order to return to the homepage.
+     *  </p>
+     */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.myGesture.onTouchEvent(event);
@@ -145,7 +208,6 @@ public class ProfileActivity extends AppCompatActivity {
             float diffX = moveEvent.getX() - downEvent.getX();
 
             if (Math.abs(diffX) > Math.abs(diffY)) {
-                //right or left swipe
                 if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
                     if (diffX > 0) {
                         nav.homePage();
