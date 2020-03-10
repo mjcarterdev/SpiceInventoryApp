@@ -78,6 +78,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * isVisible() is used to check the state of the instruction views. If they are visible when the
+     * method is called they will become invisible. If they are invisible they will become visible.
+     */
     public void isVisible(){
         if(homeLayout.tvInventoryListInstruction.getVisibility() == VISIBLE){
             homeLayout.tvInventoryListInstruction.setVisibility(View.INVISIBLE);
