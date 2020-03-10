@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/greenoverlay_background"
@@ -102,5 +103,99 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/emblem_round" />
+
+    <TextView
+        android:id="@+id/tvInventoryListInstruction"
+        style="@style/InstructionText"
+        android:visibility="invisible"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="275dp"
+        android:layout_marginEnd="200dp"
+        android:layout_marginBottom="359dp"
+        android:background="@drawable/bubble_left"
+        android:gravity="center"
+        android:padding="20dp"
+        android:paddingStart="45dp"
+        android:paddingEnd="10dp"
+        android:text="@string/InventoryListSwipeInstructions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvShoppingListInstruction"
+        style="@style/InstructionText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="275dp"
+        android:layout_marginBottom="359dp"
+        android:background="@drawable/bubble_right"
+        android:gravity="center"
+        android:padding="20dp"
+        android:paddingEnd="35dp"
+        android:text="@string/ShoppingListSwipeInstructions"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvInventoryListInstruction"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/tvProfileInstruction"
+        style="@style/InstructionText"
+        android:visibility="invisible"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="127dp"
+        android:background="@drawable/bubble_bottom"
+        android:gravity="top"
+        android:padding="20dp"
+        android:translationZ="@dimen/cardview_default_elevation"
+        android:text="@string/ProfileSwipeInstructions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvInventoryListInstruction"
+        tools:ignore="PrivateResource" />
+
+    <TextView
+        android:id="@+id/tvScanInstruction"
+        style="@style/InstructionText"
+        android:visibility="invisible"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="126dp"
+        android:layout_marginEnd="127dp"
+        android:layout_marginBottom="156dp"
+        android:background="@drawable/bubble_top"
+        android:gravity="bottom"
+        android:padding="20dp"
+        android:paddingTop="10dp"
+        android:text="@string/ScanSwipeInstructions"
+        app:layout_constraintBottom_toTopOf="@+id/tvInventoryListInstruction"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ibInformation"
+        android:layout_width="40dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="244dp"
+        android:background="@drawable/info"
+        android:contentDescription="@string/Instructions"
+        app:layout_constraintBottom_toTopOf="@+id/tvShoppingListInstruction"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvScanInstruction"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

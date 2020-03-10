@@ -24,6 +24,7 @@
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="8dp"
         android:text="@string/spice_information"
+        android:textFontWeight="700"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -161,7 +162,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+        
         <ImageButton
             android:id="@+id/ibInformation"
             android:layout_width="0dp"

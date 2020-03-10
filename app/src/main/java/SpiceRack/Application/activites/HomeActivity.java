@@ -17,6 +17,8 @@ import SpiceRack.databinding.HomeActivityBinding;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import static android.view.View.VISIBLE;
+
 /**
  * <h1>Home Activity</h1>
  * <p>  The Home Activity is the main page to navigate through all the various application features.
@@ -42,6 +44,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     View v;
     Navigation nav;
     private GestureDetectorCompat myGesture;
+    HomeActivityBinding homeLayout;
 
     /**
      * Class implements onClickListener method onClick(). A switch case is used to identify which
@@ -66,19 +69,35 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnProfile:
                 nav.profilePage();
                 break;
+            case R.id.ibInformation:
+                isVisible();
+                break;
             default:
                 logOut();
                 nav.logOut();
         }
     }
 
+    public void isVisible(){
+        if(homeLayout.tvInventoryListInstruction.getVisibility() == VISIBLE){
+            homeLayout.tvInventoryListInstruction.setVisibility(View.INVISIBLE);
+            homeLayout.tvProfileInstruction.setVisibility(View.INVISIBLE);
+            homeLayout.tvScanInstruction.setVisibility(View.INVISIBLE);
+            homeLayout.tvShoppingListInstruction.setVisibility(View.INVISIBLE);
+        }else{
+            homeLayout.tvInventoryListInstruction.setVisibility(VISIBLE);
+            homeLayout.tvProfileInstruction.setVisibility(View.VISIBLE);
+            homeLayout.tvScanInstruction.setVisibility(View.VISIBLE);
+            homeLayout.tvShoppingListInstruction.setVisibility(View.VISIBLE);
+        }
+    }
     /**
      * <p>LogOut() calls the shared preference for the user and clears the data saved upon logging
      * out of the home activity.</p>
      */
     public void logOut() {
         SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
-        prefPut.edit().clear().commit();
+        prefPut.edit().clear().apply();
     }
 
     /**
@@ -89,7 +108,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HomeActivityBinding homeLayout = HomeActivityBinding.inflate(LayoutInflater.from(this));
+        homeLayout = HomeActivityBinding.inflate(LayoutInflater.from(this));
         setContentView(homeLayout.getRoot());
 
         homeLayout.btnInventory.setOnClickListener(this);
@@ -97,6 +116,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         homeLayout.btnShoppingList.setOnClickListener(this);
         homeLayout.btnProfile.setOnClickListener(this);
         homeLayout.btnLogout.setOnClickListener(this);
+        homeLayout.ibInformation.setOnClickListener(this);
 
         nav = new Navigation(this);
         myGesture = new GestureDetectorCompat(this, new MyGestureListener());

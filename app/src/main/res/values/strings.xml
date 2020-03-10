@@ -77,4 +77,10 @@
     <string name="spice_information">Spice Information</string>
     <string name="pic1">Pic1</string>
     <string name="pic2">pic2</string>
+    <string name="ProfileSwipeInstructions">Swipe bottom to top to open the Profile.</string>
+    <string name="ShoppingListSwipeInstructions">Swipe right to left to open the Shopping List.</string>
+    <string name="InventoryListSwipeInstructions">Swipe left to right to open the Inventory List.</string>
+    <string name="ScanSwipeInstructions">Swipe top to bottom to open a scan.</string>
+    <string name="Instructions">Instructions of swipe navigation.</string>
+    <string name="spice_image">Spice Image</string>
 </resources>
