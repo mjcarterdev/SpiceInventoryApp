@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import SpiceRack.Application.activites.HomeActivity;
@@ -15,6 +17,8 @@ import SpiceRack.Application.database.User;
 import SpiceRack.Application.database.UserDao;
 import SpiceRack.Application.login.StartupActivity;
 import SpiceRack.R;
+
+import static android.view.View.VISIBLE;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -31,6 +35,8 @@ public class ProfileActivity extends AppCompatActivity {
                 editProfile();
             }else if (v.getId() == R.id.btnDeleteUser){
                 deleteUserAccount();
+            }else if(v.getId() == R.id.ibInformation){
+                isVisible();
             }
         }
     };
@@ -42,6 +48,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         Button btnEditProfile = findViewById(R.id.btnEditProfile);
         btnEditProfile.setOnClickListener(myClick);
+        ImageButton btnInformation = findViewById(R.id.ibInformation);
+        btnInformation.setOnClickListener(myClick);
 
         Button btnDeleteUser = findViewById(R.id.btnDeleteUser);
         btnDeleteUser.setOnClickListener(myClick);
@@ -51,6 +59,7 @@ public class ProfileActivity extends AppCompatActivity {
         editPassword = findViewById(R.id.editPassword);
         editConfirmPassword = findViewById(R.id.editConfirmPassword);
         editLoginHint = findViewById(R.id.editLoginHint);
+
 
         mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         myUserDao = mySpiceRackDb.getUserDao();
@@ -105,5 +114,15 @@ public class ProfileActivity extends AppCompatActivity {
 
         Intent openActivity = new Intent(this, StartupActivity.class);
         startActivity(openActivity);
+    }
+
+    public void isVisible(){
+        TextView instruction = findViewById(R.id.tvProfileInstruction);
+        if(instruction.getVisibility() == VISIBLE){
+            instruction.setVisibility(View.INVISIBLE);
+        }else{
+            instruction.setVisibility(VISIBLE);
+
+        }
     }
 }

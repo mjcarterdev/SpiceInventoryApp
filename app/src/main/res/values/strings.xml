@@ -83,4 +83,6 @@
     <string name="ScanSwipeInstructions">Swipe top to bottom to open a scan.</string>
     <string name="Instructions">Instructions of swipe navigation.</string>
     <string name="spice_image">Spice Image</string>
+    <string name="HomeSwipeInstructions">Swipe bottom to top to open Home.</string>
+    <string name="SwipeInstructionShoppingListToHome">Swipe left to right to open home.</string>
 </resources>

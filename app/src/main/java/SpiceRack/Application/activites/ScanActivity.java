@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 
@@ -24,7 +26,10 @@ import SpiceRack.Application.database.SpiceDao;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.database.SpiceListAdapter;
 import SpiceRack.Application.utilities.Navigation;
+import SpiceRack.R;
 import SpiceRack.databinding.ScanActivityBinding;
+
+import static android.view.View.VISIBLE;
 
 /**
  * <p>
@@ -74,7 +79,13 @@ public class ScanActivity extends AppCompatActivity implements SpiceListAdapter.
         spiceList = mySpiceDao.getAllSpices();
         Collections.sort(spiceList);
         searchByBarcode();
-
+        ImageButton information = scanLayout.ibInformation;
+        information.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               isVisible();
+            }
+        });
         nav = new Navigation(this);
         myGesture = new GestureDetectorCompat(this, new MyGestureListener());
 
@@ -215,6 +226,16 @@ public class ScanActivity extends AppCompatActivity implements SpiceListAdapter.
                 }
             }
             return true;
+        }
+    }
+
+    public void isVisible(){
+        if(scanLayout.tvHomeInstructionScan.getVisibility() == VISIBLE){
+            scanLayout.tvHomeInstructionScan.setVisibility(View.INVISIBLE);
+
+        }else{
+            scanLayout.tvHomeInstructionScan.setVisibility(VISIBLE);
+
         }
     }
 }

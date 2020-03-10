@@ -4,10 +4,9 @@ package SpiceRack.Application.activites;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.GestureDetector;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +16,9 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+import java.util.Objects;
+
 import SpiceRack.Application.database.ShoppingDao;
 import SpiceRack.Application.database.ShoppingItem;
 import SpiceRack.Application.database.ShoppingListAdapter;
@@ -24,9 +26,10 @@ import SpiceRack.Application.database.Spice;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.utilities.Navigation;
 import SpiceRack.R;
+import SpiceRack.databinding.ShoppinglistActivityBinding;
 
-import java.util.List;
-import java.util.Objects;
+
+import static android.view.View.VISIBLE;
 
 /**
  *<p>
@@ -69,20 +72,22 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
 
             if (v.getId() == R.id.btnAddItem) {
                 addItemToShopping();
-            } else {
+            } else if(v.getId() ==R.id.ibInformation){
+                isVisible();
+            }else {
                 clearList();
             }
             updateUI();
         }
     };
 
-    private EditText editName, editAmount;
     private ShoppingDao myShoppingDao;
     private List<ShoppingItem> shoppingItem;
     private ShoppingItem Item;
     private RecyclerView listShopping;
     private ShoppingListAdapter adapterShopping;
     private Navigation nav;
+    ShoppinglistActivityBinding shoppingLayout;
 
     /**
      * <p>
@@ -96,21 +101,18 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.shoppinglist_activity);
 
-        editName = findViewById(R.id.editName);
-        editAmount = findViewById(R.id.editAmount);
+        shoppingLayout = ShoppinglistActivityBinding.inflate(LayoutInflater.from(this));
+        setContentView(shoppingLayout.getRoot());
 
-        Button addItem = findViewById(R.id.btnAddItem);
-        Button clearList = findViewById(R.id.btnClearList);
-        listShopping = findViewById(R.id.rvShoppingList);
-        addItem.setOnClickListener(myClick);
-        clearList.setOnClickListener(myClick);
+        shoppingLayout.ibInformation.setOnClickListener(myClick);
+        listShopping = shoppingLayout.rvShoppingList;
+        shoppingLayout.btnAddItem.setOnClickListener(myClick);
+        shoppingLayout.btnClearList.setOnClickListener(myClick);
 
         SpiceDatabase mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         myShoppingDao = mySpiceRackDb.getShoppingDao();
         List<Spice> spiceList = mySpiceRackDb.getSpiceDao().getSpiceByStock(0);
-
         nav = new Navigation(this);
         myGesture = new GestureDetectorCompat(this, new MyGestureListener());
 
@@ -175,8 +177,8 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
      */
 
     public void addItemToShopping() {
-        String name = editName.getText().toString();
-        int amount = Integer.parseInt(editAmount.getText().toString());
+        String name = shoppingLayout.editName.getText().toString();
+        int amount = Integer.parseInt(shoppingLayout.editAmount.getText().toString());
         Item = new ShoppingItem(name, amount, "N/A", "N/A", SHOPPING_NORMAL, false);
         myShoppingDao.insertItem(Item);
     }
@@ -285,8 +287,8 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
                 updateUI();
                 Toast.makeText(ShoppingListActivity.this, item.getItemName() + " is Deleted", Toast.LENGTH_SHORT).show();
             } else {
-                String name = editName.getText().toString();
-                String amount = editAmount.getText().toString();
+                String name = shoppingLayout.editName.getText().toString();
+                String amount = shoppingLayout.editAmount.getText().toString();
                 if (name.isEmpty() || amount.isEmpty()) {
                     Toast.makeText(ShoppingListActivity.this, "Error - name or amount is empty!", Toast.LENGTH_SHORT).show();
                 } else {
@@ -299,4 +301,14 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
             }
         }
     };
+
+    public void isVisible(){
+
+        if(shoppingLayout.tvHomeInstruction.getVisibility() == VISIBLE){
+            shoppingLayout.tvHomeInstruction.setVisibility(View.INVISIBLE);
+
+        }else{
+            shoppingLayout.tvHomeInstruction.setVisibility(VISIBLE);
+        }
+    }
 }
