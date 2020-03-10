@@ -85,4 +85,13 @@
     <string name="spice_image">Spice Image</string>
     <string name="HomeSwipeInstructions">Swipe bottom to top to open Home.</string>
     <string name="SwipeInstructionShoppingListToHome">Swipe left to right to open home.</string>
+    <string name="SwipeInstructionsToInventoryEditor">Swipe left to right to open Inventory Editor.</string>
+    <string name="SwipeRtoLHome">Swipe right to left to open Home.</string>
+    <string name="SwipeRtoLInventory">Swipe right to Left to open Inventory</string>
+    <string name="about_application">About Application</string>
+    <string name="authors">SpiceRack was created by Astrid Strohmaier and Michael Carter.</string>
+    <string name="barcode_scanner_credit">Barcode Scanning was implemented using the open source Zxing library found at github.com/zxing/zxing</string>
+    <string name="image_credit">Images used in this application were sourced from Pixabay.com. Individual credit for images can be found in the Readme file on Github for this applicaiton.</string>
+    <string name="about">About</string>
+    <string name="aboutImage">AboutImage</string>
 </resources>

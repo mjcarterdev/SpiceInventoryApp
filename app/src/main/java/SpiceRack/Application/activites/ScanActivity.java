@@ -2,22 +2,17 @@ package SpiceRack.Application.activites;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.core.view.GestureDetectorCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.Toast;
-
-
 import java.util.Collections;
 import java.util.List;
 
@@ -26,7 +21,6 @@ import SpiceRack.Application.database.SpiceDao;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.database.SpiceListAdapter;
 import SpiceRack.Application.utilities.Navigation;
-import SpiceRack.R;
 import SpiceRack.databinding.ScanActivityBinding;
 
 import static android.view.View.VISIBLE;
@@ -79,8 +73,7 @@ public class ScanActivity extends AppCompatActivity implements SpiceListAdapter.
         spiceList = mySpiceDao.getAllSpices();
         Collections.sort(spiceList);
         searchByBarcode();
-        ImageButton information = scanLayout.ibInformation;
-        information.setOnClickListener(new View.OnClickListener() {
+        scanLayout.ibInformation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                isVisible();
@@ -232,10 +225,11 @@ public class ScanActivity extends AppCompatActivity implements SpiceListAdapter.
     public void isVisible(){
         if(scanLayout.tvHomeInstructionScan.getVisibility() == VISIBLE){
             scanLayout.tvHomeInstructionScan.setVisibility(View.INVISIBLE);
+            scanLayout.tvInventoryInstruction.setVisibility(View.INVISIBLE);
 
         }else{
             scanLayout.tvHomeInstructionScan.setVisibility(VISIBLE);
-
+            scanLayout.tvInventoryInstruction.setVisibility(View.VISIBLE);
         }
     }
 }

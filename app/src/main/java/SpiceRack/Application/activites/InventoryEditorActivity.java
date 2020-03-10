@@ -23,6 +23,8 @@ import SpiceRack.Application.utilities.Navigation;
 import SpiceRack.R;
 import SpiceRack.databinding.InventoryEditorActivityBinding;
 
+import static android.view.View.VISIBLE;
+
 /**
  *<p>
  *      InventoryEditorActivity class is the page where all new Spices are entered into the inventory.
@@ -66,6 +68,9 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
                 case R.id.btnUpdateSpice:
                     updateSpice();
                     break;
+                case R.id.ibInformation:
+                    isVisible();
+                    break;
                 default:
                     barcode = inventoryEditorLayout.editBarcode.getText().toString();
             }
@@ -93,6 +98,7 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         inventoryEditorLayout.deleteSpices.setOnClickListener(myClick);
         inventoryEditorLayout.btnaddSpice.setOnClickListener(myClick);
         inventoryEditorLayout.btnUpdateSpice.setOnClickListener(myClick);
+        inventoryEditorLayout.ibInformation.setOnClickListener(myClick);
 
         ArrayAdapter<String> containerAdaptor = new ArrayAdapter<>(InventoryEditorActivity.this, android.R.layout.simple_spinner_dropdown_item, containerType);
         ArrayAdapter<String> brandAdaptor = new ArrayAdapter<>(InventoryEditorActivity.this, android.R.layout.simple_spinner_dropdown_item, brands);
@@ -297,6 +303,16 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         inventoryEditorLayout.editStock.setText("");
         inventoryEditorLayout.spContainerType.setSelection(0);
         inventoryEditorLayout.spBrand.setSelection(0);
+    }
+
+    public void isVisible(){
+        if(inventoryEditorLayout.tvInventoryInstruction.getVisibility() == VISIBLE){
+            inventoryEditorLayout.tvInventoryInstruction.setVisibility(View.INVISIBLE);
+
+        }else{
+            inventoryEditorLayout.tvInventoryInstruction.setVisibility(VISIBLE);
+
+        }
     }
 
 }

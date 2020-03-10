@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import SpiceRack.Application.activites.AboutActivity;
 import SpiceRack.Application.activites.HomeActivity;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.database.User;
@@ -37,6 +39,9 @@ public class ProfileActivity extends AppCompatActivity {
                 deleteUserAccount();
             }else if(v.getId() == R.id.ibInformation){
                 isVisible();
+            }else{
+                Intent intent = new Intent(ProfileActivity.this, AboutActivity.class);
+                startActivity(intent);
             }
         }
     };
@@ -50,7 +55,8 @@ public class ProfileActivity extends AppCompatActivity {
         btnEditProfile.setOnClickListener(myClick);
         ImageButton btnInformation = findViewById(R.id.ibInformation);
         btnInformation.setOnClickListener(myClick);
-
+        ImageButton btnAbout = findViewById(R.id.btnAbout);
+        btnAbout.setOnClickListener(myClick);
         Button btnDeleteUser = findViewById(R.id.btnDeleteUser);
         btnDeleteUser.setOnClickListener(myClick);
 
@@ -84,7 +90,7 @@ public class ProfileActivity extends AppCompatActivity {
             Toast.makeText(ProfileActivity.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
         } else if (userName.isEmpty() || emailAddress.isEmpty() || editPasswordString.isEmpty() || editConfirmPasswordString.isEmpty() || editLoginHintString.isEmpty()) {
             Toast.makeText(ProfileActivity.this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
-        } else if (userName.length() <3 || emailAddress.length() <3 || editPasswordString.length() <3 || editConfirmPasswordString.length() <3 || editLoginHintString.length() <3){
+        } else if (userName.length() < 3 || emailAddress.length() <3 || editPasswordString.length() <3 || editConfirmPasswordString.length() < 3 || editLoginHintString.length() <3){
             Toast.makeText(ProfileActivity.this, "Minimum length 3", Toast.LENGTH_SHORT).show();
         } else {
 
@@ -98,7 +104,7 @@ public class ProfileActivity extends AppCompatActivity {
             SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
             SharedPreferences.Editor prefEditor = prefPut.edit();
             prefEditor.putString("UserLoggedIn", editEmailAddress.getText().toString());
-            prefEditor.commit();
+            prefEditor.apply();
 
             Intent openActivity = new Intent(this, HomeActivity.class);
             startActivity(openActivity);
@@ -110,7 +116,7 @@ public class ProfileActivity extends AppCompatActivity {
         myUserDao.deleteUser(userFromDB);
 
         SharedPreferences prefPut = getSharedPreferences("User", Activity.MODE_PRIVATE);
-        prefPut.edit().clear().commit();
+        prefPut.edit().clear().apply();
 
         Intent openActivity = new Intent(this, StartupActivity.class);
         startActivity(openActivity);

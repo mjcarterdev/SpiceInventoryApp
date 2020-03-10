@@ -9,17 +9,58 @@
     tools:context=".Application.activites.InventoryActivity">
 
     <TextView
+        android:id="@+id/tvHomeInstruction"
+        style="@style/InstructionText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="175dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="175dp"
+        android:background="@drawable/bubble_right"
+        android:gravity="center"
+        android:padding="20dp"
+        android:paddingEnd="45dp"
+        android:paddingStart="20dp"
+        android:text="@string/SwipeRtoLHome"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/rvSpiceList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvInventoryEditorInstruction"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        android:translationZ="@dimen/cardview_default_elevation"
+        tools:ignore="PrivateResource" />
+
+    <TextView
+        android:id="@+id/tvInventoryEditorInstruction"
+        style="@style/InstructionText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="175dp"
+        android:layout_marginBottom="175dp"
+        android:background="@drawable/bubble_left"
+        android:gravity="center"
+        android:padding="20dp"
+        android:paddingStart="45dp"
+        android:paddingEnd="10dp"
+        android:text="@string/SwipeInstructionsToInventoryEditor"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/rvSpiceList"
+        app:layout_constraintEnd_toStartOf="@+id/tvHomeInstruction"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        android:translationZ="@dimen/cardview_default_elevation"
+        tools:ignore="PrivateResource" />
+
+    <TextView
         android:id="@+id/tvInventoryTitle"
         style="@style/EditTextDefault"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="80dp"
         android:text="@string/spice_inventory_list"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,19 +136,33 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSpiceList"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="55dp"
+        android:layout_width="334dp"
+        android:layout_height="476dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="61dp"
         android:background="@drawable/generic_boarder"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="@+id/tvHomeInstruction"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+        app:layout_constraintTop_toBottomOf="@+id/divider">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageButton
+        android:id="@+id/ibInformation"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="365dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/info"
+        android:contentDescription="@string/Instructions"
+        app:layout_constraintBottom_toTopOf="@+id/tvInventoryTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

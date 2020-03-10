@@ -51,6 +51,7 @@ package="SpiceRack">
     <activity android:name=".Application.login.LoginActivity"
         android:screenOrientation="portrait"
         tools:ignore="LockedOrientationActivity" />
+    <activity android:name=".Application.activites.AboutActivity" />
 
 </application>
 

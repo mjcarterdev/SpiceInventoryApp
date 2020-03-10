@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
@@ -20,6 +21,8 @@ import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.database.SpiceListAdapter;
 import SpiceRack.Application.utilities.Navigation;
 import SpiceRack.databinding.InventoryActivityBinding;
+
+import static android.view.View.VISIBLE;
 
 /**
  *  <p>
@@ -60,6 +63,13 @@ public class InventoryActivity extends AppCompatActivity implements SpiceListAda
 
         mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         mySpiceDao = mySpiceRackDb.getSpiceDao();
+
+        inventoryLayout.ibInformation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isVisible();
+            }
+        });
 
         inventoryLayout.rvSpiceList.setLayoutManager(new LinearLayoutManager(this));
         updateUI();
@@ -141,5 +151,15 @@ public class InventoryActivity extends AppCompatActivity implements SpiceListAda
             return true;
         }
     }
+    public void isVisible(){
+        if(inventoryLayout.tvInventoryEditorInstruction.getVisibility() == VISIBLE){
+            inventoryLayout.tvInventoryEditorInstruction.setVisibility(View.INVISIBLE);
+            inventoryLayout.tvHomeInstruction.setVisibility(View.INVISIBLE);
 
+        }else{
+            inventoryLayout.tvInventoryEditorInstruction.setVisibility(View.VISIBLE);
+            inventoryLayout.tvHomeInstruction.setVisibility(View.VISIBLE);
+
+        }
+    }
 }
