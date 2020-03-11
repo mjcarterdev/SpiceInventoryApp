@@ -90,7 +90,7 @@
                 android:gravity="center_vertical|center"
                 android:hint="@string/editBarcode"
                 android:importantForAutofill="no"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 android:textColor="@color/textColour" />
         </TableRow>
 
@@ -112,6 +112,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ems="10"
+                android:maxLength="30"
                 android:gravity="center_vertical|center"
                 android:hint="@string/nameEdit"
                 android:importantForAutofill="no"
@@ -137,10 +138,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:maxLength="2"
                 android:gravity="center_vertical|center"
                 android:hint="@string/stock"
                 android:importantForAutofill="no"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 android:textColor="@color/textColour" />
         </TableRow>
 

@@ -172,9 +172,23 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
 
     public void addItemToShopping() {
         String name = shoppingLayout.editName.getText().toString();
-        int amount = Integer.parseInt(shoppingLayout.editAmount.getText().toString());
-        Item = new ShoppingItem(name, amount, "N/A", "N/A", SHOPPING_NORMAL, false);
-        myShoppingDao.insertItem(Item);
+        String amount = shoppingLayout.editAmount.getText().toString();
+
+        if(name.isEmpty() || amount.isEmpty()){
+            Toast.makeText(this, "Please fill out all the fields", Toast.LENGTH_SHORT).show();
+        }else {
+            if(Integer.parseInt(amount) >=0 && Integer.parseInt(amount) <= 99) {
+                ShoppingItem item = myShoppingDao.getItemName(name);
+                if(item == null) {
+                    Item = new ShoppingItem(name, Integer.parseInt(amount), "N/A", "N/A", SHOPPING_NORMAL, false);
+                    myShoppingDao.insertItem(Item);
+                } else{
+                    Toast.makeText(this, "This item already exists.", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(this, "Amount has to be between 0 and 99.", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     /**
@@ -285,10 +299,15 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
                 if (name.isEmpty() || amount.isEmpty()) {
                     Toast.makeText(ShoppingListActivity.this, "Error - name or amount is empty!", Toast.LENGTH_SHORT).show();
                 } else {
-                    item.setItemName(name);
-                    item.setAmount(Integer.parseInt(amount));
-                    myShoppingDao.upDate(item);
-                    Toast.makeText(ShoppingListActivity.this, item.getItemName() + " has been updated", Toast.LENGTH_SHORT).show();
+                    ShoppingItem tempItem = myShoppingDao.getItemName(name);
+                    if(item.getItemName().equals(tempItem.getItemName())){
+                        item.setItemName(name);
+                        item.setAmount(Integer.parseInt(amount));
+                        myShoppingDao.upDate(item);
+                        Toast.makeText(ShoppingListActivity.this, item.getItemName() + " has been updated", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(ShoppingListActivity.this, "Item already exists modify that item!", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 updateUI();
             }

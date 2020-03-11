@@ -59,4 +59,6 @@ public interface ShoppingDao {
     @Query("SELECT * from shoppingList")
     List<ShoppingItem> getAllShoppingItems();
 
+    @Query("Select * FROM shoppingList WHERE itemName = :itemName Limit 1")
+    ShoppingItem getItemName(String itemName);
 }

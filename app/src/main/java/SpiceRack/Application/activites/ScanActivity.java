@@ -173,13 +173,21 @@ public class ScanActivity extends AppCompatActivity implements SpiceListAdapter.
             Spice spice = spiceList.get(viewHolder.getAdapterPosition());
             int stock = spiceList.get(viewHolder.getAdapterPosition()).getStock();
             if(direction == ItemTouchHelper.RIGHT){
-                int newStock = stock - 1;
-                spice.setStock(newStock);
-                mySpiceDao.upDate(spice);
+                if(stock > 0) {
+                    int newStock = stock - 1;
+                    spice.setStock(newStock);
+                    mySpiceDao.upDate(spice);
+                }else{
+                    Toast.makeText(ScanActivity.this, "Stock cannot go below 0.", Toast.LENGTH_SHORT).show();
+                }
             }else{
-                int newStock = stock + 1;
-                spice.setStock(newStock);
-                mySpiceDao.upDate(spice);
+                if(stock <99) {
+                    int newStock = stock + 1;
+                    spice.setStock(newStock);
+                    mySpiceDao.upDate(spice);
+                }else{
+                    Toast.makeText(ScanActivity.this, "Stock has to 99 or below.", Toast.LENGTH_SHORT).show();
+                }
             }
             updateUI();
         }

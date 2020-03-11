@@ -219,7 +219,7 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
 
         }else if (barcode.isEmpty() || name.isEmpty() || stock.isEmpty() || container.isEmpty() || brand.isEmpty() || container.contains("Select One...") || brand.contains("Select One...")) {
                 Toast.makeText(this, "Error - one of the boxes is empty. Please fill all details.", Toast.LENGTH_LONG).show();
-        } else {
+        } else if (Integer.parseInt(stock) >= 0 && Integer.parseInt(stock) < 99){
             String oldName = receivedSpice.getSpiceName();
             receivedSpice.setSpiceName(name);
             receivedSpice.setBrand(brand);
@@ -228,6 +228,8 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
             mySpiceDao.upDate(receivedSpice);
             Toast.makeText(this,  oldName + " was updated to "+ receivedSpice.getSpiceName(), Toast.LENGTH_SHORT).show();
             setDefaultInfo();
+        } else {
+            Toast.makeText(this, "Stock has to be between 0 and 99", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -259,10 +261,14 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
         } else if (barcode.equals(barcodeID)) {
             Toast.makeText(this, barcode + " Already exists!", Toast.LENGTH_LONG).show();
         } else if (receivedSpice == null) {
-            Spice spice = new Spice(barcode, name, Integer.parseInt(stock), container, brand);
-            mySpiceDao.insertSpice(spice);
-            Toast.makeText(this,  name + " was added to inventory!", Toast.LENGTH_SHORT).show();
-            setDefaultInfo();
+            if(Integer.parseInt(stock) >= 0 && Integer.parseInt(stock) <= 99) {
+                Spice spice = new Spice(barcode, name, Integer.parseInt(stock), container, brand);
+                mySpiceDao.insertSpice(spice);
+                Toast.makeText(this, name + " was added to inventory!", Toast.LENGTH_SHORT).show();
+                setDefaultInfo();
+            }else{
+                Toast.makeText(this, "Stock has to be between 0 and 99", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
