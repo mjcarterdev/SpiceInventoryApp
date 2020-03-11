@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/greenoverlay_background"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="251dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/profilePic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/emblem_round" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="327dp"
+        android:layout_width="328dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:orientation="vertical"
@@ -30,7 +42,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="@string/shopping_list"
+                android:text="@string/shoppingList"
                 android:textSize="18sp" />
 
             <Button
@@ -74,8 +86,8 @@
 
     <Button
         android:id="@+id/btnLogout"
-        android:layout_width="322dp"
-        android:layout_height="0dp"
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="60dp"
         android:background="@color/logOutText"
@@ -83,12 +95,12 @@
         android:shadowDx="4"
         android:shadowDy="4"
         android:shadowRadius="4"
-        android:text="@string/log_out"
+        android:text="@string/logOut"
         android:textColor="@color/textColour"
         android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView

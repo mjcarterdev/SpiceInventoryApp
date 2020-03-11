@@ -49,170 +49,146 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tvInventoryEditorTitle"
+        style="@style/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:gravity="center"
+        android:text="@string/spiceInfo"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TableLayout
-            android:id="@+id/tableLayout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="35dp"
-            android:layout_marginBottom="28dp"
-            app:layout_constraintBottom_toTopOf="@+id/tvDisplayMessage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvDisplayMessage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-            <TableRow
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <TextView
+                android:id="@+id/tvSpiceID"
+                style="@style/EditTextDefault"
                 android:layout_width="match_parent"
-                android:layout_height="60dp">
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="@string/spiceIDAdaptor" />
 
-                <TextView
-                    android:id="@+id/tvSpiceID"
-                    style="@style/EditTextDefault"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical|center"
-                    android:text="@string/spice_id" />
-
-                <TextView
-                    android:id="@+id/tvDisplaySpiceID"
-                    style="@style/EditTextDefault"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:ems="10"
-                    android:gravity="center_vertical|center"
-                    android:importantForAutofill="no" />
-            </TableRow>
-
-            <TableRow
+            <TextView
+                android:id="@+id/tvDisplaySpiceID"
+                style="@style/EditTextDefault"
                 android:layout_width="match_parent"
-                android:layout_height="60dp">
+                android:layout_height="60dp"
+                android:ems="10"
+                android:gravity="center_vertical|center"
+                android:importantForAutofill="no" />
+        </TableRow>
 
-                <TextView
-                    android:id="@+id/Barcode_Number"
-                    style="@style/EditTextDefault"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical|center"
-                    android:text="@string/barcode_number" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
 
-                <TextView
-                    android:id="@+id/tvDisplayBarcode"
-                    style="@style/EditTextDefault"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:ems="10"
-                    android:gravity="center_vertical|center"
-                    android:importantForAutofill="no" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="343dp"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/Spice_Name"
-                    style="@style/EditTextDefault"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical|center"
-                    android:text="@string/spice_name" />
-
-                <TextView
-                    android:id="@+id/tvDisplaySpiceName"
-                    style="@style/EditTextDefault"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:ems="10"
-                    android:gravity="center_vertical|center"
-                    android:importantForAutofill="no" />
-            </TableRow>
-
-            <TableRow
+            <TextView
+                android:id="@+id/Barcode_Number"
+                style="@style/EditTextDefault"
                 android:layout_width="match_parent"
-                android:layout_height="54dp">
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="@string/barcodeNumber" />
 
-                <TextView
-                    android:id="@+id/StockNumber"
-                    style="@style/EditTextDefault"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical|center"
-                    android:text="@string/current_stock" />
+            <TextView
+                android:id="@+id/tvDisplayBarcode"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:ems="10"
+                android:gravity="center_vertical|center"
+                android:importantForAutofill="no" />
+        </TableRow>
 
-                <TextView
-                    android:id="@+id/tvDisplayStock"
-                    style="@style/EditTextDefault"
-                    android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:ems="10"
-                    android:gravity="center_vertical|center"
-                    android:importantForAutofill="no" />
-            </TableRow>
+        <TableRow
+            android:layout_width="343dp"
+            android:layout_height="match_parent">
 
-        </TableLayout>
+            <TextView
+                android:id="@+id/Spice_Name"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="@string/spiceNameAdaptor" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvDisplaySpiceList"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/generic_boarder"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDisplayMessage"
-            app:layout_constraintVertical_bias="1.0" />
+            <TextView
+                android:id="@+id/tvDisplaySpiceName"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:ems="10"
+                android:gravity="center_vertical|center"
+                android:importantForAutofill="no" />
+        </TableRow>
 
-        <TextView
-            android:id="@+id/tvDisplayMessage"
-            style="@style/EditTextDefault"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="350dp"
-            android:layout_marginEnd="32dp"
-            android:text="@string/message"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="54dp">
 
-        <ImageButton
-            android:id="@+id/ibInformation"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="324dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/info"
-            android:contentDescription="@string/Instructions"
-            app:layout_constraintBottom_toTopOf="@+id/tvInventoryEditorTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/StockNumber"
+                style="@style/EditTextDefault"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center"
+                android:text="@string/currentStock" />
 
-        <TextView
-            android:id="@+id/tvHomeInstructionScan"
-            style="@style/InstructionText"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="275dp"
-            android:background="@drawable/bubble_left"
-            android:gravity="center"
-            android:padding="20dp"
-            android:paddingStart="45dp"
-            android:paddingEnd="10dp"
-            android:text="@string/SwipeInstructionShoppingListToHome"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toTopOf="@+id/rvDisplaySpiceList"
-            app:layout_constraintEnd_toStartOf="@+id/tvInventoryInstruction"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/tvDisplayStock"
+                style="@style/EditTextDefault"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:ems="10"
+                android:gravity="center_vertical|center"
+                android:importantForAutofill="no" />
+        </TableRow>
+
+    </TableLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDisplaySpiceList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/generic_boarder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDisplayMessage" />
+
+    <TextView
+        android:id="@+id/tvDisplayMessage"
+        style="@style/EditTextDefault"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

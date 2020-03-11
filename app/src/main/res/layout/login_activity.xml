@@ -14,37 +14,27 @@
         android:background="@color/transparent_green"
         tools:context="SpiceRack.Application.login.LoginActivity">
 
-    <TextView
-        android:id="@+id/tvLogin"
-        style="@style/EditTextDefault"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="30dp"
-        android:layout_weight="30"
-        android:gravity="center"
-        android:text="@string/logIn"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tvLogin"
+            style="@style/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:gravity="center"
+            android:text="@string/logIn"
+            app:layout_constraintBottom_toTopOf="@+id/tableLayout4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TableLayout
-        android:id="@+id/tableLayout4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="125dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="420dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <TableLayout
+            android:id="@+id/tableLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/linearLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/tvLogin">
 
         <TableRow
             android:layout_width="match_parent"
@@ -56,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center"
-                android:text="@string/label_email_address" />
+                android:text="@string/emailAddressLabel" />
 
             <EditText
                 android:id="@+id/editEmailAddress"
@@ -64,11 +54,10 @@
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:gravity="center_vertical|center"
-                android:hint="@string/email_address"
+                android:hint="@string/emailAddress"
                 android:importantForAutofill="no"
                 android:inputType="textWebEmailAddress"
                 android:textColor="@color/textColour" />
-
         </TableRow>
 
         <TableRow
@@ -81,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center"
-                android:text="@string/label_password" />
+                android:text="@string/passwordLabel" />
 
             <EditText
                 android:id="@+id/editPassword"
@@ -93,24 +82,19 @@
                 android:importantForAutofill="no"
                 android:inputType="textPassword"
                 android:textColor="@color/textColour" />
-
         </TableRow>
 
     </TableLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginBottom="325dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout4">
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tableLayout4">
 
         <Button
             android:id="@+id/btnLogIn"
@@ -137,17 +121,6 @@
             tools:ignore="RelativeOverlap" />
 
     </LinearLayout>
-
-    <!--
-    <EditText
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogIn" /> -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

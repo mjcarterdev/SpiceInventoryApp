@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -53,26 +52,24 @@
 
     <TextView
         android:id="@+id/tvInventoryTitle"
-        style="@style/EditTextDefault"
-        android:layout_width="0dp"
+        style="@style/title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="80dp"
-        android:text="@string/spice_inventory_list"
-        android:textSize="30sp"
+        android:layout_marginTop="55dp"
+        android:gravity="center"
+        android:text="@string/spiceInventoryList"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="horizontal"
         android:weightSum="100"
@@ -88,7 +85,7 @@
             android:layout_height="match_parent"
             android:layout_weight="20"
             android:gravity="center_vertical"
-            android:text="@string/spice_name_inventory" />
+            android:text="@string/spiceNameLabel" />
 
         <TextView
             android:id="@+id/tvBrandInventory"
@@ -106,7 +103,7 @@
             android:layout_height="match_parent"
             android:layout_weight="26"
             android:gravity="center_vertical"
-            android:text="@string/container_type" />
+            android:text="@string/container" />
 
         <TextView
             android:id="@+id/tvStockInventory"
@@ -116,35 +113,35 @@
             android:layout_marginStart="4dp"
             android:layout_weight="28"
             android:gravity="center_vertical"
-            android:text="@string/stock" />
+            android:text="@string/stockLabel" />
 
     </LinearLayout>
 
     <View
         android:id="@+id/divider"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="1dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="8dp"
         android:background="@color/yellowText"
         app:layout_constraintBottom_toTopOf="@+id/rvSpiceList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSpiceList"
-        android:layout_width="334dp"
-        android:layout_height="476dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="61dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/generic_boarder"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tvHomeInstruction"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
     </androidx.recyclerview.widget.RecyclerView>
 

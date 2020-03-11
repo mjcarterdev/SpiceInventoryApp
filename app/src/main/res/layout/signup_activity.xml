@@ -16,14 +16,12 @@
 
         <TextView
             android:id="@+id/tvSignUp"
-            style="@style/EditTextDefault"
+            style="@style/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="55dp"
-            android:layout_weight="30"
             android:gravity="center"
-            android:text="@string/sign_up"
-            android:textSize="22sp"
+            android:text="@string/signUp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -46,7 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical|center"
-                    android:text="@string/label_user_name" />
+                    android:text="@string/nameAdaptor" />
 
                 <EditText
                     android:id="@+id/editUserName"
@@ -54,7 +52,7 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:gravity="center_vertical|center"
-                    android:hint="@string/user_name"
+                    android:hint="@string/nameEdit"
                     android:importantForAutofill="no"
                     android:inputType="textPersonName"
                     android:textColor="@color/textColour" />
@@ -70,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical|center"
-                    android:text="@string/label_email_address" />
+                    android:text="@string/emailAddressLabel" />
 
                 <EditText
                     android:id="@+id/editEmailAddress"
@@ -78,7 +76,7 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:gravity="center_vertical|center"
-                    android:hint="@string/email_address"
+                    android:hint="@string/emailAddress"
                     android:importantForAutofill="no"
                     android:inputType="textWebEmailAddress"
                     android:textColor="@color/textColour" />
@@ -94,7 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical|center"
-                    android:text="@string/label_password" />
+                    android:text="@string/passwordLabel" />
 
                 <EditText
                     android:id="@+id/editPassword"
@@ -106,7 +104,6 @@
                     android:importantForAutofill="no"
                     android:inputType="textPassword"
                     android:textColor="@color/textColour" />
-
             </TableRow>
 
             <TableRow
@@ -119,7 +116,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical|center"
-                    android:text="@string/label_confirm_password" />
+                    android:text="@string/confirmPasswordLabel" />
 
                 <EditText
                     android:id="@+id/editConfirmPassword"
@@ -127,7 +124,7 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:gravity="center_vertical|center"
-                    android:hint="@string/confirm_password"
+                    android:hint="@string/confirmPassword"
                     android:importantForAutofill="no"
                     android:inputType="textPassword"
                     android:textColor="@color/textColour" />
@@ -143,7 +140,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical|center"
-                    android:text="@string/loginHint" />
+                    android:text="@string/logInHintLabel" />
 
                 <EditText
                     android:id="@+id/editLoginHint"
@@ -151,7 +148,7 @@
                     android:layout_height="match_parent"
                     android:ems="10"
                     android:gravity="center_vertical|center"
-                    android:hint="@string/loginHint"
+                    android:hint="@string/logInHint"
                     android:importantForAutofill="no"
                     android:inputType="textPersonName"
                     android:textColor="@color/textColour" />
@@ -164,9 +161,7 @@
             style="@style/ButtonStyleBlackOnYellow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="64dp"
-            android:text="@string/button_sign_up"
+            android:text="@string/signUp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -1,7 +1,6 @@
 package SpiceRack.Application.login;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -9,21 +8,40 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import SpiceRack.Application.activites.HomeActivity;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.database.User;
 import SpiceRack.Application.database.UserDao;
+import SpiceRack.Application.utilities.Navigation;
 import SpiceRack.R;
+
+    /**
+     *  <p>
+     *  SignUpActivity class creates and displays the user sign up. It validates the data entered into the
+     *  form and stores it in the database table User.
+     *  </p>
+     *
+     *  @author Michael
+     *  @author Astrid
+     *  @version 1.0
+     *  @since 05.03.2020
+     */
 
 public class SignUpActivity extends AppCompatActivity {
 
-    EditText editUserName, editEmailAddress, editPassword, editConfirmPassword, editLoginHint;
-    String userName, emailAddress, editPasswordString, editConfirmPasswordString, editLoginHintString;
-    SpiceDatabase mySpiceRackDb;
-    User user;
-    UserDao myUserDao;
-    Button btnSignUp;
+    public static final String KEY = "UserLoggedIn";
+    private EditText editUserName, editEmailAddress, editPassword, editConfirmPassword, editLoginHint;
+    private String userName, emailAddress, editPasswordString, editConfirmPasswordString, editLoginHintString;
+    private SpiceDatabase mySpiceRackDb;
+    private User user;
+    private UserDao myUserDao;
+    private Button btnSignUp;
+    private Navigation nav;
 
+    /**
+     *  <p>
+     *  Implements the OnClickListener. If a button is clicked, the appropriate method is called.
+     *  </p>
+     */
     private View.OnClickListener myClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -33,6 +51,12 @@ public class SignUpActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     *  <p>
+     *  onCreate() initializes the SignUpActivity. It sets the layout, OnClickListeners, navigation and instantiates the
+     *  database.
+     *  </p>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,14 +73,28 @@ public class SignUpActivity extends AppCompatActivity {
 
         mySpiceRackDb = SpiceDatabase.getINSTANCE(this);
         myUserDao = mySpiceRackDb.getUserDao();
+
+        nav = new Navigation(this);
     }
 
-    boolean isEmailValid(CharSequence email) {
+    /**
+     *  <p>
+     *  isEmailValid() checks if the characters entered into the editEmailAddress field
+     *  are a valid email address.
+     *  </p>
+     */
+    private boolean isEmailValid(CharSequence email) {
         emailAddress = editEmailAddress.getText().toString();
         return android.util.Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches();
     }
 
-    boolean checkIfExists(){
+    /**
+     *  <p>
+     *  checkIfExists() check if the email address entered into the editEmailAddress field
+     *  already exists in the User table.
+     *  </p>
+     */
+    private boolean checkIfExists(){
         emailAddress = editEmailAddress.getText().toString();
         User userFromDB = myUserDao.getUserByEmail(emailAddress);
         if (userFromDB != null) {
@@ -67,7 +105,30 @@ public class SignUpActivity extends AppCompatActivity {
         return false;
     }
 
-    public void signUp() {
+    /**
+     *  <p>
+     *  signUp() is called to add the data entered into the form to the user table. It performs the checks listed below
+     *  and displays error messages in a toast if needed:
+     *  <li>
+     *      <ul>Ensures that password and confirm password are equal</ul>
+     *      <ul>Ensures that all fields in the form contain data</ul>
+     *      <ul>Verifies that the email address is valid</ul>
+     *      <ul>Verifies that username and hint contain minimum 3 characters</ul>
+     *      <ul>Verifies that the password contains minimum 6 characters</ul>
+     *      <ul>Verifies that the user does not already exist in the database</ul>
+     *  </li>
+     *  </p>
+     *  <p>
+     *      After performing the checks above and no errors occur:
+     *  <li>
+     *      <ul>The data entered into the form is stored as new User object</ul>
+     *      <ul>The screen continues to the next page, the homePage</ul>
+     *      <ul>The email address entered is stored into Shared Preferences. This is needed when reopening the app
+     *      in order to log in a user automatically.</ul>
+     *  </li>
+     *  </p>
+     */
+    private void signUp() {
         userName = editUserName.getText().toString();
         emailAddress = editEmailAddress.getText().toString();
         editPasswordString = editPassword.getText().toString();
@@ -82,22 +143,24 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(SignUpActivity.this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
         } else if (!isEmailValid(emailAddress)) {
             Toast.makeText(SignUpActivity.this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
-        } else if (userName.length() <3 || emailAddress.length() <3 || editPasswordString.length() <3 || editConfirmPasswordString.length() <3 || editLoginHintString.length() <3){
-            Toast.makeText(SignUpActivity.this, "Minimum length 3", Toast.LENGTH_SHORT).show();
+        } else if (userName.length() <3) {
+            Toast.makeText(SignUpActivity.this, "Username minimum length 3", Toast.LENGTH_SHORT).show();
+        } else if (editPasswordString.length() <6 || editConfirmPasswordString.length() <6){
+            Toast.makeText(SignUpActivity.this, "Password minimum length 6", Toast.LENGTH_SHORT).show();
+        } else if (editLoginHintString.length() <3){
+            Toast.makeText(SignUpActivity.this, "Hint minimum length 3", Toast.LENGTH_SHORT).show();
         } else if (checkIfExists()){
             Toast.makeText(SignUpActivity.this, "User already exists", Toast.LENGTH_SHORT).show();
         } else {
 
             myUserDao.insertUser(user);
 
-            Intent openActivity = new Intent(this, HomeActivity.class);
-            startActivity(openActivity);
+            nav.homePage();
 
             SharedPreferences prefPutU = getSharedPreferences("User", Activity.MODE_PRIVATE);
             SharedPreferences.Editor prefEditorU = prefPutU.edit();
-            prefEditorU.putString("UserLoggedIn", emailAddress);
+            prefEditorU.putString(KEY, emailAddress);
             prefEditorU.commit();
         }
     }
 }
-
