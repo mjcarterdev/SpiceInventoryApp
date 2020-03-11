@@ -1,6 +1,5 @@
 package SpiceRack.Application.activites;
 
-
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.GestureDetector;
@@ -8,17 +7,14 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 import java.util.Objects;
-
 import SpiceRack.Application.database.ShoppingDao;
 import SpiceRack.Application.database.ShoppingItem;
 import SpiceRack.Application.database.ShoppingListAdapter;
@@ -27,8 +23,6 @@ import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.utilities.Navigation;
 import SpiceRack.R;
 import SpiceRack.databinding.ShoppinglistActivityBinding;
-
-
 import static android.view.View.VISIBLE;
 
 /**
@@ -238,7 +232,6 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
         recyclerViewState = Objects.requireNonNull(listShopping.getLayoutManager()).onSaveInstanceState();
         updateUI();
     }
-
 
     class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
 

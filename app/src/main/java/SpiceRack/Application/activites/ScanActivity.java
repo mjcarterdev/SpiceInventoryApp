@@ -15,14 +15,12 @@ import android.view.View;
 import android.widget.Toast;
 import java.util.Collections;
 import java.util.List;
-
 import SpiceRack.Application.database.Spice;
 import SpiceRack.Application.database.SpiceDao;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.database.SpiceListAdapter;
 import SpiceRack.Application.utilities.Navigation;
 import SpiceRack.databinding.ScanActivityBinding;
-
 import static android.view.View.VISIBLE;
 
 /**
@@ -139,7 +137,6 @@ public class ScanActivity extends AppCompatActivity implements SpiceListAdapter.
             scanLayout.rvDisplaySpiceList.setAdapter(adapter);
             searchByBarcode();
         }
-
 
     @Override
     public void spiceOnClick(int position) {

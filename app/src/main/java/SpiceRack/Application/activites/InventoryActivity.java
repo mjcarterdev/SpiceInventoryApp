@@ -6,15 +6,12 @@ import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.Collections;
 import java.util.List;
-
 import SpiceRack.Application.database.Spice;
 import SpiceRack.Application.database.SpiceDao;
 import SpiceRack.Application.database.SpiceDatabase;

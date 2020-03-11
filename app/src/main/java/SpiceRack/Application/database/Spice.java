@@ -25,7 +25,6 @@ import androidx.room.PrimaryKey;
         unique = true)})
 public class Spice implements Comparable<Spice>{
 
-
     @PrimaryKey (autoGenerate = true)
     private int spiceID;
     @NonNull

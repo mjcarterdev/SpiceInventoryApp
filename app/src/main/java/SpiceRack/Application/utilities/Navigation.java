@@ -2,7 +2,6 @@ package SpiceRack.Application.utilities;
 
 import android.content.Context;
 import android.content.Intent;
-
 import SpiceRack.Application.activites.HomeActivity;
 import SpiceRack.Application.activites.InventoryActivity;
 import SpiceRack.Application.activites.InventoryEditorActivity;

@@ -9,20 +9,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
-
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-
 import SpiceRack.Application.database.Spice;
 import SpiceRack.Application.database.SpiceDao;
 import SpiceRack.Application.database.SpiceDatabase;
 import SpiceRack.Application.utilities.Navigation;
 import SpiceRack.R;
 import SpiceRack.databinding.InventoryEditorActivityBinding;
-
 import static android.view.View.VISIBLE;
 
 /**
@@ -141,7 +137,6 @@ public class InventoryEditorActivity extends AppCompatActivity implements Adapte
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

@@ -226,31 +226,24 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/spicenmortar_clipart" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</LinearLayout>
-    <ImageButton
-        android:id="@+id/ibInformation"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="365dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/info"
-        android:contentDescription="@string/Instructions"
-        app:layout_constraintBottom_toTopOf="@+id/tvInventoryEditorTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/ibInformation"
+            android:layout_width="40dp"
+            android:layout_height="43dp"
+            app:layout_constraintHorizontal_bias="0.99"
+            app:layout_constraintVertical_bias="0.01"
+            android:background="@drawable/info"
+            android:contentDescription="@string/Instructions"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvInventoryInstruction"
         style="@style/InstructionText"
-        android:layout_width="201dp"
-        android:layout_height="147dp"
-        android:layout_marginStart="175dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginBottom="64dp"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
         android:background="@drawable/bubble_right"
         android:gravity="center"
         android:padding="20dp"
@@ -259,10 +252,12 @@
         android:text="@string/SwipeRtoLHome"
         android:translationZ="@dimen/cardview_default_elevation"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/fBtnScanBarcode"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout3"
-        app:layout_constraintTop_toBottomOf="@+id/ibInformation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="PrivateResource" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

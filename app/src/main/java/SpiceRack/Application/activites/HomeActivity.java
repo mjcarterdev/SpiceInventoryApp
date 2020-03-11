@@ -239,7 +239,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
       *     @author gcstang
       */
 
-
     public void scanner(View v) {
             new IntentIntegrator(this).initiateScan();
         }
