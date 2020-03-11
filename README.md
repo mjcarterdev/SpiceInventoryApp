@@ -1,8 +1,21 @@
 <h1>SpiceRack Instructions</h1>
 <h3>About SpiceRack</h3>
 <p>
-
+    SpiceRack provides you with an intuitive user experience that simplifies your spice & herb
+    shopping. SpiceRack is easy to use and visually appealing. With our built-in barcode
+    scanner, you can add your favourite spices & herbs easily to your custom inventory. The
+    custom inventory is a blank slate, you build as you go only tracking the herbs and spices you use.
 </p>
+<p>
+    SpiceRack can also be used as part of your shopping management routine - it enables you
+    to quickly add spices & herbs to a shopping list by automatically add inventory items
+    to your list when they reach zero. Additional none inventory items can added to the shopping list
+    through manually typing.
+</p>
+
+<h3>Demonstartion Video</h3>
+    <a href="https://drive.google.com/open?id=1uyVilUMhCDWAF9LXydn2RUfhkYYZRi57">Demonstration Video</a>>
+
 <h3>Installation</h3>
 <p>
     <ol>
