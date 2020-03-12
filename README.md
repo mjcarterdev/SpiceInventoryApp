@@ -15,8 +15,9 @@
 <p>
     <h3>Demonstration Video</h3>
         <a href="https://drive.google.com/open?id=1uyVilUMhCDWAF9LXydn2RUfhkYYZRi57">Demonstration Video</a>
+        <br>
     <h3>JavaDoc's</h3>
-    <a hrf="https://users.metropolia.fi/~astridst/javadoc/index.html">JavaDoc's</a>
+    <a href="https://users.metropolia.fi/~astridst/javadoc/index.html">JavaDoc's</a>
 </p>
 
 <h3>Installation</h3>
