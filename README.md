@@ -12,11 +12,17 @@
     to your list when they reach zero. Additional none inventory items can added to the shopping list
     through manually typing.
 </p>
-
-<h3>Demonstration Video</h3>
-    <a href="https://drive.google.com/open?id=1uyVilUMhCDWAF9LXydn2RUfhkYYZRi57">Demonstration Video</a>
+<p>
+    <h3>Demonstration Video</h3>
+        <a href="https://drive.google.com/open?id=1uyVilUMhCDWAF9LXydn2RUfhkYYZRi57">Demonstration Video</a>
+    <h3>JavaDoc's</h3>
+    <a hrf="https://users.metropolia.fi/~astridst/javadoc/index.html">JavaDoc's</a>
+</p>
 
 <h3>Installation</h3>
+
+<p>
+    
 <p>
     <ol>
         <li>On your phone, go to Settings > System > About phone and tap “Build number” 7 times.</li>
