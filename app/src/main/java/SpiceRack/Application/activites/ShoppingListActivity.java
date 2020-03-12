@@ -294,23 +294,34 @@ public class ShoppingListActivity extends AppCompatActivity implements ShoppingL
                 updateUI();
                 Toast.makeText(ShoppingListActivity.this, item.getItemName() + " is Deleted", Toast.LENGTH_SHORT).show();
             } else {
-                String name = shoppingLayout.editName.getText().toString();
-                String amount = shoppingLayout.editAmount.getText().toString();
-                if (name.isEmpty() || amount.isEmpty()) {
-                    Toast.makeText(ShoppingListActivity.this, "Error - name or amount is empty!", Toast.LENGTH_SHORT).show();
-                } else {
-                    ShoppingItem tempItem = myShoppingDao.getItemName(name);
-                    if(item.getItemName().equals(tempItem.getItemName())){
-                        item.setItemName(name);
-                        item.setAmount(Integer.parseInt(amount));
-                        myShoppingDao.upDate(item);
-                        Toast.makeText(ShoppingListActivity.this, item.getItemName() + " has been updated", Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(ShoppingListActivity.this, "Item already exists modify that item!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                updateUI();
+                updateItem(item);
             }
+        }
+
+        void updateItem(ShoppingItem itemClicked) {
+
+            String name = shoppingLayout.editName.getText().toString();
+            String amount = shoppingLayout.editAmount.getText().toString();
+            ShoppingItem itemExists = myShoppingDao.getItemName(name);
+
+            if (name.isEmpty() || amount.isEmpty()) {
+                Toast.makeText(ShoppingListActivity.this, "Error - name or amount is empty!", Toast.LENGTH_SHORT).show();
+            } else {
+                if (itemExists != null) {
+                    if (itemClicked.getItemName().equals(itemExists.getItemName())) {
+                        itemClicked.setAmount(Integer.parseInt(amount));
+                        itemClicked.setItemName(name);
+                        myShoppingDao.upDate(itemClicked);
+                    } else {
+                        Toast.makeText(ShoppingListActivity.this, "Item already exists modify that item.", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    itemClicked.setAmount(Integer.parseInt(amount));
+                    itemClicked.setItemName(name);
+                    myShoppingDao.upDate(itemClicked);
+                }
+            }
+            updateUI();
         }
     };
 
