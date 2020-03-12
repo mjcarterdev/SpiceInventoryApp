@@ -13,7 +13,7 @@
     through manually typing.
 </p>
 
-<h3>Demonstartion Video</h3>
+<h3>Demonstration Video</h3>
     <a href="https://drive.google.com/open?id=1uyVilUMhCDWAF9LXydn2RUfhkYYZRi57">Demonstration Video</a>
 
 <h3>Installation</h3>
