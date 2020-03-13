@@ -7,7 +7,7 @@
     <a href="https://tasks.office.com/metropoliafi.onmicrosoft.com/Home/PlanViews/ijHnPAmgj0SZu35vFrZaj5YAHytL?Type=PlanLink&Channel=Link&CreatedTime=637196799774100000"> (Link).</a>
     The main documentation can also be found in SpiceRack - project files along with the APK. 
 </p>
-<h3>Self-Evaluation of Project<h3>    
+<h3>Self-Evaluation of Project</h3>    
 <p>
 SpiceRack was my first attempt at devloping an Android application. It started out as a simple problem that I and many other people could relate with, 
 "Why do I always end up with multiple of the same herbs and spices in my cupboards at home?". The answer was straight forward, "you cannot always remember 
