@@ -1,20 +1,35 @@
 <h1>SpiceRack Project</h1>
-<h3>Project Details<h3>
+<h3>Project Details</h3>
 <p>
-As part of my "Mobiles" studies at Metropolia University of Applied Sciences I was to work within a team and develop a new Android application. Our team consisted of myself and Astrid Strohmaier. We learnt to run a project using SCRUM agile methodology with Microsoft Planner<a href="https://tasks.office.com/metropoliafi.onmicrosoft.com/Home/PlanViews/ijHnPAmgj0SZu35vFrZaj5YAHytL?Type=PlanLink&Channel=Link&CreatedTime=637196799774100000"> (Link).</a> The main documentation can also be found in SpiceRack - project files along with the APK. 
+    As part of my "Mobiles" studies at Metropolia University of Applied Sciences I was to work within 
+    a team and develop a new Android application. Our team consisted of myself and Astrid Strohmaier.
+    We learnt to run a project using SCRUM agile methodology with Microsoft Planner
+    <a href="https://tasks.office.com/metropoliafi.onmicrosoft.com/Home/PlanViews/ijHnPAmgj0SZu35vFrZaj5YAHytL?Type=PlanLink&Channel=Link&CreatedTime=637196799774100000"> (Link).</a>
+    The main documentation can also be found in SpiceRack - project files along with the APK. 
 </p>
 <h3>Self-Evaluation of Project<h3>    
 <p>
-SpiceRack was my first attempt at devloping an Android application. It started out as a simple problem that I and many other people could relate with, "Why do I always end up with multiple of the same herbs and spices in my cupboards at home?". The answer was straight forward, "you cannot always remember what you have in your cupboards when doing your shopping!". The solution was simple too, create a way to list your personal stash of herbs and spices. Here in SpiceRack was born.     
+SpiceRack was my first attempt at devloping an Android application. It started out as a simple problem that I and many other people could relate with, 
+"Why do I always end up with multiple of the same herbs and spices in my cupboards at home?". The answer was straight forward, "you cannot always remember 
+what you have in your cupboards when doing your shopping!". The solution was simple too, create a way to list your personal stash of herbs and spices. Here 
+in SpiceRack was born.     
 </p>
 <p>
-I was instantly hooked on the idea of a herb and spice inventory. I spent many hours over the 3 month project period learning, experiementing, testing, breaking and fixing. The cycle was endless even doing the simplest of tasks took time. I loved every second of it. Slowly as my knowledge grew, so did our application, eventually after many long coding sessions into the early hours of the morning we were done. The wave of excitement hit us. We did it. All the challenges we faced in creating custom recyclerView adapters or creating databases and building the best UI experience we could. It was all worth it in the end.      
+I was instantly hooked on the idea of a herb and spice inventory. I spent many hours over the 3 month project period learning, experiementing, testing, breaking and fixing.
+The cycle was endless even doing the simplest of tasks took time. I loved every second of it. Slowly as my knowledge grew, so did our application, eventually after many long 
+coding sessions into the early hours of the morning we were done. The wave of excitement hit us. We did it. All the challenges we faced in creating custom recyclerView adapters or creating 
+databases and building the best UI experience we could. It was all worth it in the end.      
 </p>
 <p>
-Safe to say the application was well recieved by our peers in class and the lecturer. We presented our project and gave demonstrations to everyone. Feedback was very positive and so we won best in class from the peer review. Our lecturer prasied our management of the project citing how we used GitHub extensively, our level of commenting of the code and our focus on bug testing as key attributes. 
+Safe to say the application was well recieved by our peers in class and the lecturer. We presented our project and gave demonstrations to everyone. Feedback was very 
+positive and so we won best in class from the peer review. Our lecturer prasied our management of the project citing how we used GitHub extensively, our level of commenting 
+of the code and our focus on bug testing as key attributes. 
 </p>
 <p>
-But as they say nothing is perfect. Areas that we could have improved on were usability design factors. It became quite apparent after multiple people used the app that they struggled with the initial understanding of how to get started. As the developer I became immune to this as I already knew how the application worked therefore didnt see this initial barrier. This was not a deal breaker however, once people became familiar it became a lot easier to use. The learning experience from this made me realise that I need to get more people involved in the test of the UI earlier in development to ensure maximum useablity. It also highlighted that I still have a lot to learn about UI design, a focus that I will work on in my future projects.
+But as they say nothing is perfect. Areas that we could have improved on were usability design factors. It became quite apparent after multiple people used the app that they 
+struggled with the initial understanding of how to get started. As the developer I became immune to this as I already knew how the application worked therefore didnt see this initial barrier. 
+This was not a deal breaker however, once people became familiar it became a lot easier to use. The learning experience from this made me realise that I need to get more people involved in the 
+test of the UI earlier in development to ensure maximum useablity. It also highlighted that I still have a lot to learn about UI design, a focus that I will work on in my future projects.
 </p>
 <h3>About SpiceRack</h3>
 <p>
