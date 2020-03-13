@@ -15,6 +15,7 @@ Safe to say the application was well recieved by our peers in class and the lect
 </p>
 <p>
 But as they say nothing is perfect. Areas that we could have improved on were usability design factors. It became quite apparent after multiple people used the app that they struggled with the initial understanding of how to get started. As the developer I became immune to this as I already knew how the application worked therefore didnt see this initial barrier. This was not a deal breaker however, once people became familiar it became a lot easier to use. The learning experience from this made me realise that I need to get more people involved in the test of the UI earlier in development to ensure maximum useablity. It also highlighted that I still have a lot to learn about UI design, a focus that I will work on in my future projects.
+</p>
 <h3>About SpiceRack</h3>
 <p>
     SpiceRack provides you with an intuitive user experience that simplifies your spice & herb
